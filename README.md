@@ -1,0 +1,103 @@
+# 87app — Monorepo (backend + admin + frontend1)
+
+Stack: **Node/Express + MongoDB** (backend, port `8701`) · **Vite/React** (admin port `8781`, frontend1 port `3000` dev / static khi prod) · **PM2 + Nginx**.
+
+```
+/var/87app
+├── backend/      Express API, MongoDB, JWT, socket.io  (port 8701, prefix /api)
+├── admin/        Vite + React (port 8781, build → dist)
+├── frontend1/    Vite + React user site (port 3000, build → dist)
+├── deploy/       deploy.sh, ecosystem.*.cjs, nginx/87app.conf
+└── scripts/      Mẫu nginx phụ
+```
+
+## 1. Yêu cầu hệ thống
+
+- Node 20+, npm 10+ (hoặc pnpm)
+- MongoDB 6+, Redis 7+ (tuỳ chọn)
+- Nginx, PM2 (`npm i -g pm2`)
+- Ubuntu 22.04 hoặc tương đương
+
+## 2. Chuẩn bị `.env`
+
+```bash
+cp backend/.env.example   backend/.env
+cp frontend1/.env.example frontend1/.env
+cp admin/.env.example     admin/.env
+cp deploy/env.example     deploy/env.local      # tuỳ chọn: DOMAIN, build flags
+```
+
+Bắt buộc đặt `JWT_SECRET`, `DATABASE_URL`, `CORS_ORIGIN` thực tế trong `backend/.env`. Backend dùng `Joi` validate khi boot — biến thiếu sẽ fail nhanh.
+
+## 3. Chạy local (dev)
+
+```bash
+# 1. backend
+cd backend && npm i && npm run dev          # http://localhost:8701
+
+# 2. frontend1 (Vite tự proxy /api → :8701 qua VITE_API_PROXY_TARGET)
+cd ../frontend1 && npm i && npm run dev     # http://localhost:3000
+
+# 3. admin (tuỳ chọn)
+cd ../admin && npm i && npm run dev         # http://localhost:8781
+```
+
+Lưu ý: nếu để `VITE_API_URL=/api` trong `frontend1/.env`, mọi request `/api/*` sẽ qua Vite proxy → backend (không cần CORS local).
+
+## 4. Build production
+
+```bash
+cd backend   && npm run build
+cd frontend1 && npm run build      # → dist/
+cd admin     && npm run build      # → dist/
+```
+
+Hoặc một lệnh:
+
+```bash
+sudo bash /var/87app/deploy/deploy.sh
+```
+
+Script `deploy.sh`:
+1. `tsc` backend → `backend/dist`
+2. `vite build` frontend1 và admin → `dist/`
+3. Symlink `deploy/nginx/87app.conf` → `/etc/nginx/sites-enabled/`
+4. `pm2 reload` ecosystem (mặc định `ecosystem.config.cjs`)
+
+Chế độ full SPA qua PM2 (FE/admin chạy `vite preview` thay vì Nginx static):
+
+```bash
+ECOSYSTEM_FILE=ecosystem.pm2-spa.cjs sudo bash /var/87app/deploy/deploy.sh
+```
+
+## 5. Cổng & domain
+
+| Service    | Port  | Domain (mặc định)            |
+|------------|-------|-------------------------------|
+| backend    | 8701  | `api.cuocbong99.live`         |
+| admin      | 8781  | `admin.cuocbong99.live`       |
+| frontend1  | 80    | `cuocbong99.live` (Nginx static `frontend1/dist`) |
+
+Frontend1 prod gọi API theo `VITE_API_URL=/api` (cùng origin, Nginx proxy `/api/` và `/socket.io` về `:8701`).
+
+## 6. SSL
+
+```bash
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx \
+  -d cuocbong99.live -d www.cuocbong99.live \
+  -d admin.cuocbong99.live -d api.cuocbong99.live
+```
+
+## 7. Healthcheck
+
+- `GET https://api.cuocbong99.live/health` → `{ status: "ok" }`
+- `pm2 status`
+- `pm2 logs 87app-api --lines 200`
+
+## 8. Tài liệu thêm
+
+- [`DEPLOY.md`](DEPLOY.md) — checklist deploy nhanh
+- [`frontend1/STANDARDIZATION.md`](frontend1/STANDARDIZATION.md) — chuẩn UI/i18n
+- [`frontend1/DEPLOYMENT.md`](frontend1/DEPLOYMENT.md) — chi tiết build FE
+- [`backend/README.md`](backend/README.md)

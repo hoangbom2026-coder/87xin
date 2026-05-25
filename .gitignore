@@ -1,0 +1,30 @@
+# Dependencies & build (monorepo)
+node_modules/
+**/node_modules/
+
+# Vite / SPA output
+frontend1/dist/
+admin/dist/
+frontend/dist/
+
+# Env (keep templates)
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Logs
+*.log
+logs/
+deploy/logs/*.log
+
+# TypeScript incremental
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Cursor / IDE
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db

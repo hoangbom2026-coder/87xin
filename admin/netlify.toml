@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist/spa"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/api/:splat"
+  status = 200
+
+# SPA fallback (React Router)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

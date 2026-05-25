@@ -1,0 +1,9 @@
+{
+    "files.autoSave": "onWindowChange",
+    "mediaPreview.video.autoPlay": true,
+    "mediaPreview.video.loop": true,
+    "window.autoDetectColorScheme": true,
+    "window.closeWhenEmpty": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true
+}
