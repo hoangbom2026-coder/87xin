@@ -1,5 +1,5 @@
 /**
- * URL / email công khai khi deploy — dùng env để đổi môi trường, mặc định cuocbong99.live.
+ * URL / email công khai khi deploy — dùng env để đổi môi trường, mặc định tc-gaming.live.
  */
 
 function trimOrigin(url: string): string {
@@ -7,18 +7,18 @@ function trimOrigin(url: string): string {
 }
 
 const rawSite = (import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined)?.trim()
-export const SITE_ORIGIN = trimOrigin(rawSite || 'https://cuocbong99.live')
+export const SITE_ORIGIN = trimOrigin(rawSite || 'https://tc-gaming.live')
 
 export const SUPPORT_EMAIL =
-  (import.meta.env.VITE_SUPPORT_EMAIL as string | undefined)?.trim() || 'support@cuocbong99.live'
+  (import.meta.env.VITE_SUPPORT_EMAIL as string | undefined)?.trim() || 'support@tc-gaming.live'
 
 export const PRIVACY_EMAIL =
-  (import.meta.env.VITE_PRIVACY_EMAIL as string | undefined)?.trim() || 'privacy@cuocbong99.live'
+  (import.meta.env.VITE_PRIVACY_EMAIL as string | undefined)?.trim() || 'privacy@tc-gaming.live'
 
 const rawTg = (import.meta.env.VITE_TELEGRAM_SUPPORT_URL as string | undefined)?.trim()
-export const TELEGRAM_SUPPORT_URL = rawTg || 'https://t.me/cuocbong99_support'
+export const TELEGRAM_SUPPORT_URL = rawTg || 'https://t.me/tcgaming_support'
 
-export const TELEGRAM_SUPPORT_HANDLE = '@cuocbong99_support'
+export const TELEGRAM_SUPPORT_HANDLE = '@tcgaming_support'
 
 /** Trang đăng ký với query chuẩn backend (ưu tiên inviteCode, fallback ref = username). */
 export function referralRegisterUrl(user?: { inviteCode?: string; username?: string } | null): string {

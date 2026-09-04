@@ -1,1 +1,1 @@
-export { default } from '../Account/Withdrawal'
+export { default } from '../Account/withdraw/WithdrawCard';

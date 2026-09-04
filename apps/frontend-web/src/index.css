@@ -1,0 +1,13 @@
+/* TC Gaming — Global Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0d131c; }
+::-webkit-scrollbar-thumb { background: #2a3a52; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a5070; }
+
+/* Selection color */
+::selection { background: rgba(251, 191, 36, 0.3); }

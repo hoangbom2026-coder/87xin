@@ -3,16 +3,21 @@ import { User, ApiResponse } from '../types'
 
 export const login = async (username: string, password: string): Promise<ApiResponse<{ user: User, token: string }>> => {
   const response = await api.post<any, ApiResponse<any>>('/auth/login', { username, password })
-  if (response.success && response.data.accessToken) {
-    response.data.token = response.data.accessToken
+  if (response.success && response.data) {
+    const raw = response.data
+    // Backend trả token ở nhiều field — normalize về .token
+    const resolved = raw?.token ?? raw?.accessToken ?? raw?.tokens?.access?.token
+    if (resolved) response.data.token = resolved
   }
   return response
 }
 
 export const register = async (userData: any): Promise<ApiResponse<any>> => {
   const response = await api.post<any, ApiResponse<any>>('/auth/register', userData)
-  if (response.success && response.data.accessToken) {
-    response.data.token = response.data.accessToken
+  if (response.success && response.data) {
+    const raw = response.data
+    const resolved = raw?.token ?? raw?.accessToken ?? raw?.tokens?.access?.token
+    if (resolved) response.data.token = resolved
   }
   return response
 }

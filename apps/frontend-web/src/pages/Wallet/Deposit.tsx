@@ -1,1 +1,1 @@
-export { default } from '../Account/Deposit'
+export { default } from '../Account/deposit/DepositCrypto';

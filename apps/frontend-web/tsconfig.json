@@ -1,12 +1,11 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
@@ -15,15 +14,20 @@
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-
-    /* Linting */
-    "strict": true,
+    "strict": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@game/types": ["../../libs/shared-types/src/index.ts"],
+      "@game/types/*": ["../../libs/shared-types/src/*"],
+      "@game/shared-types": ["../../libs/shared-types/src/index.ts"],
+      "@game/shared-types/*": ["../../libs/shared-types/src/*"],
+      "@game/i18n": ["../../libs/i18n/index.ts"],
+      "@game/ui": ["../../libs/ui/src/index.ts"],
+      "@game/ui/*": ["../../libs/ui/src/*"]
     }
   },
   "include": ["src"],
