@@ -1,27 +1,27 @@
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Card, CardContent } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
+import { Textarea } from "@game/ui/textarea";
+import { Switch } from "@game/ui/switch";
+import { Badge } from "@game/ui/badge";
+import { Checkbox } from "@game/ui/checkbox";
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/components/ui/sheet";
-import { ScrollArea } from "@/components/ui/scroll-area";
+} from "@game/ui/sheet";
+import { ScrollArea } from "@game/ui/scroll-area";
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@game/ui/dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -31,8 +31,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { toast } from "@/components/ui/use-toast";
+} from "@game/ui/alert-dialog";
+import { toast } from "@game/ui/use-toast";
 import {
   Search,
   RefreshCw,

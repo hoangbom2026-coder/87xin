@@ -1,13 +1,13 @@
 import React from "react";
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { toast } from "@/components/ui/use-toast";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
+import { Switch } from "@game/ui/switch";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@game/ui/select";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@game/ui/table";
+import { toast } from "@game/ui/use-toast";
 import { getAdminToken } from "@/lib/adminAuth";
 
 import { getUsers, listTransactions, listBetTransactions } from "@/lib/api";

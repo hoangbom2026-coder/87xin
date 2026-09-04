@@ -1,9 +1,9 @@
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { toast } from "@/components/ui/use-toast";
+import { Badge } from "@game/ui/badge";
+import { Button } from "@game/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@game/ui/card";
+import { Progress } from "@game/ui/progress";
+import { toast } from "@game/ui/use-toast";
 import { getSystemInfoApi, type SystemInfo } from "@/lib/api";
 import { getAdminToken } from "@/lib/adminAuth";
 import { Activity, Cpu, Database, GitBranch, RefreshCw, Server } from "lucide-react";

@@ -1,12 +1,11 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-
-    
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
@@ -16,19 +15,20 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-
-    
     "strict": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": false,
     "strictNullChecks": false,
-
-    
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./client/*"]
+      "@/*": ["./client/*"],
+      "@game/ui": ["../../libs/ui/src/index.ts"],
+      "@game/ui/*": ["../../libs/ui/src/*", "../../libs/ui/src/components/*"],
+      "@game/types": ["../../libs/shared-types/src/index.ts"],
+      "@game/types/*": ["../../libs/shared-types/src/*"],
+      "@game/i18n": ["../../libs/i18n/index.ts"]
     }
   },
   "include": [

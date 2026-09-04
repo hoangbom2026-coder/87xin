@@ -1,12 +1,25 @@
+/**
+ * Admin authentication helpers for admin-dashboard.
+ * Normalizes backend auth payload (token -> accessToken) and manages localStorage tokens.
+ */
+import { loginAdmin, getMe, logout } from "./api";
+
 export type AdminLoginResponse = {
   user: any;
   accessToken: string;
 };
 
-import { loginAdmin, getMe, logout } from "./api";
-
 export async function adminLogin(username: string, password: string): Promise<AdminLoginResponse> {
-  return loginAdmin(username, password);
+  const raw = await loginAdmin(username, password);
+  // Backend response: { user, token, tokens: { access: { token } } }
+  const resolvedToken = raw?.accessToken ?? raw?.token ?? raw?.tokens?.access?.token;
+  if (!resolvedToken) {
+    throw new Error('Đăng nhập thất bại: không nhận được token xác thực');
+  }
+  return {
+    user: raw?.user ?? null,
+    accessToken: resolvedToken,
+  };
 }
 
 export async function adminMe(token: string) {

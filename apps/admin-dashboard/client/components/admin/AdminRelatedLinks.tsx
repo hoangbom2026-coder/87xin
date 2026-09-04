@@ -4,7 +4,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@game/ui/card";
 
 export type AdminRelatedLink = {
   to: string;

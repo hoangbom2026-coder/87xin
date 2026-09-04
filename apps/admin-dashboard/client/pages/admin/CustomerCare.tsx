@@ -8,9 +8,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+} from "@game/ui/card";
+import { Input } from "@game/ui/input";
+import { Button } from "@game/ui/button";
 import {
   Table,
   TableBody,
@@ -18,19 +18,19 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@game/ui/table";
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
-import { toast } from "@/components/ui/use-toast";
-import { Skeleton } from "@/components/ui/skeleton";
+} from "@game/ui/dialog";
+import { Label } from "@game/ui/label";
+import { Alert, AlertDescription, AlertTitle } from "@game/ui/alert";
+import { Badge } from "@game/ui/badge";
+import { toast } from "@game/ui/use-toast";
+import { Skeleton } from "@game/ui/skeleton";
 import {
   getSupportStats,
   getUsers,
@@ -39,7 +39,7 @@ import {
 } from "@/lib/api";
 import { getAdminToken } from "@/lib/adminAuth";
 import { Link } from "react-router-dom";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@game/ui/tabs";
 import {
   ArrowRight,
   BookMarked,

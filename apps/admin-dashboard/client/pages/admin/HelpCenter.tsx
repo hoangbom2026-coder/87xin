@@ -2,9 +2,9 @@
 
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
 import {
   Table,
   TableBody,
@@ -12,9 +12,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@game/ui/table";
 import React, { Suspense } from "react";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@game/ui/use-toast";
 import {
   getHelpList,
   createHelpApi,
@@ -32,7 +32,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@game/ui/select";
 import { Icon } from "@iconify/react";
 
 const token = () => getAdminToken() || "";

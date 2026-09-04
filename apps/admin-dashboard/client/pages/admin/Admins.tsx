@@ -1,18 +1,18 @@
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Badge } from "@game/ui/badge";
+import { Button } from "@game/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@game/ui/card";
+import { Input } from "@game/ui/input";
+import { Label } from "@game/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { toast } from "@/components/ui/use-toast";
+} from "@game/ui/select";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@game/ui/table";
+import { toast } from "@game/ui/use-toast";
 import {
   Dialog,
   DialogContent,
@@ -20,7 +20,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@game/ui/dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -30,7 +30,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+} from "@game/ui/alert-dialog";
 import {
   createStaffApi,
   deleteStaffApi,
@@ -55,7 +55,7 @@ import {
   Trophy,
   Users,
 } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@game/ui/tabs";
 import { Link } from "react-router-dom";
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 

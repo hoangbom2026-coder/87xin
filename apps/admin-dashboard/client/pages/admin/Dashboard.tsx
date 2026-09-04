@@ -3,8 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
 import {
   Table,
   TableBody,
@@ -12,14 +12,14 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@game/ui/table";
 import {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@game/ui/chart";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import { Link } from "react-router-dom";
 import {
@@ -45,10 +45,10 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Badge } from "@/components/ui/badge";
+} from "@game/ui/select";
+import { Alert, AlertDescription, AlertTitle } from "@game/ui/alert";
+import { Skeleton } from "@game/ui/skeleton";
+import { Badge } from "@game/ui/badge";
 import { cn } from "@/lib/utils";
 
 function fmt(n: number) {

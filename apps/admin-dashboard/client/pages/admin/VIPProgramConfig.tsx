@@ -2,20 +2,20 @@ import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import AdminRelatedLinks from "@/components/admin/AdminRelatedLinks";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@game/ui/button";
+import { Card, CardContent } from "@game/ui/card";
+import { Input } from "@game/ui/input";
+import { Label } from "@game/ui/label";
+import { ScrollArea } from "@game/ui/scroll-area";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
-import { toast } from "@/components/ui/use-toast";
+} from "@game/ui/select";
+import { Switch } from "@game/ui/switch";
+import { toast } from "@game/ui/use-toast";
 import { getAdminToken } from "@/lib/adminAuth";
 import { getBusinessSettings, patchBusinessSettings } from "@/lib/api";
 import {

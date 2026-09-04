@@ -2,7 +2,7 @@ import * as React from "react";
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import { Button } from "@/components/ui/button";
+import { Button } from "@game/ui/button";
 import {
   Table,
   TableBody,
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@game/ui/table";
 import { getAdminAuditLogs } from "@/lib/api";
 import { getAdminToken } from "@/lib/adminAuth";
 import { RefreshCw } from "lucide-react";

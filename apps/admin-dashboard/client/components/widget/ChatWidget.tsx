@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);

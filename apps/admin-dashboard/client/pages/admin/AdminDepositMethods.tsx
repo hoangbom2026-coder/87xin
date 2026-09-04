@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useToast } from "@/components/ui/use-toast";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { useToast } from "@game/ui/use-toast";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
+import { Switch } from "@game/ui/switch";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Badge } from "@game/ui/badge";
 import { Loader2, Save } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@game/ui/tabs";
 
 interface DepositMethod {
   id: string;

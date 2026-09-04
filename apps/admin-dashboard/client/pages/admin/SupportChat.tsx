@@ -1,27 +1,27 @@
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Badge } from "@game/ui/badge";
+import { Button } from "@game/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Input } from "@game/ui/input";
+import { Label } from "@game/ui/label";
+import { ScrollArea } from "@game/ui/scroll-area";
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@game/ui/dialog";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/ui/use-toast";
+} from "@game/ui/select";
+import { Textarea } from "@game/ui/textarea";
+import { toast } from "@game/ui/use-toast";
 import { getAdminToken } from "@/lib/adminAuth";
 import {
   assignSupport,

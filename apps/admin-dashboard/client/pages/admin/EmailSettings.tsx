@@ -1,12 +1,12 @@
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/ui/use-toast";
+import { Badge } from "@game/ui/badge";
+import { Button } from "@game/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@game/ui/card";
+import { Input } from "@game/ui/input";
+import { Label } from "@game/ui/label";
+import { Switch } from "@game/ui/switch";
+import { Textarea } from "@game/ui/textarea";
+import { toast } from "@game/ui/use-toast";
 import {
   getEmailSettingsApi,
   patchEmailSettingsApi,

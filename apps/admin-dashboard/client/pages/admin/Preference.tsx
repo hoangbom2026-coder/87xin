@@ -1,13 +1,13 @@
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
+import { Switch } from "@game/ui/switch";
+import { Badge } from "@game/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@game/ui/dialog";
 import React from "react";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@game/ui/use-toast";
 import { getPreference, updatePreference, getAdminCurrencies, replaceUser } from "@/lib/api";
 import { adminMe, getAdminToken } from "@/lib/adminAuth";
 

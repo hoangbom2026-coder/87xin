@@ -1,12 +1,12 @@
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Textarea } from "@game/ui/textarea";
+import { Badge } from "@game/ui/badge";
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@game/ui/use-toast";
 import { getTicketDetail, replyTicketApi } from "@/lib/api";
 import { getAdminToken } from "@/lib/adminAuth";
 import { format } from "date-fns";

@@ -1,17 +1,17 @@
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { toast } from "@/components/ui/use-toast";
+import { Badge } from "@game/ui/badge";
+import { Button } from "@game/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@game/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@game/ui/tabs";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@game/ui/table";
+import { toast } from "@game/ui/use-toast";
 import { getAdminAffiliateRewardLogs } from "@/lib/api";
 import { getAdminToken } from "@/lib/adminAuth";
 import { format } from "date-fns";
 import { Coins, RefreshCw } from "lucide-react";
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import { useEffect, useState } from "react";
-import { Input } from "@/components/ui/input";
+import { Input } from "@game/ui/input";
 
 const PAGE_SIZE = 50;
 

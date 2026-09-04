@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import NotFound from "@/pages/NotFound";
 import { adminMe, getAdminToken, clearAdminAuth } from "@/lib/adminAuth";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@game/ui/use-toast";
 
 type Role = "Owner" | "Admin" | "Agent" | "Analyst";
 export default function RequireSuperAdmin({

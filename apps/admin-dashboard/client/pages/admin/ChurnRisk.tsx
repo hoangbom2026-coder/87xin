@@ -3,11 +3,11 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@game/ui/button";
+import { Badge } from "@game/ui/badge";
+import { Input } from "@game/ui/input";
+import { Label } from "@game/ui/label";
+import { Checkbox } from "@game/ui/checkbox";
 import {
   Table,
   TableBody,
@@ -15,15 +15,15 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@game/ui/table";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { toast } from "@/components/ui/use-toast";
+} from "@game/ui/select";
+import { toast } from "@game/ui/use-toast";
 import { getAdminToken } from "@/lib/adminAuth";
 import { getAdminBonuses, getChurnAtRisk, postChurnOffer } from "@/lib/api";
 import { Gift, RefreshCw, UserRound } from "lucide-react";

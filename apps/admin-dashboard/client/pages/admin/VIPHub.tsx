@@ -20,11 +20,11 @@ import {
   getBusinessSettings,
   patchBusinessSettings,
 } from "@/lib/api";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
+import { Badge } from "@game/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@game/ui/tabs";
 import {
   Table,
   TableBody,
@@ -32,11 +32,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { toast } from "@/components/ui/use-toast";
-import { Label } from "@/components/ui/label";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Switch } from "@/components/ui/switch";
+} from "@game/ui/table";
+import { toast } from "@game/ui/use-toast";
+import { Label } from "@game/ui/label";
+import { ScrollArea } from "@game/ui/scroll-area";
+import { Switch } from "@game/ui/switch";
 import {
   mergeVipProgramLevels,
   type IVipProgramLevel,
@@ -46,7 +46,7 @@ import {
   VIP_PRESET_LABELS,
   type VipPresetId,
 } from "@/lib/vip-program-presets";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@game/ui/select";
 import { cn } from "@/lib/utils";
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";

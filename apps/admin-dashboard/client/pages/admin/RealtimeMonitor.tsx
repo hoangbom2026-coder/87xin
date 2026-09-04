@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { useToast } from "@/components/ui/use-toast";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Badge } from "@game/ui/badge";
+import { useToast } from "@game/ui/use-toast";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { getRealtimeEventsAdminApi, RealtimeEventItem } from "@/lib/api";
 import { 

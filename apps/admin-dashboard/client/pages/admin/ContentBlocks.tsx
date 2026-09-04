@@ -1,12 +1,12 @@
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
+import { Switch } from "@game/ui/switch";
+import { Textarea } from "@game/ui/textarea";
 import React from "react";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@game/ui/use-toast";
 import { getContentBlocks, createContentBlock, updateContentBlock, deleteContentBlock } from "@/lib/api";
 import { getAdminToken } from "@/lib/adminAuth";
 
@@ -17,7 +17,7 @@ import {
   TableHead as UITableHead,
   TableHeader as UITableHeader,
   TableRow as UITableRow,
-} from "@/components/ui/table";
+} from "@game/ui/table";
 
 const token = () => getAdminToken() || "";
 

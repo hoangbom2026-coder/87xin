@@ -1,11 +1,11 @@
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { toast } from "@/components/ui/use-toast";
+import { Button } from "@game/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@game/ui/card";
+import { Input } from "@game/ui/input";
+import { Label } from "@game/ui/label";
+import { Switch } from "@game/ui/switch";
+import { toast } from "@game/ui/use-toast";
 import { getBusinessSettings, patchBusinessSettings } from "@/lib/api";
 import { getAdminToken } from "@/lib/adminAuth";
 import { useEffect, useMemo, useState } from "react";

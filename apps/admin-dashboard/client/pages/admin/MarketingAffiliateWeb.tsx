@@ -2,13 +2,13 @@ import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import AdminRelatedLinks from "@/components/admin/AdminRelatedLinks";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { toast } from "@/components/ui/use-toast";
+import { Button } from "@game/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Input } from "@game/ui/input";
+import { Label } from "@game/ui/label";
+import { Textarea } from "@game/ui/textarea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@game/ui/tabs";
+import { toast } from "@game/ui/use-toast";
 import { getAdminToken } from "@/lib/adminAuth";
 import { getBusinessSettings, patchBusinessSettings } from "@/lib/api";
 import {
@@ -27,14 +27,14 @@ import {
 } from "@/lib/affiliate-page-defaults";
 import * as React from "react";
 import { RefreshCw, Save, Upload, Loader2, Image as ImageIcon } from "lucide-react";
-import { Switch } from "@/components/ui/switch";
+import { Switch } from "@game/ui/switch";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@game/ui/select";
 import { uploadSettingBannerAsset } from "@/lib/api";
 
 const tk = () => getAdminToken() || "";

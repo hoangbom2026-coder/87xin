@@ -24,7 +24,7 @@ function blockEnvProbeRequests(): Plugin {
 
 const adminPreviewHosts = (
   process.env.VITE_ADMIN_ALLOWED_HOSTS ||
-  'admin.cuocbong99.live,www.admin.cuocbong99.live,localhost,127.0.0.1'
+  'admin.tc-gaming.live,www.admin.tc-gaming.live,localhost,127.0.0.1'
 )
   .split(',')
   .map((s) => s.trim())
@@ -37,8 +37,48 @@ export default defineConfig({
   base: '/',
   plugins: [blockEnvProbeRequests(), react()],
   build: {
-    // Admin bundle gộp nhiều trang; tránh cảnh báo 500kB+ mặc định của Vite
-    chunkSizeWarningLimit: 1500,
+    chunkSizeWarningLimit: 600,
+    minify: 'esbuild',
+    target: 'es2020',
+    sourcemap: false,
+    reportCompressedSize: false,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) {
+            // Tách từng page admin thành chunk riêng (lazy load)
+            if (id.includes('/client/pages/admin/')) {
+              const name = id.split('/pages/admin/')[1].replace(/\.tsx?$/, '').toLowerCase();
+              return `page-${name}`;
+            }
+            if (id.includes('/client/pages/affiliate/')) {
+              return 'pages-affiliate';
+            }
+            return undefined;
+          }
+          // Vendor splits — cache lâu dài
+          // React core phải đứng trước các check khác để tránh circular
+          if (id.includes('/react-dom/') || id.includes('\\react-dom\\')) return 'vendor-react';
+          if (id.includes('/node_modules/react/') || id.match(/[/\\]react[/\\]index\.js/)) return 'vendor-react';
+          if (id.includes('react-router'))                       return 'vendor-router';
+          if (id.includes('@tanstack'))                          return 'vendor-query';
+          if (id.includes('@radix-ui'))                          return 'vendor-radix';
+          if (id.includes('recharts') || id.includes('d3-'))     return 'vendor-charts';
+          if (id.includes('react-hook-form') || id.includes('@hookform')) return 'vendor-forms';
+          if (id.includes('lucide-react') || id.includes('@iconify')) return 'vendor-icons';
+          if (id.includes('react-quill'))                        return 'vendor-editor';
+          // Tất cả vendor còn lại vào một chunk
+          return 'vendor-misc';
+        },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+      },
+    },
+  },
+  esbuild: {
+    drop: ['console', 'debugger'],
+    legalComments: 'none',
   },
   resolve: {
     alias: {

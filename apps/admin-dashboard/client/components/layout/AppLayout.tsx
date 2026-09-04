@@ -16,10 +16,10 @@ import {
   SidebarRail,
   SidebarSeparator,
   SidebarTrigger,
-} from "@/components/ui/sidebar";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+} from "@game/ui/sidebar";
+import { Badge } from "@game/ui/badge";
+import { Input } from "@game/ui/input";
+import { Button } from "@game/ui/button";
 import {
   Bell,
   Blocks,
@@ -46,8 +46,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Separator } from "@/components/ui/separator";
+} from "@game/ui/dropdown-menu";
+import { Separator } from "@game/ui/separator";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 import ChatWidget from "@/components/widget/ChatWidget";

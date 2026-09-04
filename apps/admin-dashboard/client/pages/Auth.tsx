@@ -1,10 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Input } from "@game/ui/input";
+import { Button } from "@game/ui/button";
+import { Alert, AlertDescription } from "@game/ui/alert";
 import { Loader2 } from "lucide-react";
 import { useAuth } from "@/components/auth/AuthProvider";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@game/ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 

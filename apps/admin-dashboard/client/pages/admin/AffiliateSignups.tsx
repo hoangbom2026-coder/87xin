@@ -1,8 +1,8 @@
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Input } from "@game/ui/input";
+import { Button } from "@game/ui/button";
 import {
   Table,
   TableBody,
@@ -10,11 +10,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
-import { toast } from "@/components/ui/use-toast";
+} from "@game/ui/table";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@game/ui/select";
+import { Switch } from "@game/ui/switch";
+import { Badge } from "@game/ui/badge";
+import { toast } from "@game/ui/use-toast";
 import React from "react";
 import { getUsers } from "@/lib/api";
 import { getAdminToken } from "@/lib/adminAuth";

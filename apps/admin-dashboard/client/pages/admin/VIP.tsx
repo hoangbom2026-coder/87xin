@@ -1,14 +1,14 @@
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
+import { Label } from "@game/ui/label";
+import { Switch } from "@game/ui/switch";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@game/ui/tabs";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@game/ui/select";
 import { useEffect, useMemo, useState } from "react";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@game/ui/use-toast";
 import { Crown, Layers3, Gift } from "lucide-react";
 import { getVipTiersList, getVipLevelsByParent, createVipTiersApi, updateVipTiersApi, deleteVipTiersApi, createVipLevelApi, updateVipLevelApi, deleteVipLevelApi, listVipSpinPrizes, createVipSpinPrize, updateVipSpinPrize, deleteVipSpinPrize } from "@/lib/api";
 

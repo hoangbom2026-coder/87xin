@@ -1,18 +1,18 @@
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
+import { Textarea } from "@game/ui/textarea";
+import { Badge } from "@game/ui/badge";
+import { Checkbox } from "@game/ui/checkbox";
+import { ScrollArea } from "@game/ui/scroll-area";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "@/components/ui/dialog";
+} from "@game/ui/dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,9 +22,9 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { toast } from "@/components/ui/use-toast";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from "@game/ui/alert-dialog";
+import { toast } from "@game/ui/use-toast";
+import { Tabs, TabsList, TabsTrigger } from "@game/ui/tabs";
 import { Link } from "react-router-dom";
 import {
   ShieldCheck,

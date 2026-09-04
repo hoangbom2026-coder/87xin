@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
 import {
   Table,
   TableBody,
@@ -12,16 +12,16 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@game/ui/table";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { useToast } from "@/components/ui/use-toast";
+} from "@game/ui/select";
+import { Badge } from "@game/ui/badge";
+import { useToast } from "@game/ui/use-toast";
 import { useAuth } from "@/components/auth/AuthProvider";
 import {
   listIPAccessAdminApi,
@@ -38,8 +38,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
+} from "@game/ui/dialog";
+import { Label } from "@game/ui/label";
 
 export default function AdminIPManagement() {
   const { token } = useAuth();

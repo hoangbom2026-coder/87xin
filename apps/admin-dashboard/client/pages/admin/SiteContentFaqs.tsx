@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Trash2, GripVertical, Save, Loader2, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Badge } from '@/components/ui/badge';
-import { useToast } from '@/components/ui/use-toast';
+import { Button } from '@game/ui/button';
+import { Input } from '@game/ui/input';
+import { Textarea } from '@game/ui/textarea';
+import { Label } from '@game/ui/label';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@game/ui/card';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@game/ui/select';
+import { Badge } from '@game/ui/badge';
+import { useToast } from '@game/ui/use-toast';
 
 interface FaqItem {
   id: string;

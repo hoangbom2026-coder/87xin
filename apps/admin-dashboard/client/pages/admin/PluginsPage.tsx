@@ -2,18 +2,18 @@ import * as React from "react";
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
+import { Label } from "@game/ui/label";
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/ui/use-toast";
+} from "@game/ui/dialog";
+import { Textarea } from "@game/ui/textarea";
+import { toast } from "@game/ui/use-toast";
 import {
   listSitePlugins,
   patchSitePlugin,

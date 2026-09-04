@@ -18,18 +18,18 @@ import {
   SidebarRail,
   SidebarSeparator,
   SidebarTrigger,
-} from "@/components/ui/sidebar";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
+} from "@game/ui/sidebar";
+import { Badge } from "@game/ui/badge";
+import { Separator } from "@game/ui/separator";
+import { Button } from "@game/ui/button";
 import ThemeToggle from "@/components/shared/ThemeToggle";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@game/ui/use-toast";
 import { useSessionTimeout } from "@/hooks/useSessionTimeout";
 import { useAdminThemeVars } from "@/hooks/useAdminThemeVars";
 import AdminErrorBoundary from "@/components/admin/AdminErrorBoundary";
 import { getAdminToken } from "@/lib/adminAuth";
 import { logout } from "@/lib/api";
-import { Input } from "@/components/ui/input";
+import { Input } from "@game/ui/input";
 import { Search } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {

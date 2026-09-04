@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
+import { toast } from "@game/ui/use-toast";
 import { affiliateLogin, setAffiliateToken, getAffiliateToken } from "@/lib/affiliateAuth";
 
 export default function AffiliateLogin() {

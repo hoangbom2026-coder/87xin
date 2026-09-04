@@ -1,7 +1,7 @@
 import AdminLayout from "@/components/layout/AdminLayout";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@game/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@game/ui/tabs";
 import { ArrowUpRight } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 

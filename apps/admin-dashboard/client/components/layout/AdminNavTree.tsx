@@ -5,7 +5,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+} from "@game/ui/collapsible";
 import {
   SidebarMenu,
   SidebarMenuButton,
@@ -13,7 +13,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/sidebar";
+} from "@game/ui/sidebar";
 import type {
   AdminNavLeaf,
   AdminNavNode,

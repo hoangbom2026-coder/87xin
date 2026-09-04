@@ -1,12 +1,12 @@
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Switch } from "@/components/ui/switch";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
+import { Button } from "@game/ui/button";
+import { Input } from "@game/ui/input";
+import { Badge } from "@game/ui/badge";
+import { Switch } from "@game/ui/switch";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@game/ui/tabs";
 import {
   Table,
   TableBody,
@@ -14,8 +14,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { toast } from "@/components/ui/use-toast";
+} from "@game/ui/table";
+import { toast } from "@game/ui/use-toast";
 import { cn } from "@/lib/utils";
 import {
   Briefcase,
@@ -63,7 +63,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@game/ui/dialog";
 import ReferralTree, { ITreeUser } from "@/components/admin/ReferralTree";
 import { format } from "date-fns";
 

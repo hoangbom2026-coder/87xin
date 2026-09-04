@@ -14,7 +14,7 @@
         try {
           if (!window.__API_BASE) {
             var ls = (typeof localStorage !== 'undefined') ? localStorage.getItem('__API_BASE') : null;
-            window.__API_BASE = (ls && ls.trim()) || 'https://api.cuocbong99.live/api';
+            window.__API_BASE = (ls && ls.trim()) || '/api';
           }
         } catch (e) {}
       })();

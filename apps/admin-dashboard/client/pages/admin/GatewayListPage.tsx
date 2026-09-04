@@ -1,9 +1,9 @@
 import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
 import AdminLayout from "@/components/layout/AdminLayout";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@game/ui/badge";
+import { Button } from "@game/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
 import { getAdminToken } from "@/lib/adminAuth";
 import { getBusinessSettings } from "@/lib/api";
 import {
@@ -11,7 +11,7 @@ import {
   PAYMENT_GATEWAY_SLUGS,
   type SystemIntegrationsDoc,
 } from "@/lib/system-integrations-meta";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@game/ui/use-toast";
 import { RefreshCw } from "lucide-react";
 import * as React from "react";
 import { Link } from "react-router-dom";
