@@ -15,7 +15,8 @@ export const getAffiliateOverview = catchAsync(async (req: AuthRequest, res: Res
     const stats = await affiliateStatsService.getStatsByUserId(userId);
     const user = await UserModel.findById(userId).select('inviteCode');
     
-    const inviteLink = `https://cuocbong99.info?r=${user?.inviteCode || ''}`;
+    const baseUrl = process.env.FRONTEND_URL || 'https://tc-gaming.live';
+    const inviteLink = `${baseUrl}/register?r=${user?.inviteCode || ''}`;
 
     return res.send({
         status: 'success',

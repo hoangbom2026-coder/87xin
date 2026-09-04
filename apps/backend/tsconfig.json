@@ -1,41 +1,31 @@
 {
-    "compilerOptions": {
-        "ignoreDeprecations": "6.0",
-        "noImplicitAny": false,
-        "strictNullChecks": false,
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "target": "es6",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "outDir": "dist",
-        "baseUrl": "src",
-        "rootDir": "src",
-        "paths": {
-            "@main/*": [
-                "main/*"
-            ],
-            "@utils/*": [
-                "utils/*"
-            ],
-            "@config/*": [
-                "config/*"
-            ],
-            "@middlewares/*": [
-                "middlewares/*"
-            ]
-        },
-        "lib": [
-            "es2021"
-        ]
-    },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.d.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "src/scripts",
-        "dist"
-    ]
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es2022",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "outDir": "dist",
+    "rootDir": "src",
+    "baseUrl": ".",
+    "lib": ["es2022"],
+    "removeComments": true,
+    "declaration": false,
+    "skipLibCheck": true,
+    "paths": {
+      "@main/*":        ["src/main/*"],
+      "@utils/*":       ["src/utils/*"],
+      "@config/*":      ["src/config/*"],
+      "@middlewares/*": ["src/middlewares/*"],
+      "@game/db":       ["../../libs/db/index.ts"],
+      "@game/cron":     ["../../libs/cron/index.ts"],
+      "@game/i18n":     ["../../libs/i18n/index.ts"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "exclude": ["node_modules", "src/scripts", "dist"]
 }

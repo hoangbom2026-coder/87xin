@@ -1,94 +1,29 @@
-import path from 'path';
 process.env.TZ = 'Asia/Ho_Chi_Minh';
-import { createClient } from 'redis';
-import * as moduleAlias from 'module-alias';
-import * as mongoose from 'mongoose';
 
 import config from './config';
 import logger from './config/logger';
-
-const aliasData =
-    config.env === 'production'
-        ? {
-              '@root': path.join(__dirname, '..', 'dist'),
-              '@main': `${path.join(__dirname, '..', 'dist', 'main')}`,
-              '@utils': `${path.join(__dirname, '..', 'dist', 'utils')}`,
-              '@config': `${path.join(__dirname, '..', 'dist', 'config')}`,
-              '@middlewares': `${path.join(__dirname, '..', 'dist', 'middlewares')}`
-          }
-        : {
-              '@root': path.join(__dirname, '..'),
-              '@main': `${__dirname}/main`,
-              '@utils': `${__dirname}/utils`,
-              '@config': `${__dirname}/config`,
-              '@middlewares': `${__dirname}/middlewares`
-          };
-moduleAlias.addAliases(aliasData);
-
 import appServer from './app';
-
 import { initTables } from './initialize.service';
-import { startAffiliateFakeFeedCron } from '@main/cron/affiliate-fake-feed.cron';
-import { startAffiliateDailyCron } from '@main/cron/affiliate-daily.cron';
+import { connectDatabase } from '@game/db';
+import { startAllCrons } from '@game/cron';
 
 const main = async () => {
-    mongoose.set('strictQuery', true);
-
-    // Start the HTTP server immediately so platform healthchecks succeed quickly.
+    // Start HTTP server immediately
     const server = appServer.listen(config.port, () => {
         logger.info(`Listening to port ${config.port}`);
         console.log(`HTTP server listening on port ${config.port}`);
     });
 
-    // Initialize DB and redis asynchronously. Failures here should not prevent the server from starting.
+    // Async DB & Cron initialization
     (async () => {
         try {
-            console.log('Connecting to MongoDB...');
-            await mongoose.connect(config.mongodbURL as string);
-            console.log('--database connection successful--');
+            await connectDatabase({
+                mongodbURL: config.mongodbURL as string
+            });
             await initTables();
-            startAffiliateFakeFeedCron();
-            startAffiliateDailyCron();
-
-            const redisUrl = process.env.REDIS_URL;
-            if (!redisUrl) {
-                console.log('REDIS_URL not set; using in-memory store');
-                const store = new Map<string, string>();
-                global.redis = {
-                    get: async (key: string) => (store.has(key) ? store.get(key)! : null),
-                    set: async (key: string, value: string) => {
-                        store.set(key, value);
-                        return 'OK';
-                    },
-                    del: async (key: string) => {
-                        const existed = store.delete(key);
-                        return existed ? 1 : 0;
-                    }
-                } as any;
-            } else {
-                try {
-                    const client = createClient({ url: redisUrl });
-                    client.on('error', (err) => console.log('Redis Client Error', err));
-                    await client.connect();
-                    global.redis = client;
-                } catch (e) {
-                    console.log('Redis unavailable, falling back to in-memory store');
-                    const store = new Map<string, string>();
-                    global.redis = {
-                        get: async (key: string) => (store.has(key) ? store.get(key)! : null),
-                        set: async (key: string, value: string) => {
-                            store.set(key, value);
-                            return 'OK';
-                        },
-                        del: async (key: string) => {
-                            const existed = store.delete(key);
-                            return existed ? 1 : 0;
-                        }
-                    } as any;
-                }
-            }
+            startAllCrons();
         } catch (err) {
-            console.log('--error connecting to database---');
+            console.log('--database or background initialization failed---');
             console.log(err);
         }
     })();
@@ -104,7 +39,7 @@ const main = async () => {
         }
     };
 
-    const unexpectedErrorHandler = (error) => {
+    const unexpectedErrorHandler = (error: any) => {
         logger.error(error);
         exitHandler();
     };
