@@ -45,10 +45,33 @@ _Last updated: 2026-09-04 by AI System Architect_
 
 ---
 
-## Phase 4: DevOps & CI/CD Automation (PRIORITY)
+## Phase 4: DevOps & CI/CD Automation
 
 | # | Priority | Task | Status | Notes |
 |---|---|---|---|---|
-| 4.1 | 🔴 | **GitHub Actions CI/CD Pipeline**: Multi-stage build for Web, Admin, and Backend with GHCR push | ⏳ Next | `.github/workflows/deploy.yml` |
-| 4.2 | 🔴 | **Zero-Downtime VPS Deployment Script**: Pull GHCR images and run `docker-compose` / PM2 | ⏳ Next | `infra/scripts/deploy.sh` |
-| 4.3 | 🟡 | **Cloudflare Configuration Guide**: Setup DNS, Full/Strict SSL, and edge caching rules | ⏳ Next | `docs/infra/CLOUDFLARE_SETUP.md` |
+| 4.1 | 🔴 | **GitHub Actions CI/CD Pipeline**: PR typecheck + prod deploy | ✅ Done | `.github/workflows/deploy.yml` + `pr-check.yml` |
+| 4.2 | 🔴 | **Zero-Downtime VPS Deployment Script** | ✅ Done | `infra/scripts/deploy.sh` (symlink + PM2 reload) |
+| 4.3 | 🟡 | **Cloudflare Configuration Guide** | ⏳ Next | `docs/infra/CLOUDFLARE_SETUP.md` |
+
+---
+
+## Phase 5: Fix TypeScript Errors & Test Coverage (NEW — PRIORITY)
+
+| # | Priority | Task | Status | Notes |
+|---|---|---|---|---|
+| 5.1 | 🔴 | **Tạo missing services**: currency, setting, deposit, withdraw | ⏳ DAY-001 | 17+ controllers blocked |
+| 5.2 | 🔴 | **Fix config/index.ts**: thêm gsPay, nowpay, slot, sendGridApiKey | ⏳ DAY-002 | 3 controllers blocked |
+| 5.3 | 🔴 | **Tạo missing models**: setting, bot-automation, game, provider | ⏳ DAY-002 | 4+ services blocked |
+| 5.4 | 🟠 | **Fix rootDir TypeScript** + Redis types | ⏳ DAY-003 | libs/db outside rootDir |
+| 5.5 | 🟠 | **Expand test suite**: currency, session, payment, vip-tiers | ⏳ DAY-004 | Only balance.service tested |
+| 5.6 | 🟡 | **I18N mở rộng**: 12 keys → 80+ keys | ⏳ DAY-005 | Hard-coded strings everywhere |
+
+---
+
+## Phase 6: Security & Admin UI Polish
+
+| # | Priority | Task | Status | Notes |
+|---|---|---|---|---|
+| 6.1 | 🟠 | **Security audit**: secrets, CORS, rate-limit, .gitignore | ⏳ DAY-006 | CHANGE_ME still in .env |
+| 6.2 | 🟠 | **Admin VIP + Affiliate modules**: AdminLayout + DataTable | ⏳ DAY-007 | Phase 3.1 + 3.2 |
+| 6.3 | 🟡 | **Remove hardcoded hex colors** from admin pages | ⏳ DAY-007 | Phase 3.4 |

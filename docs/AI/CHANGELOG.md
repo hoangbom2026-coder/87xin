@@ -51,3 +51,28 @@ _Records all changes made by AI agents. Newest first._
 - `apps/admin-dashboard/client/lib/api.ts` — Added 10s AbortSignal timeout, 401 redirect to `/login`, and structured HTTP error throwing.
 - `apps/frontend-web/src/constants/siteUrls.ts` & `brandDefaults.ts` — Standardized brand name to "TC Gaming" and domain to `tc-gaming.live`.
 - `docs/AI/ARCHITECTURE.md`, `docs/AI/BASELINE.md`, `docs/AI/ROADMAP.md` — Updated documentation to reflect 3-tier monorepo architecture and roadmap priorities.
+
+## [ASSESSMENT] 2025-09-04 — Full project assessment & daily plan creation
+
+### Findings
+- Backend TypeScript errors: **45 files** with errors across 3 categories
+  - Missing services: currency, setting, deposit, withdraw, bot-runner, notification (🔴 Critical)
+  - Missing models: setting.model, bot-automation.model, game.model, provider.model (🔴 Critical)
+  - Config missing keys: gsPay, nowpay, slot, sendGridApiKey, exchangeRateKey (🟠 High)
+  - rootDir/redis types: 2 files (🟠 High)
+- I18N: only 12 keys (agency FAQs only) — hard-coded strings throughout frontend
+- CI/CD: ✅ deploy.yml + pr-check.yml operational
+- PM2: ✅ fork mode correct for Socket.IO
+- Health endpoint: ✅ latency_ms + services wrapper
+- Smoke test: ✅ 13 checks
+
+### Actions taken
+- Created: docs/AI/DAILY_PLAN.md (7-day plan)
+- Created: docs/AI/PROMPTS/day-001-missing-services.md
+- Created: docs/AI/PROMPTS/day-002-config-models.md
+- Created: docs/AI/PROMPTS/day-003-typecheck-clean.md
+- Created: docs/AI/PROMPTS/day-004-test-suite.md
+- Created: docs/AI/PROMPTS/day-005-i18n.md
+- Created: docs/AI/PROMPTS/day-006-security.md
+- Created: docs/AI/PROMPTS/day-007-admin-ui.md
+- Updated: docs/AI/ROADMAP.md (Phase 4 ✅, Phase 5 + 6 added)
