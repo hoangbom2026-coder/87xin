@@ -8,11 +8,12 @@ import ApiError from '../utils/ApiError';
 // service
 import userService from '@main/services/user.service';
 import sessionService from '@main/services/session.service';
+// types
+import { IUser } from '@main/models/user.model';
+
 export interface AuthRequest extends Request {
-    // eslint-disable-next-line
-    user?: any;
-    // eslint-disable-next-line
-    file?: any;
+    user?: IUser;
+    file?: Express.Multer.File;
 }
 
 const verifyCallback = async (req: AuthRequest, resolve, reject) => {

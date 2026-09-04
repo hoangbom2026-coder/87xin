@@ -2,6 +2,7 @@ import http from 'http';
 import path from 'path';
 import cors from 'cors';
 import express from 'express';
+import helmet from 'helmet';
 import { Server as SocketServer } from 'socket.io';
 import compression from 'compression';
 import mongoose from 'mongoose';
@@ -14,6 +15,7 @@ import config from './config';
 import { errorConverter, errorHandler } from './middlewares/error';
 
 const app = express();
+app.use(helmet());
 app.use(compression());
 
 const allowAll = config.corsOrigin.length === 0 || config.corsOrigin.includes('*');
@@ -29,8 +31,8 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
-app.use(express.json({ limit: '500mb' }));
-app.use(express.urlencoded({ limit: '500mb', extended: true }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 const healthHandler = (_req: express.Request, res: express.Response) => {
     const dbStatus = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
