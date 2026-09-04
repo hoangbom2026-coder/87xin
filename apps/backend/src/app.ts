@@ -42,29 +42,53 @@ app.use((req, _res, next) => {
 });
 
 const healthHandler = async (_req: express.Request, res: express.Response) => {
-    const dbStatus = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
+    // ── Database check ──────────────────────────────────────────────────────
+    const dbStart = Date.now();
+    let dbStatus: 'ok' | 'error' = 'error';
+    try {
+        if (mongoose.connection.readyState === 1) {
+            // Simple ping: listCollections returns fast even on large DBs
+            await mongoose.connection.db!.command({ ping: 1 });
+            dbStatus = 'ok';
+        }
+    } catch {
+        dbStatus = 'error';
+    }
+    const dbLatency = Date.now() - dbStart;
 
-    // Redis ping (không throw nếu lỗi)
-    let redisStatus = 'unavailable';
+    // ── Redis check ─────────────────────────────────────────────────────────
+    const redisStart = Date.now();
+    let redisStatus: 'ok' | 'error' = 'error';
     try {
         if (global.redis) {
-            await (global.redis as any).ping?.();
-            redisStatus = 'connected';
+            const pong = await (global.redis as any).ping?.();
+            // Real redis-client returns 'PONG'; in-memory fallback has no ping → undefined
+            redisStatus = (pong === 'PONG' || pong === undefined) ? 'ok' : 'error';
         }
     } catch {
         redisStatus = 'error';
     }
+    const redisLatency = Date.now() - redisStart;
 
     const memUsed = process.memoryUsage();
     const uptime  = process.uptime();
+    const allOk   = dbStatus === 'ok' && redisStatus === 'ok';
+    const anyErr  = dbStatus === 'error' && redisStatus === 'error';
 
-    const healthy = dbStatus === 'connected';
-    res.status(healthy ? 200 : 503).json({
-        status:   healthy ? 'ok' : 'degraded',
-        time:     new Date().toISOString(),
-        uptime:   Math.floor(uptime),
-        database: dbStatus,
-        redis:    redisStatus,
+    const overallStatus = allOk ? 'ok' : anyErr ? 'error' : 'degraded';
+    const httpCode      = overallStatus === 'ok' ? 200 : 503;
+
+    res.status(httpCode).json({
+        status:    overallStatus,
+        timestamp: new Date().toISOString(),
+        uptime:    Math.floor(uptime),
+        services: {
+            database: { status: dbStatus,    latency_ms: dbLatency    },
+            redis:    { status: redisStatus, latency_ms: redisLatency },
+        },
+        // Legacy fields — giữ lại để không break smoke test + monitoring scripts cũ
+        database: dbStatus === 'ok' ? 'connected' : 'disconnected',
+        redis:    redisStatus === 'ok' ? 'connected' : (global.redis ? 'error' : 'unavailable'),
         memory: {
             heapUsed:  Math.round(memUsed.heapUsed  / 1024 / 1024) + 'MB',
             heapTotal: Math.round(memUsed.heapTotal / 1024 / 1024) + 'MB',

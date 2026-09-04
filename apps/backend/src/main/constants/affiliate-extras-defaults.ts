@@ -84,8 +84,8 @@ export const DEFAULT_AFFILIATE_EXTRAS: IAffiliateExtras = {
             '/images/pages/affiliate/aff-5.png',
             '/images/pages/affiliate/aff-6.png'
         ],
-        supportEmail: 'support@example.com',
-        '9BetLink': 'https://www.cuocbong99.live'
+        supportEmail: 'support@tc-gaming.live',
+        '9BetLink': 'https://tc-gaming.live'
     },
     slogans: {
         earningTitle: 'START EARNING TODAY',
