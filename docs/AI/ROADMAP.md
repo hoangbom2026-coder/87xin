@@ -1,118 +1,54 @@
-# ROADMAP.md — GAME Project Improvement Roadmap
+# ROADMAP.md — TC-GAMING Improvement Roadmap
 
-_Last updated: 2026-04-09_
+_Last updated: 2026-09-04 by AI System Architect_
 
 ---
 
 ## Priority Legend
-
-- 🔴 CRITICAL — security or data integrity risk
-- 🟠 HIGH — stability, correctness, or maintainability
-- 🟡 MEDIUM — developer experience, technical debt
-- 🟢 LOW — nice-to-have, polish
-
----
-
-## Phase 1: Security & Stability (Do First)
-
-| # | Priority | Task | Affected Files |
-|---|---|---|---|
-| 1.1 | 🔴 | Reduce JSON body limit from `500mb` to `10mb` max | `backend/src/app.ts` |
-| 1.2 | 🔴 | Add `helmet` middleware for HTTP security headers | `backend/src/app.ts` |
-| 1.3 | 🔴 | Add `express-rate-limit` on all `/api/auth/*` routes | `backend/src/main/routes/auth.router.ts` |
-| 1.4 | 🔴 | Add rate limiting on OTP/verify routes | `backend/src/main/routes/verify.router.ts` |
-| 1.5 | 🟠 | Replace `req.user: any` with typed `IUser` interface | `backend/src/middlewares/auth.ts` |
-| 1.6 | 🟠 | Add `requestId` middleware (uuid per request) for structured logging | `backend/src/app.ts` |
-| 1.7 | 🟠 | Validate all payment callback signatures (HMAC/secret check) | `gs-callback.router.ts`, `ag-callback.router.ts` |
+- 🔴 CRITICAL — security, blocking builds, data integrity
+- 🟠 HIGH — stability, core monorepo unification, CI/CD
+- 🟡 MEDIUM — code cleanliness, test coverage
+- 🟢 LOW — documentation polish
 
 ---
 
-## Phase 2: Test Infrastructure
+## Phase 1: Monorepo Foundation & Core Unification (COMPLETED / IN-PROGRESS)
 
-| # | Priority | Task | Notes |
-|---|---|---|---|
-| 2.1 | 🟠 | Add Vitest + test config to `backend/` | No tests currently exist |
-| 2.2 | 🟠 | Write unit tests for `balance.service.ts` | Critical financial logic |
-| 2.3 | 🟠 | Write unit tests for `affiliate-mechanism.service.ts` | Commission calculation |
-| 2.4 | 🟡 | Add Vitest + test config to `frontend1/` | |
-| 2.5 | 🟡 | Write unit tests for Redux `authSlice` | |
-| 2.6 | 🟡 | Write integration tests for auth flow (login → session → logout) | |
-
----
-
-## Phase 3: Type Safety & Code Quality
-
-| # | Priority | Task | Notes |
-|---|---|---|---|
-| 3.1 | 🟠 | Create `IUser` TypeScript interface from `user.model.ts` | Replace `any` in auth middleware |
-| 3.2 | 🟠 | Audit all controllers for raw Mongoose document returns | Should use `.lean()` or DTO mapping |
-| 3.3 | 🟡 | Standardize error response format to `{ success, error: { code, message } }` | Requires frontend changes |
-| 3.4 | 🟡 | Add missing Joi validators for routes that lack them | Audit `routes/` vs `validators/` |
-| 3.5 | 🟡 | Remove `adminAxios.ts` and `adminApi.ts` from `frontend1/` | Should only exist in `admin/` |
-| 3.6 | 🟡 | Enable `noUncheckedIndexedAccess` in backend `tsconfig.json` | Better array safety |
+| # | Priority | Task | Status | Notes |
+|---|---|---|---|---|
+| 1.1 | 🔴 | Monorepo structure creation (`apps/`, `libs/`, `infra/`) | ✅ Done | Workspaces active |
+| 1.2 | 🔴 | Root configuration centralization (`tsconfig.base.json`, `.eslintrc.cjs`, `.prettierrc`) | ✅ Done | Root extends |
+| 1.3 | 🔴 | Remove `module-alias` and map paths via `@game/*` and `@main/*` | ✅ Done | Paths active |
+| 1.4 | 🔴 | Create missing critical files (`upload.ts`, `auth.controller.ts`, `wallet.router.ts`, `transaction.router.ts`, `api.ts`, `types/index.ts`) | ✅ Done | Blocking errors cleared |
+| 1.5 | 🟠 | Modularize DB initialization (`libs/db`) and Cron jobs (`libs/cron`) | ✅ Done | Libraries created |
 
 ---
 
-## Phase 4: Observability
+## Phase 2: Domain Refinement & Logic Separation (IN-PROGRESS)
 
-| # | Priority | Task | Notes |
-|---|---|---|---|
-| 4.1 | 🟡 | Add structured request logging middleware | Include `requestId`, `userId`, `method`, `url`, `statusCode`, `durationMs` |
-| 4.2 | 🟡 | Replace `console.log` calls with structured logger | Use `logger.ts` consistently |
-| 4.3 | 🟡 | Add health check metrics (DB connection, Redis connection, uptime) | Extend `/health` endpoint |
-| 4.4 | 🟢 | Add error tracking integration (Sentry or similar) | |
-
----
-
-## Phase 5: API Documentation
-
-| # | Priority | Task | Notes |
-|---|---|---|---|
-| 5.1 | 🟡 | Add Swagger/OpenAPI spec generator (`swagger-jsdoc` or `zod-openapi`) | Backend has no API docs |
-| 5.2 | 🟡 | Document all auth routes | |
-| 5.3 | 🟡 | Document all payment routes | |
-| 5.4 | 🟢 | Generate TypeScript client from OpenAPI spec for frontend | |
+| # | Priority | Task | Status | Notes |
+|---|---|---|---|---|
+| 2.1 | 🟠 | **Phân tách Logic Controller → Service**: Move non-HTTP query/business logic into services | 🔄 In Progress | Enforce Controller-Service boundary |
+| 2.2 | 🟠 | Centralize Mongoose models into `libs/models/` | ⏳ Pending | Shared across API and Admin scripts |
+| 2.3 | 🟠 | Standardize API contracts in `libs/shared-types/` | ⏳ Pending | Shared types across all apps |
 
 ---
 
-## Phase 6: Frontend Improvements
+## Phase 3: Admin Dashboard UI Standardization (IN-PROGRESS)
 
-| # | Priority | Task | Notes |
-|---|---|---|---|
-| 6.1 | 🟡 | Add i18next for proper internationalization | Replace manual locale constants |
-| 6.2 | 🟡 | Extract shared types into a separate `types/` module shared between frontend1 and admin | Currently duplicated |
-| 6.3 | 🟡 | Add TanStack Query to `frontend1/` | Replace manual saga data-fetching patterns |
-| 6.4 | 🟢 | Add Storybook for component documentation | |
-
----
-
-## Phase 7: Infrastructure & Deployment
-
-| # | Priority | Task | Notes |
-|---|---|---|---|
-| 7.1 | 🟡 | Add MongoDB replica set for read scaling and oplog | Currently single node |
-| 7.2 | 🟡 | Add Bull/BullMQ queue for background jobs | Replace in-process cron jobs |
-| 7.3 | 🟡 | Add CI/CD pipeline (GitHub Actions or similar) | Currently manual deploy.sh |
-| 7.4 | 🟢 | Add Docker Compose for local development | |
+| # | Priority | Task | Status | Notes |
+|---|---|---|---|---|
+| 3.1 | 🟠 | **Refactor VIP Module** with `AdminLayout`, `DataTable`, and Tailwind CSS variables | 🔄 In Progress | `VIP.tsx`, `VIPHub.tsx`, `VIPLevels.tsx`, etc. |
+| 3.2 | 🟠 | Refactor Affiliate Module with `AdminLayout` & `DataTable` | ⏳ Pending | `AffiliateManager.tsx`, etc. |
+| 3.3 | 🟠 | Refactor Marketing & Article Modules | ⏳ Pending | `MarketingHubPage.tsx`, `ArticlePosts.tsx` |
+| 3.4 | 🟡 | Replace all remaining hardcoded hex colors with CSS variables | ⏳ Pending | Full UI theme compliance |
 
 ---
 
-## Current Status Summary
+## Phase 4: DevOps & CI/CD Automation (PRIORITY)
 
-| Phase | Status |
-|---|---|
-| Phase 1: Security & Stability | ❌ Not started |
-| Phase 2: Test Infrastructure | ❌ Not started |
-| Phase 3: Type Safety | ❌ Not started |
-| Phase 4: Observability | ❌ Not started |
-| Phase 5: API Documentation | ❌ Not started |
-| Phase 6: Frontend Improvements | ❌ Not started |
-| Phase 7: Infrastructure | ❌ Not started |
-
----
-
-## Immediate Next Task
-
-→ **Phase 1.1**: Reduce `express.json` body limit in `backend/src/app.ts`
-
-This is the smallest, safest, highest-impact change. No business logic affected.
+| # | Priority | Task | Status | Notes |
+|---|---|---|---|---|
+| 4.1 | 🔴 | **GitHub Actions CI/CD Pipeline**: Multi-stage build for Web, Admin, and Backend with GHCR push | ⏳ Next | `.github/workflows/deploy.yml` |
+| 4.2 | 🔴 | **Zero-Downtime VPS Deployment Script**: Pull GHCR images and run `docker-compose` / PM2 | ⏳ Next | `infra/scripts/deploy.sh` |
+| 4.3 | 🟡 | **Cloudflare Configuration Guide**: Setup DNS, Full/Strict SSL, and edge caching rules | ⏳ Next | `docs/infra/CLOUDFLARE_SETUP.md` |
