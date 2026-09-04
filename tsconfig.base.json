@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "strict": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "@game/types": ["libs/shared-types/src/index.ts"],
+      "@game/types/*": ["libs/shared-types/src/*"],
+      "@game/shared-types": ["libs/shared-types/src/index.ts"],
+      "@game/shared-types/*": ["libs/shared-types/src/*"],
+      "@game/db": ["libs/db/index.ts"],
+      "@game/cron": ["libs/cron/index.ts"],
+      "@game/models": ["libs/models/index.ts"],
+      "@game/models/*": ["libs/models/*"],
+      "@game/ui": ["libs/ui/src/index.ts"],
+      "@game/ui/*": ["libs/ui/src/*", "libs/ui/src/components/*"],
+      "@game/i18n": ["libs/i18n/index.ts"],
+      "@main/*": ["apps/backend/src/main/*"],
+      "@utils/*": ["apps/backend/src/utils/*"],
+      "@config/*": ["apps/backend/src/config/*"],
+      "@middlewares/*": ["apps/backend/src/middlewares/*"]
+    }
+  }
+}

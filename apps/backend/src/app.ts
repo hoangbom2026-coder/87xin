@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import http from 'http';
 import path from 'path';
 import cors from 'cors';
@@ -34,16 +35,45 @@ app.options('*', cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
-const healthHandler = (_req: express.Request, res: express.Response) => {
+app.use((req, _res, next) => {
+    req.headers['x-request-id'] =
+        req.headers['x-request-id'] || crypto.randomUUID();
+    next();
+});
+
+const healthHandler = async (_req: express.Request, res: express.Response) => {
     const dbStatus = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
-    res.status(200).json({
-        status: 'ok',
-        time: new Date().toISOString(),
+
+    // Redis ping (không throw nếu lỗi)
+    let redisStatus = 'unavailable';
+    try {
+        if (global.redis) {
+            await (global.redis as any).ping?.();
+            redisStatus = 'connected';
+        }
+    } catch {
+        redisStatus = 'error';
+    }
+
+    const memUsed = process.memoryUsage();
+    const uptime  = process.uptime();
+
+    const healthy = dbStatus === 'connected';
+    res.status(healthy ? 200 : 503).json({
+        status:   healthy ? 'ok' : 'degraded',
+        time:     new Date().toISOString(),
+        uptime:   Math.floor(uptime),
         database: dbStatus,
-        version: '1.0.0'
+        redis:    redisStatus,
+        memory: {
+            heapUsed:  Math.round(memUsed.heapUsed  / 1024 / 1024) + 'MB',
+            heapTotal: Math.round(memUsed.heapTotal / 1024 / 1024) + 'MB',
+            rss:       Math.round(memUsed.rss       / 1024 / 1024) + 'MB',
+        },
+        version: '1.0.0',
     });
 };
-app.get('/health', healthHandler);
+app.get('/health',     healthHandler);
 app.get('/api/health', healthHandler);
 
 const publicFolders = [

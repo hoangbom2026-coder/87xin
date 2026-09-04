@@ -1,0 +1,573 @@
+{
+  "about": {
+    "commitment": {
+      "1": "Luôn đặt quyền lợi và sự an toàn của người chơi lên hàng đầu.",
+      "2": "Cung cấp tỷ lệ kèo cạnh tranh và đa dạng nhất thị trường.",
+      "3": "Liên tục cập nhật công nghệ mới nhất để bảo vệ dữ liệu khách hàng.",
+      "title": "Cam kết của chúng tôi"
+    },
+    "introTitle": "Lịch sử & Sứ mệnh",
+    "title": "GIỚI THIỆU"
+  },
+  "account": {
+    "balance": "Balance",
+    "coin12Placeholder": "Tính năng đang được cập nhật. Vui lòng quay lại sau hoặc liên hệ CSKH.",
+    "desc": {
+      "betHistory": "Theo dõi các phiên cá cược gần đây.",
+      "coin12": "Theo dõi giao dịch Coin12 khi tính năng được kết nối."
+    }
+  },
+  "affiliate": {
+    "buildCasinoText": "Buildcasinotext",
+    "buildCasinoTitle": "Buildcasinotitle",
+    "createCode": "Createcode",
+    "ctaPartner": "Đăng ký làm đối tác",
+    "faq": {
+      "a1": "Theo chu kỳ đối soát đã công bố (thường theo tuần/tháng). Chi tiết hiển thị trên trang đối tác sau khi tài khoản được duyệt.",
+      "a2": "Thông tin liên hệ và kênh quảng bá (website / mạng xã hội) để đội ngũ xét duyệt. Yêu cầu có thể khác theo từng thị trường.",
+      "a3": "Không giới hạn số lượng người chơi hợp lệ bạn giới thiệu; hoa hồng tính theo điều kiện từng chương trình và chu kỳ đối soát.",
+      "a4": "Sau khi duyệt đối tác, bạn nhận bộ tài liệu và kích thước banner gợi ý — không chỉnh sửa logo sai quy chuẩn hoặc gây hiểu nhầm về thưởng.",
+      "a5": "Dashboard đối tác (sau đăng nhập và kích hoạt) hiển thị click, đăng ký và hoa hồng tích lũy — chi tiết theo từng giai đoạn cấu hình.",
+      "q1": "Khi nào được thanh toán hoa hồng?",
+      "q2": "Cần giấy tờ gì để tham gia?",
+      "q3": "Có giới hạn số người giới thiệu không?",
+      "q4": "Tôi có thể dùng banner / logo thương hiệu không?",
+      "q5": "Theo dõi hiệu suất ở đâu?"
+    },
+    "faqTitle": "Câu hỏi thường gặp",
+    "heroCaption": "Hình minh họa chương trình đối tác",
+    "highlight": "PROGRAM",
+    "introBullet1": "Không thu phí tham gia; điều kiện hoa hồng và khuyến mãi áp dụng theo từng đợt công bố trên hệ thống.",
+    "introBullet2": "Nghiêm cấm spam, lừa đảo hoặc quảng bá sai sự thật — vi phạm có thể bị khóa tài khoản đối tác.",
+    "introP": "Chia sẻ link giới thiệu, theo dõi chuyển đổi và nhận hoa hồng theo mô hình đã công bố. Bảng điều khiển giúp bạn kiểm soát hiệu suất từng ngày.",
+    "introTitle": "Giới thiệu chương trình",
+    "linkContact": "Liên hệ",
+    "linkTerms": "Điều khoản",
+    "liveCommissions": "Livecommissions",
+    "ownDomainText": "Owndomaintext",
+    "ownDomainTitle": "Owndomaintitle",
+    "pillarsTitle": "Nền tảng cho đối tác",
+    "rewardText": "Rewardtext",
+    "rewardTitle": "Rewardtitle",
+    "secondaryHeroCaption": "Hình minh họa bổ sung đối tác",
+    "showcaseLead": "Đối tác có thể giới thiệu trực tiếp các sảnh chính — mỗi sảnh có banner và trải nghiệm riêng, dễ dùng trong landing page hoặc mạng xã hội.",
+    "showcaseLive": "Live casino",
+    "showcaseLottery": "Lô đề",
+    "showcaseSlots": "Slots",
+    "showcaseSports": "Thể thao",
+    "showcaseTitle": "Sản phẩm để chia sẻ",
+    "tableAmount": "Tableamount",
+    "tablePartner": "Tablepartner",
+    "tableTime": "Tabletime",
+    "title": "AFFILIATE"
+  },
+  "agency": {
+    "benefit": {
+      "networkDesc": "Theo dõi thành viên giới thiệu, doanh thu và hiệu suất từng tầng.",
+      "networkTitle": "Mạng lưới & downline",
+      "reportDesc": "Bảng điều khiển tổng hợp hoa hồng, nạp rút và hoạt động theo chu kỳ.",
+      "reportTitle": "Báo cáo minh bạch",
+      "secureDesc": "Quyền và nghĩa vụ đại lý được công bố; xử lý vi phạm nhất quán.",
+      "secureTitle": "Chính sách rõ ràng",
+      "supportDesc": "Account manager hỗ trợ onboarding, đào tạo và xử lý sự cố.",
+      "supportTitle": "Đồng hành vận hành"
+    },
+    "benefits": {
+      "lead": "Tóm tắt các trụ cột khi hợp tác đại lý với chúng tôi — chi tiết vận hành sẽ được account manager trao đổi sau khi duyệt hồ sơ.",
+      "title": "Quyền lợi hợp tác"
+    },
+    "capitalBack": "Gốc",
+    "commission": {
+      "intro": "Hệ thống trả thưởng kết hợp giữa hoa hồng giới thiệu trực tiếp và chia sẻ lợi nhuận từ lãi ròng của tuyến dưới, tạo nguồn thu nhập thụ động bền vững.",
+      "title": "Cơ chế hoa hồng đa tầng"
+    },
+    "confirmInvest": "Xác nhận đầu tư",
+    "cta": {
+      "contact": "Liên hệ mở đại lý",
+      "help": "Trung tâm trợ giúp",
+      "terms": "Điều khoản"
+    },
+    "cycle": "Chu kỳ",
+    "disclaimer": "Nội dung trang mang tính giới thiệu. Điều kiện hợp tác và hoa hồng áp dụng theo thông báo chính thức tại thời điểm ký kết / duyệt hồ sơ.",
+    "eligible": {
+      "1": "Có traffic hoặc cộng đồng người chơi; cam kết không spam / không hứa lợi nhuận ảo.",
+      "2": "Chấp nhận quy trình duyệt, cung cấp thông tin liên hệ và kênh quảng bá thật.",
+      "3": "Đồng ý tuân thủ chính sách thương hiệu và điều khoản đại lý cập nhật trên hệ thống.",
+      "lead": "Chương trình phù hợp nếu bạn có kênh truyền thông ổn định, tuân thủ pháp lý khu vực và sẵn sàng vận hành minh bạch với người chơi.",
+      "title": "Đối tượng phù hợp"
+    },
+    "faq": {
+      "title": "Câu hỏi thường gặp"
+    },
+    "faqExtendedLead": "Chi tiết mô hình Agency, lãi qua đêm và hoa hồng đa tầng — nội dung tham khảo; điều khoản cuối cùng theo thông báo trên hệ thống.",
+    "fixed": "Cố định",
+    "heroCaption": "Banner chương trình đại lý",
+    "heroSubtitle": "Mở rộng mạng lưới, dashboard minh bạch và đồng hành cùng account manager khi vận hành đại lý chính thức.",
+    "highlight": "ĐỐI TÁC",
+    "introBullet1": "Dashboard theo dõi downline, nạp rút và hiệu suất — hỗ trợ ra quyết định vận hành.",
+    "introBullet2": "Chính sách và điều khoản công khai; vi phạm quảng bá hoặc thao túng tài khoản bị xử lý nghiêm.",
+    "introP1": "Chương trình đại lý dành cho đối tác muốn xây dựng hệ thống giới thiệu có quy mô, có quy trình duyệt hồ sơ và kênh hỗ trợ riêng — phù hợp khi bạn cần báo cáo theo chu kỳ và đối soát hoa hồng rõ ràng.",
+    "introP2": "Phần dưới trang gồm quyền lợi có minh họa, quy trình 3 bước, hình trang trí và chính sách tối thiểu. Để mở tài khoản đại lý hoặc báo giá theo vùng, hãy liên hệ qua nút ở cuối trang.",
+    "introTitle": "Giới thiệu chương trình",
+    "investHint": "Tiền trừ từ số dư ví chính. Lãi kỳ theo cấu hình gói và hệ thống.",
+    "investModalTitle": "Đầu tư gói",
+    "investNow": "Invest Now",
+    "investmentAmount": "Số tiền đầu tư",
+    "max": "Max",
+    "min": "Min",
+    "minTransferHint": "Ít nhất đ100, chỉ số nguyên",
+    "model": {
+      "1": "Đăng ký đại lý, duyệt hồ sơ và nhận mã giới thiệu / link riêng.",
+      "2": "Theo dõi doanh thu downline, hoa hồng và báo cáo theo chu kỳ.",
+      "3": "Hỗ trợ vận hành, đào tạo và kênh liên hệ account manager.",
+      "lead": "Luồng tổng quát: đăng ký → vận hành downline → đối soát hoa hồng. Ngay sau đây là quy trình chi tiết, hình minh họa và chính sách tối thiểu.",
+      "title": "Mô hình hợp tác"
+    },
+    "plans": "Partner Investment Plans",
+    "plansSubtitle": "Pick the investment plan that fits you",
+    "referralReward": "Thưởng liên kết",
+    "related": {
+      "ctaAffiliate": "Đi tới trang Affiliate",
+      "p": "Nếu bạn ưu tiên mô hình giới thiệu cá nhân, không cần duyệt đại lý đầy đủ — có thể xem chương trình Affiliate (link, hoa hồng và điều kiện riêng).",
+      "title": "Chương trình liên quan"
+    },
+    "settlementCycle": "Chu kỳ giải quyết",
+    "support": {
+      "p": "Đội ngũ account manager đồng hành onboarding, đào tạo sản phẩm và xử lý sự cố kỹ thuật.",
+      "p2": "Bạn cũng có thể xem trung tâm trợ giúp cho câu hỏi chung, hoặc gửi yêu cầu mở đại lý qua form liên hệ.",
+      "title": "Hỗ trợ & liên hệ"
+    },
+    "table": {
+      "direct": "Hoa hồng trực tiếp",
+      "indirect": "Hoa hồng gián tiếp",
+      "note": "Chi tiết % hoa hồng và điều kiện rút tiền được quy định cụ thể trong từng gói đầu tư.",
+      "rate": "Tỷ lệ hưởng",
+      "staking": "Lãi trên lãi (Staking)",
+      "stakingDesc": "Lợi nhuận từ lãi hằng ngày của toàn hệ thống",
+      "target": "Đối tượng",
+      "type": "Loại thu nhập"
+    },
+    "title": "ĐẠI LÝ"
+  },
+  "auth": {
+    "backToLogin": "Đăng nhập",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "emailPlaceholder": "Nhập email hoặc tên đăng nhập",
+    "failed": "Xác thực thất bại.",
+    "forgotHint": "Nhập tên đăng nhập hoặc SĐT đã đăng ký.",
+    "forgotNeedId": "Vui lòng nhập tên đăng nhập hoặc số điện thoại.",
+    "forgotPassword": "Quên mật khẩu",
+    "forgotSent": "Chúng tôi đã ghi nhận yêu cầu. Vui lòng kiểm tra tin nhắn / email hoặc liên hệ hỗ trợ.",
+    "forgotSubmit": "Gửi yêu cầu",
+    "forgotTitle": "Quên mật khẩu",
+    "inviteOptional": "Mã giới thiệu (không bắt buộc)",
+    "login": "Đăng nhập",
+    "loginRequired": "Vui lòng đăng nhập để truy cập sảnh game",
+    "modeTabs": "Đăng nhập / Đăng ký",
+    "passwordMismatch": "Mật khẩu xác nhận không khớp.",
+    "passwordPlaceholder": "Nhập mật khẩu",
+    "phoneHint": "Nhập số điện thoại",
+    "register": "Đăng ký",
+    "signUp": "Đăng ký",
+    "usernameHint": "Nhập tên đăng nhập"
+  },
+  "bank": {
+    "accountHolder": "Chủ tài khoản"
+  },
+  "chat": {
+    "identityRequired": "Cần xác thực danh tính để chat",
+    "loginRequired": "Vui lòng đăng nhập để chat",
+    "online": "Trực tuyến",
+    "placeholder": "Nhập tin nhắn…",
+    "rules": "Luật chat",
+    "title": "Trò chuyện",
+    "welcome": "Chào mừng bạn đến với kênh trò chuyện! Vui lòng tôn trọng người khác."
+  },
+  "common": {
+    "accountBalance": "Số dư tài khoản",
+    "action": "Thao tác",
+    "all": "Tất Cả",
+    "atGame": "tại",
+    "bet": "Tiền cược",
+    "bonus": "Bonus",
+    "cancel": "Cancel",
+    "close": "Close",
+    "coins": "Coins",
+    "confirm": "Xác nhận",
+    "date": "Thời gian",
+    "faq": "Frequently Asked Questions",
+    "fillAll": "Vui lòng điền đầy đủ thông tin",
+    "game": "Trò chơi",
+    "hour": "giờ",
+    "invalidAmount": "Invalidamount",
+    "justWon": "vừa thắng",
+    "live": "Live",
+    "loading": "Đang tải…",
+    "logout": "Logout",
+    "mainWallet": "Main Wallet",
+    "noData": "No data found.",
+    "notice": "Notice",
+    "payout": "Tiền thắng",
+    "processing": "Processing...",
+    "refresh": "Làm mới",
+    "view": "Xem chi tiết",
+    "withdraw": "Rút"
+  },
+  "contact": {
+    "channels": {
+      "p": "Ưu tiên live chat để xử lý nhanh giao dịch và tài khoản. Email và mạng xã hội (nếu có) được công bố trên banner chính thức — tránh kênh giả mạo.",
+      "pShort": "Ưu tiên live chat để xử lý nhanh. Tránh kênh giả mạo — chỉ dùng link chính thức bên dưới.",
+      "title": "Kênh hỗ trợ"
+    },
+    "highlight": "CHÚNG TÔI",
+    "response": {
+      "p": "Chat: vài phút. Email: trong 24–48 giờ làm việc tùy độ phức tạp.",
+      "title": "Thời gian phản hồi"
+    },
+    "subtitle": "Hỗ trợ 24/7 qua live chat trên trang chủ.",
+    "title": "LIÊN HỆ"
+  },
+  "deposit": {
+    "amount": "Amount",
+    "chooseMethod": "Chọn phương thức nạp",
+    "cryptoComingSoon": "Sắp ra mắt",
+    "cryptoExchangePlaceholder": "Nội dung sàn giao dịch sẽ được cập nhật.",
+    "cryptoExchangeTitle": "Truy cập sàn giao dịch",
+    "cryptoNote1": "Quý khách vui lòng gửi đúng loại tiền vào địa chỉ ví đã chọn.",
+    "cryptoNote2": "sẽ không chịu trách nhiệm nếu bạn gửi sai loại tiền hoặc sai địa chỉ ví.",
+    "cryptoNoteTitle": "Lưu ý",
+    "cryptoPromoPackage": "Gói khuyến mãi",
+    "cryptoStepConfirm": "Xác nhận chuyển tiền",
+    "cryptoStepPick": "Chọn loại tiền ảo",
+    "ewalletNotice": "Ví điện tử đang bảo trì / chờ cấu hình cổng thanh toán. Danh sách hiển thị theo cài đặt site (nếu có).",
+    "flashpayAmountLabel": "Số tiền nạp",
+    "flashpayAmountPlaceholder": "Nhập số tiền nạp",
+    "flashpayCreateQr": "Tạo mã QR",
+    "flashpayNote1Highlight": "ngân hàng ngẫu nhiên",
+    "flashpayNote1Prefix": "Hệ thống cung cấp",
+    "flashpayNote1Suffix": "(có thể khác ngân hàng), vui lòng dựa vào ngân hàng hiển thị trên mã QR để nạp tiền.",
+    "flashpayNote2Highlight": "Mã QR",
+    "flashpayNote2Suffix": "chỉ cung cấp cho nạp tiền lần này. Vui lòng không lưu lại sử dụng cho những lần nạp tiền sau.",
+    "flashpayPromotionHint": "Đang chọn gói khuyến mãi nạp.",
+    "flashpayQrPending": "Tạo mã QR Flashpay sẽ kết nối API cổng thanh toán. Hiện chỉ demo giao diện.",
+    "guide": "Hướng dẫn",
+    "guideHint": "Xem hướng dẫn nạp ở phần FAQ bên dưới.",
+    "importantNote": "Lưu ý quan trọng",
+    "invalidAmount": "Invalidamount",
+    "maintenance": "Bảo trì",
+    "note1": "Vui lòng kiểm tra kỹ số tài khoản đích trước khi chuyển.",
+    "note2": "Nội dung chuyển khoản phải điền chính xác mã được cấp.",
+    "note3": "Hệ thống xử lý tự động trong vòng 1-3 phút.",
+    "step1": "Chọn phương thức",
+    "step2": "Nhập số tiền",
+    "step3": "Thanh toán",
+    "tpayAmountLabel": "Số tiền nạp",
+    "tpayAmountPlaceholder": "Nhập số tiền nạp",
+    "tpayCreateQr": "Tạo mã QR",
+    "tpayEquivalent": "Tương ứng",
+    "tpayNote1Highlight": "ngân hàng ngẫu nhiên",
+    "tpayNote1Prefix": "Hệ thống cung cấp",
+    "tpayNote1Suffix": "(có thể khác ngân hàng), vui lòng dựa vào ngân hàng hiển thị trên mã QR để nạp tiền.",
+    "tpayNote2Highlight": "Mã QR",
+    "tpayNote2Suffix": "chỉ cung cấp cho nạp tiền lần này. Vui lòng không lưu lại sử dụng cho những lần nạp tiền sau.",
+    "tpayPromotionHint": "Đang chọn gói khuyến mãi nạp.",
+    "tpayQrPending": "Tạo mã QR Fastpay sẽ kết nối API cổng thanh toán. Hiện chỉ demo giao diện.",
+    "tpayTab": "QR Fastpay"
+  },
+  "deposit_success": "Deposit success",
+  "errors": {
+    "notFound": "404",
+    "pageNotFound": "Trang không tồn tại"
+  },
+  "footer": {
+    "trustBadges": "Đối tác & giấy phép"
+  },
+  "game": {
+    "launchError": "Có lỗi xảy ra khi khởi động sảnh game",
+    "launchFailed": "Không thể khởi động sảnh game"
+  },
+  "help": {
+    "faq": {
+      "p": "Nạp/rút: vào mục Tài khoản. Khuyến mãi: trang Khuyến mãi. Vấn đề kỹ thuật: thử làm mới trình duyệt hoặc xóa cache.",
+      "title": "Bắt đầu"
+    },
+    "highlight": "TRỢ GIÚP",
+    "link": {
+      "about": "Giới thiệu",
+      "contact": "Liên hệ",
+      "privacy": "Bảo mật",
+      "rg": "Chơi có trách nhiệm",
+      "terms": "Điều khoản"
+    },
+    "nav": {
+      "policies": "Tài liệu"
+    },
+    "subtitle": "Câu hỏi thường gặp và liên kết nhanh tới tài liệu chính sách.",
+    "title": "TRUNG TÂM"
+  },
+  "history": {
+    "24h": "Chỉ hiển thị trong 24 giờ",
+    "30d": "Chỉ hiển thị trong 30 ngày",
+    "7d": "Chỉ hiển thị trong 7 ngày",
+    "allTime": "Hiển thị tất cả",
+    "bet": {
+      "emptyLine1": "Hãy tham gia cược ngay hôm nay!",
+      "emptyTitle": "Lịch sử cá cược của bạn đang trống",
+      "tabAll": "Tất cả",
+      "tabCancel": "Bị hủy",
+      "tabDraw": "Hoà",
+      "tabLose": "Thua",
+      "tabPending": "Đang chờ",
+      "tabWin": "Thắng"
+    },
+    "betting": "Lịch sử cá cược",
+    "faq": "Financial FAQ",
+    "state": "Trạng thái",
+    "timeFilterLabel": "Khoảng thời gian"
+  },
+  "home": {
+    "challengeEnded": "Ended",
+    "days": "Days",
+    "endsIn": "Ends in",
+    "hotMatch": "Top kèo bóng đá",
+    "hours": "Hours",
+    "mins": "Min",
+    "secs": "Sec"
+  },
+  "nav": {
+    "home": "Về trang chủ"
+  },
+  "privacy": {
+    "contact": {
+      "p": "P"
+    },
+    "highlight": "POLICY",
+    "intro": {
+      "p": "At Cuocbong99, we value your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, and safeguard your information when you use our website and services.",
+      "title": "Introduction"
+    },
+    "item1": {
+      "p": "We collect information you provide directly to us, such as when you create an account, make a deposit, or communicate with our support team. This may include your name, email address, phone number, and payment details.",
+      "title": "1. Information We Collect"
+    },
+    "item2": {
+      "p": "We use your information to provide and improve our services, process transactions, verify your identity, and communicate with you about updates, promotions, and support.",
+      "title": "2. How We Use Your Information"
+    },
+    "item3": {
+      "p": "We implement industry-standard security measures to protect your information from unauthorized access, disclosure, or alteration. All financial transactions are encrypted using secure technologies.",
+      "title": "3. Data Security"
+    },
+    "item4": {
+      "p": "We do not sell or rent your personal information to third parties. We may share information with trusted partners who assist us in operating our platform, provided they agree to keep this information confidential.",
+      "title": "4. Sharing of Information"
+    },
+    "item5": {
+      "p": "Our website uses cookies to enhance your user experience, analyze site traffic, and personalize content. You can manage your cookie preferences through your browser settings.",
+      "title": "5. Cookies"
+    },
+    "subtitle": "How we protect and manage your personal information",
+    "title": "PRIVACY"
+  },
+  "promo": {
+    "join": "Tham Gia",
+    "pageTitle": "Khuyến Mãi"
+  },
+  "promotion": "Promotion",
+  "promotions": {
+    "title": "Promotion"
+  },
+  "public-message": "Public-message",
+  "responsible": {
+    "break": {
+      "p": "Use our self-exclusion tools if you feel you need to take a break from gaming for a specific period.",
+      "title": "Take a Break"
+    },
+    "commitment": {
+      "p": "At Cuocbong99, we are dedicated to providing a responsible gaming environment. We want our players to enjoy our games in a safe and controlled manner. Gaming should always be viewed as a form of entertainment, not a way to make money.",
+      "title": "Our Commitment"
+    },
+    "help": {
+      "contact": "Contact Support",
+      "p": "If you or someone you know is struggling with gaming addiction, please reach out to professional support organizations.",
+      "title": "Need help?"
+    },
+    "highlight": "GAMING",
+    "limits": {
+      "p": "Take control of your gaming by setting daily, weekly, or monthly deposit and loss limits.",
+      "title": "Set Limits"
+    },
+    "signs": {
+      "item1": "Spending more money on gaming than you can afford to lose.",
+      "item2": "Gaming interfering with your daily responsibilities or relationships.",
+      "item3": "Chasing losses to try and win back money.",
+      "item4": "Feeling restless or irritable when trying to cut down on gaming.",
+      "title": "Signs of Problem Gaming"
+    },
+    "subtitle": "Play safe, stay in control, and enjoy the experience",
+    "title": "RESPONSIBLE"
+  },
+  "sidebar": {
+    "affiliate": "Affiliate",
+    "coin12": "Giao dịch Coin12",
+    "deposit": "Deposit",
+    "history": "History",
+    "transfer": "Transfer",
+    "withdraw": "Withdraw"
+  },
+  "store": {
+    "adminControlled": "Admincontrolled",
+    "buyNow": "Mua ngay",
+    "debitNote": "Số tiền sẽ trừ trực tiếp từ số dư theo giá gói.",
+    "freeCoins": "Freecoins",
+    "goldCoins": "Goldcoins",
+    "item": "Item",
+    "loginToBuy": "Đăng nhập để mua",
+    "packageDetails": "Packagedetails",
+    "price": "Price",
+    "purchaseFailed": "Không thể hoàn tất mua hàng.",
+    "purchaseSuccess": "Mua thành công. Số dư đã được cập nhật.",
+    "sold": "Sold",
+    "subtitle": "Subtitle",
+    "title": "Title",
+    "value": "Value"
+  },
+  "terms": {
+    "highlight": "SERVICE",
+    "intro": {
+      "p": "By accessing or using Cuocbong99, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you may not use our platform.",
+      "title": "Agreement to Terms"
+    },
+    "item1": {
+      "p": "You must be at least 18 years of age or the legal age for gambling in your jurisdiction to use our services. By using our platform, you represent and warrant that you meet these eligibility requirements.",
+      "title": "1. Eligibility"
+    },
+    "item2": {
+      "p": "You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must provide accurate and complete information during registration.",
+      "title": "2. Account Registration"
+    },
+    "item3": {
+      "p": "Users are prohibited from engaging in fraudulent activities, money laundering, or any behavior that compromises the integrity of our games. We reserve the right to suspend or terminate accounts found in violation.",
+      "title": "3. Prohibited Activities"
+    },
+    "item4": {
+      "p": "All financial transactions are subject to verification and our standard processing times. We reserve the right to request documentation for identity verification purposes.",
+      "title": "4. Deposits and Withdrawals"
+    },
+    "item5": {
+      "p": "Cuocbong99 shall not be liable for any direct, indirect, or incidental damages resulting from the use or inability to use our services, including but not limited to financial losses.",
+      "title": "5. Limitation of Liability"
+    },
+    "mod": {
+      "p": "We reserve the right to modify these terms at any time. Any changes will be effective immediately upon posting. Your continued use of the platform after changes are posted constitutes your acceptance of the new terms.",
+      "title": "Modifications"
+    },
+    "subtitle": "The legal agreement between you and our platform",
+    "title": "TERMS OF"
+  },
+  "vi-VN": "Vi-vn",
+  "vip": {
+    "contact": {
+      "p": "Chi tiết điều kiện và nâng hạng — xem mục Khuyến mãi hoặc liên hệ hỗ trợ 24/7.",
+      "title": "Liên hệ & tiếp theo"
+    },
+    "ctaHelp": "Trung tâm trợ giúp",
+    "ctaPromotions": "Xem khuyến mãi",
+    "disclaimer": "Nội dung trang mang tính giới thiệu. Điều khoản áp dụng theo thông báo chính thức tại thời điểm giao dịch.",
+    "experience": {
+      "fishingCaption": "Bắn cá — giải trí tốc độ cao",
+      "lead": "VIP được ưu tiên trải nghiệm các sản phẩm chủ lực — live casino, slots, thể thao — với hỗ trợ nhanh và ưu đãi theo bậc.",
+      "live": "Live casino",
+      "liveDesc": "Bàn chơi HD, dealer chuyên nghiệp.",
+      "lotteryCaption": "Lô đề — kết quả minh bạch",
+      "slots": "Slots",
+      "slotsDesc": "Jackpot & nhà cung cấp hot.",
+      "sports": "Thể thao",
+      "sportsDesc": "Kèo đa dạng, cập nhật realtime.",
+      "title": "Sảnh game & đặc quyền"
+    },
+    "faq": {
+      "a1": "Cấp được xác định theo tổng cược hợp lệ trong chu kỳ. Bạn có thể xem chi tiết trong tài khoản hoặc hỏi hỗ trợ kèm ID.",
+      "a2": "Theo lịch và điều kiện từng chương trình — thường tự động vào ví sau khi hệ thống đối soát xong.",
+      "a3": "Bảng tham chiếu có thể thay đổi theo khuyến mãi. Luôn ưu tiên nội dung công bố tại mục Khuyến mãi và điều khoản.",
+      "q1": "Làm sao biết cấp VIP hiện tại của tôi?",
+      "q2": "Hoàn trả được cộng khi nào?",
+      "q3": "Số liệu trên trang có phải cam kết cố định?",
+      "title": "Câu hỏi thường gặp"
+    },
+    "field": {
+      "cashback": "Hoàn trả",
+      "fridayBonus": "Thưởng thứ Sáu",
+      "lossReturn": "Hoàn thua tối đa",
+      "minBet": "Cược hợp lệ tối thiểu",
+      "upReward": "Thưởng thăng cấp"
+    },
+    "heroCaption": "Không gian VIP — hình minh họa",
+    "heroSubtitle": "Tích lũy cược hợp lệ, mở khóa hoàn trả và quyền lợi dành cho thành viên trung thành.",
+    "highlight": "CLUB",
+    "how": {
+      "p": "Cấp VIP xác định theo tổng cược hợp lệ trong chu kỳ (thường theo tháng). Khi đạt ngưỡng, hệ thống tự ghi nhận — nếu chưa thấy cập nhật, liên hệ hỗ trợ kèm ID tài khoản.",
+      "title": "Cách thăng hạng"
+    },
+    "introBullet1": "Tham gia tự động theo điều kiện tài khoản; không cần đăng ký riêng nếu đã đủ điều kiện nội bộ.",
+    "introBullet2": "Mọi tranh chấp hoặc chậm cập nhật cấp — liên hệ hỗ trợ 24/7 kèm mã giao dịch / ID.",
+    "introP1": "VIP Club ghi nhận hoạt động cược hợp lệ của bạn theo chu kỳ và phân bậc rõ ràng. Càng lên cao, bạn càng tiếp cận thêm quyền lợi tài chính và dịch vụ.",
+    "introP2": "Dưới đây là bảng tham chiếu các cấp; nếu hệ thống đang đồng bộ từ máy chủ, số liệu có thể khớp 1:1 với tài khoản của bạn.",
+    "introTitle": "Giới thiệu chương trình",
+    "perks": {
+      "1": "Hoàn trả cược và hoàn thua theo cấp — tự động cộng vào ví chính.",
+      "2": "Ưu tiên rút tiền và hỗ trợ VIP kênh riêng (account manager).",
+      "3": "Quà sinh nhật / sự kiện theo chính sách khuyến mãi đang áp dụng.",
+      "title": "Quyền lợi nổi bật"
+    },
+    "pillar1": {
+      "text": "Mỗi bậc mở thêm tỷ lệ hoàn trả, thưởng thăng cấp và ưu tiên xử lý giao dịch.",
+      "title": "Đặc quyền theo cấp"
+    },
+    "pillar2": {
+      "text": "Ngưỡng cược và phần trăm hiển thị rõ trên bảng — cập nhật theo chính sách đang áp dụng.",
+      "title": "Minh bạch số liệu"
+    },
+    "pillar3": {
+      "text": "Kênh hỗ trợ VIP và account manager cho thành viên đạt bậc cao theo quy định nội bộ.",
+      "title": "Hỗ trợ ưu tiên"
+    },
+    "pillarsTitle": "Vì sao tham gia",
+    "tiers": {
+      "p": "Tham gia chương trình VIP để nhận hoàn trả cao hơn, quà tặng sinh nhật và quản lý tài khoản riêng.",
+      "p2": "So sánh nhanh các ngưỡng dưới đây; một số cột chỉ hiện từ bậc Bạc trở lên khi có dữ liệu từ hệ thống.",
+      "title": "Cấp bậc"
+    },
+    "title": "VIP"
+  },
+  "wallet": {
+    "manage": "Quản lý quỹ"
+  },
+  "withdrawal": {
+    "addWallet": "Thêm ví",
+    "cardNoticeReal": "Mã thẻ sẽ được gửi vào Hộp thư sau khi yêu cầu được duyệt.",
+    "cardProvider": "Loại thẻ",
+    "cryptoEquivUsdt": "Tương ứng",
+    "cryptoFeeLabel": "Phí",
+    "cryptoFeeValue": "Theo cổng thanh toán / chưa áp dụng demo",
+    "cryptoGuide1": "Vui lòng dùng địa chỉ ví USDT trên mạng TRC20.",
+    "cryptoGuide2": "Tỷ giá quy đổi áp dụng tại thời điểm rút thành công.",
+    "cryptoGuide3": "Mỗi giao dịch rút có thể mất 10–30 phút xử lý.",
+    "cryptoGuide4": "Đảm bảo địa chỉ ví chính xác, sai địa chỉ không thể hoàn lại.",
+    "cryptoGuideHint": "Xem FAQ rút tiền ở cột bên phải hoặc liên hệ CSKH.",
+    "cryptoGuideTitle": "Hướng dẫn USDT (TRC20)",
+    "cryptoMenu": "Crypto",
+    "cryptoNeedTrc20": "Bạn cần thêm địa chỉ ví USDT-TRC20 để rút tiền.",
+    "cryptoNotesHeading": "Lưu ý",
+    "cryptoRateLabel": "Tỷ giá tham khảo hiện tại",
+    "cryptoToolbarGuide": "Hướng dẫn",
+    "cryptoWalletEmpty": "Vui lòng thêm địa chỉ ví của bạn",
+    "cryptoWithdrawPoints": "Số điểm rút",
+    "enterAmountK": "Nhập số tiền...",
+    "failed": "Rút tiền thất bại",
+    "flashpayNoticeReal": "Nhập Flashpay ID để nhận tiền ngay lập tức.",
+    "linkBankFirst": "Bạn cần liên kết thẻ ngân hàng trước khi thực hiện rút tiền.",
+    "linkNow": "Liên kết ngay",
+    "success": "Đã gửi yêu cầu rút tiền."
+  }
+}

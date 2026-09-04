@@ -3,12 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node ./node_modules/vite/bin/vite.js",
-    "build": "node ./node_modules/vite/bin/vite.js build",
-    "start": "node ./node_modules/vite/bin/vite.js preview --port $PORT --host 0.0.0.0",
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite preview --port $PORT --host 0.0.0.0",
     "test": "vitest --run",
     "format.fix": "prettier --write .",
-    "typecheck": "node ./node_modules/typescript/lib/tsc.js --noEmit -p tsconfig.json"
+    "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
     "@iconify/react": "^6.0.2",

@@ -44,8 +44,6 @@ const main = async () => {
     (async () => {
         try {
             console.log('Connecting to MongoDB...');
-            console.log('Config.mongodbURL:', config.mongodbURL);
-            console.log('Env DATABASE_URL:', process.env.DATABASE_URL);
             await mongoose.connect(config.mongodbURL as string);
             console.log('--database connection successful--');
             await initTables();

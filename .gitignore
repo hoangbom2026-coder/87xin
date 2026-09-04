@@ -12,6 +12,10 @@ frontend/dist/
 .env.*
 !.env.example
 !**/.env.example
+.env.production
+.env.secrets
+apps/**/.env
+apps/**/.env.*
 
 # Logs
 *.log
@@ -28,3 +32,16 @@ tsconfig.tsbuildinfo
 # OS
 .DS_Store
 Thumbs.db
+
+# Build outputs — monorepo apps (path cũ ở trên được giữ lại)
+apps/*/dist/
+apps/backend/dist/
+apps/frontend-web/dist/
+apps/admin-dashboard/dist/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# pnpm store (nếu dùng)
+.pnpm-store/

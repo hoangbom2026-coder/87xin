@@ -27,10 +27,11 @@
         },
         "lib": [
             "es2021"
-        ],
+        ]
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "src/**/*.d.ts"
     ],
     "exclude": [
         "node_modules",
