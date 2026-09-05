@@ -15,7 +15,7 @@ import balanceService from '@main/services/balance.service';
 import { affiliateLogCron } from './cron.controller';
 
 export const getRewardStatus = catchAsync(async (req: AuthRequest, res: Response) => {
-    const userId = req.user._id;
+    const userId = String(req.user._id);
     const currency = req.user.currency;
 
     const setting = await settingService.getSetting();
@@ -43,13 +43,13 @@ export const getRewardStatus = catchAsync(async (req: AuthRequest, res: Response
 });
 
 export const getRewardLog = catchAsync(async (req: AuthRequest, res: Response) => {
-    const userId = req.user._id;
+    const userId = String(req.user._id);
     const logs = await affiliateLogService.getRewardLog({ ...req.body, userId });
     return res.send(logs);
 });
 
 export const getRewardDashboard = catchAsync(async (req: AuthRequest, res: Response) => {
-    const userId = req.user._id;
+    const userId = String(req.user._id);
     const currency = req.user.currency;
     const codeData = await referralCodeService.getLastCode(userId);
     const friends = await userService.getUserByinvitorId(userId);
@@ -58,7 +58,7 @@ export const getRewardDashboard = catchAsync(async (req: AuthRequest, res: Respo
 });
 
 export const getRewardConvert = catchAsync(async (req: AuthRequest, res: Response) => {
-    const userId = req.user._id;
+    const userId = String(req.user._id);
     const currency = req.user.currency;
     const { type } = req.body;
     const data = await affiliateLogService.getRewardDashboard(userId, currency);
@@ -100,7 +100,7 @@ export const getRewardConvert = catchAsync(async (req: AuthRequest, res: Respons
 });
 
 export const getRewardActivity = catchAsync(async (req: AuthRequest, res: Response) => {
-    const userId = req.user._id;
+    const userId = String(req.user._id);
     const currency = req.user.currency;
     const data = await affiliateLogService.getRewardActivity(userId, currency);
     return res.send(data);

@@ -13,14 +13,14 @@ import settingService from '@main/services/setting.service';
 import { assertMayCreateReferralCode } from '@main/services/reagent-enrollment.service';
 
 export const getReferralStatus = catchAsync(async (req: AuthRequest, res: Response) => {
-    const userId = req.user._id;
+    const userId = String(req.user._id);
     const friends = await userService.getUserByinvitorId(userId);
     const setting = await settingService.getSetting();
     return res.send({ friendCount: friends.length, referralCount: setting.referralCodeCount });
 });
 
 export const getReferralCodes = catchAsync(async (req: AuthRequest, res: Response) => {
-    const userId = req.user._id;
+    const userId = String(req.user._id);
     const page = Math.max(1, Number(req.query.page || 1));
     const limit = Math.min(200, Math.max(1, Number(req.query.limit || 100)));
     const referralCodes = await referralCodeService.getReferralCodes(String(userId));
@@ -31,7 +31,7 @@ export const getReferralCodes = catchAsync(async (req: AuthRequest, res: Respons
 
 export const createReferralCode = catchAsync(async (req: AuthRequest, res: Response) => {
     const data = req.body;
-    const userId = req.user._id;
+    const userId = String(req.user._id);
 
     await assertMayCreateReferralCode(req.user as Record<string, unknown>);
 

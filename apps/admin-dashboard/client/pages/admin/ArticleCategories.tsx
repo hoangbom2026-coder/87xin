@@ -106,7 +106,7 @@ export default function ArticleCategoriesPage() {
                   />
                   <div className="flex items-center gap-2">
                     <Switch
-                      checked={row.status}
+                      checked={Boolean(row.status)}
                       onCheckedChange={(v) =>
                         setRows((prev) => prev.map((x) => (x._id === row._id ? { ...x, status: v } : x)))
                       }

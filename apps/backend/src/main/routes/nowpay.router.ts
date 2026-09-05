@@ -14,7 +14,7 @@ import {
     updateNowpayCurrency,
     getWithdrawableCurrency,
     withdrawCallback,
-    updateＣurrency
+    updateCurrency
 } from '@main/controllers/nowpay.controller';
 
 const router = express.Router();
@@ -30,11 +30,11 @@ router.route('/deposit-callback').post(depositCallback);
 router.route('/withdraw-callback').post(withdrawCallback);
 router
     .route('/get-withdraw-currency')
-    .post(auth, validator.body(joiSchema.getＷithdrawＣurrency), getWithdrawableCurrency);
+    .post(auth, validator.body(joiSchema.getWithdrawCurrency), getWithdrawableCurrency);
 
 router
     .route('/status/:currencyId')
-    .patch(auth, validator.params(joiSchema.currencyId), validator.body(joiSchema.updateＣurrency), updateＣurrency);
+    .patch(auth, validator.params(joiSchema.currencyId), validator.body(joiSchema.updateCurrency), updateCurrency);
 
 router
     .route('/:nowpayId')

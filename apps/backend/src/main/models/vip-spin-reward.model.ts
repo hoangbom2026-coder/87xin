@@ -3,7 +3,7 @@ import mongoose, { Document, Schema } from 'mongoose';
 import { toJSON } from '@utils/model-plugins';
 
 export interface IVipSpinReward extends Document {
-    userId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
     amount: number;
     claimed: boolean;
     currency: string;

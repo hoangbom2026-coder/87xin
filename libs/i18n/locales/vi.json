@@ -8,5 +8,57 @@
     "faq5q": "Khi nào tôi có thể rút hoa hồng và vốn gốc?",
     "faq6q": "Làm sao để quản lý mạng lưới tuyến dưới?",
     "faq7q": "Quyền lợi và nghĩa vụ của Agency {{brand}}?"
+  },
+  "auth": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "signUp": "Đăng ký",
+    "logout": "Đăng xuất",
+    "forgotPassword": "Quên mật khẩu",
+    "emailPlaceholder": "Nhập email hoặc tên đăng nhập",
+    "passwordPlaceholder": "Nhập mật khẩu",
+    "usernameHint": "Nhập tên đăng nhập",
+    "phoneHint": "Nhập số điện thoại",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "inviteOptional": "Mã giới thiệu (không bắt buộc)",
+    "loginRequired": "Vui lòng đăng nhập để tiếp tục",
+    "failed": "Xác thực thất bại.",
+    "passwordMismatch": "Mật khẩu xác nhận không khớp."
+  },
+  "common": {
+    "confirm": "Xác nhận",
+    "cancel": "Hủy",
+    "close": "Đóng",
+    "loading": "Đang tải…",
+    "noData": "Không có dữ liệu.",
+    "processing": "Đang xử lý...",
+    "notice": "Thông báo",
+    "refresh": "Làm mới",
+    "all": "Tất cả",
+    "action": "Thao tác",
+    "logout": "Đăng xuất",
+    "faq": "Câu hỏi thường gặp"
+  },
+  "errors": {
+    "notFound": "404",
+    "pageNotFound": "Trang không tồn tại"
+  },
+  "nav": {
+    "home": "Về trang chủ"
+  },
+  "sidebar": {
+    "affiliate": "Affiliate",
+    "deposit": "Nạp tiền",
+    "history": "Lịch sử",
+    "transfer": "Chuyển tiền",
+    "withdraw": "Rút tiền"
+  },
+  "chat": {
+    "title": "Trò chuyện",
+    "online": "Trực tuyến",
+    "placeholder": "Nhập tin nhắn…",
+    "loginRequired": "Vui lòng đăng nhập để chat",
+    "identityRequired": "Cần xác thực danh tính để chat",
+    "welcome": "Chào mừng bạn đến với kênh trò chuyện! Vui lòng tôn trọng người khác."
   }
 }

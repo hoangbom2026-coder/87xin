@@ -63,7 +63,7 @@ export const postChurnOffer = catchAsync(async (req: AuthRequest, res: Response)
     });
     const balance = await balanceService.depositBonus(String(user._id), amountN);
 
-    let notification: Awaited<ReturnType<typeof notificationService.createNotifcation>> | null = null;
+    let notification: Awaited<ReturnType<typeof notificationService.createNotification>> | null = null;
     if (sendNotification) {
         const title =
             (notificationTitle && String(notificationTitle).trim()) ||
@@ -71,7 +71,7 @@ export const postChurnOffer = catchAsync(async (req: AuthRequest, res: Response)
         const content =
             (notificationContent && String(notificationContent).trim()) ||
             `Bạn có thưởng khuyến mãi mới. Mở mục Khuyến mãi để xem chi tiết.`;
-        notification = await notificationService.createNotifcation({
+        notification = await notificationService.createNotification({
             title,
             content,
             link: link != null ? String(link) : '',

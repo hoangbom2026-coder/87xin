@@ -45,3 +45,8 @@ coverage/
 
 # pnpm store (nếu dùng)
 .pnpm-store/
+
+# CI/CD local artifacts & backups
+build-artifact/
+infra/backups/
+apps/backend/dist.old/

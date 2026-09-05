@@ -4,7 +4,7 @@ import { toJSON } from '@utils/model-plugins';
 import { THEME_OPTION } from '@config/static';
 
 export interface IPreference extends Document {
-    userId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
     language: Schema.Types.ObjectId;
     theme: string;
     hideUsername: boolean;

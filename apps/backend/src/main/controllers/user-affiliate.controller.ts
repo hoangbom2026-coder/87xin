@@ -2,11 +2,12 @@ import { Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '@utils/catchAsync';
 import { AuthRequest } from '@middlewares/auth';
+import config from '@config/index';
 import affiliateStatsService from '@main/services/affiliate-stats.service';
 import UserModel from '@main/models/user.model';
 
 export const getAffiliateOverview = catchAsync(async (req: AuthRequest, res: Response) => {
-    const userId = req.user._id;
+    const userId = String(req.user._id);
     
     // Đảm bảo stats tồn tại và được cập nhật
     await affiliateStatsService.updateInvitedCounts(userId);
@@ -15,7 +16,7 @@ export const getAffiliateOverview = catchAsync(async (req: AuthRequest, res: Res
     const stats = await affiliateStatsService.getStatsByUserId(userId);
     const user = await UserModel.findById(userId).select('inviteCode');
     
-    const baseUrl = process.env.FRONTEND_URL || 'https://tc-gaming.live';
+    const baseUrl = config.frontendUrl;
     const inviteLink = `${baseUrl}/register?r=${user?.inviteCode || ''}`;
 
     return res.send({
@@ -35,7 +36,7 @@ export const getAffiliateOverview = catchAsync(async (req: AuthRequest, res: Res
 });
 
 export const claimCommission = catchAsync(async (req: AuthRequest, res: Response) => {
-    const userId = req.user._id;
+    const userId = String(req.user._id);
     const amount = await affiliateStatsService.claimCommission(userId);
     
     return res.send({

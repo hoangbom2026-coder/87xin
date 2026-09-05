@@ -1,345 +1,345 @@
 {
   "about": {
     "commitment": {
-      "1": "Luôn đặt quyền lợi và sự an toàn của người chơi lên hàng đầu.",
-      "2": "Cung cấp tỷ lệ kèo cạnh tranh và đa dạng nhất thị trường.",
-      "3": "Liên tục cập nhật công nghệ mới nhất để bảo vệ dữ liệu khách hàng.",
-      "title": "Cam kết của chúng tôi"
+      "1": "Always putting player safety and interests first.",
+      "2": "Providing the most competitive and diverse odds in the market.",
+      "3": "Continuously updating the latest technology to protect customer data.",
+      "title": "Our Commitment"
     },
-    "introTitle": "Lịch sử & Sứ mệnh",
-    "title": "GIỚI THIỆU"
+    "introTitle": "History & Mission",
+    "title": "ABOUT US"
   },
   "account": {
     "balance": "Balance",
-    "coin12Placeholder": "Tính năng đang được cập nhật. Vui lòng quay lại sau hoặc liên hệ CSKH.",
+    "coin12Placeholder": "This feature is being updated. Please check back later or contact support.",
     "desc": {
-      "betHistory": "Theo dõi các phiên cá cược gần đây.",
-      "coin12": "Theo dõi giao dịch Coin12 khi tính năng được kết nối."
+      "betHistory": "Track your recent betting sessions.",
+      "coin12": "Track Coin12 transactions once the feature is connected."
     }
   },
   "affiliate": {
-    "buildCasinoText": "Buildcasinotext",
-    "buildCasinoTitle": "Buildcasinotitle",
-    "createCode": "Createcode",
-    "ctaPartner": "Đăng ký làm đối tác",
+    "buildCasinoText": "Build your casino network and earn commissions",
+    "buildCasinoTitle": "Build Your Casino",
+    "createCode": "Create Code",
+    "ctaPartner": "Become a Partner",
     "faq": {
-      "a1": "Theo chu kỳ đối soát đã công bố (thường theo tuần/tháng). Chi tiết hiển thị trên trang đối tác sau khi tài khoản được duyệt.",
-      "a2": "Thông tin liên hệ và kênh quảng bá (website / mạng xã hội) để đội ngũ xét duyệt. Yêu cầu có thể khác theo từng thị trường.",
-      "a3": "Không giới hạn số lượng người chơi hợp lệ bạn giới thiệu; hoa hồng tính theo điều kiện từng chương trình và chu kỳ đối soát.",
-      "a4": "Sau khi duyệt đối tác, bạn nhận bộ tài liệu và kích thước banner gợi ý — không chỉnh sửa logo sai quy chuẩn hoặc gây hiểu nhầm về thưởng.",
-      "a5": "Dashboard đối tác (sau đăng nhập và kích hoạt) hiển thị click, đăng ký và hoa hồng tích lũy — chi tiết theo từng giai đoạn cấu hình.",
-      "q1": "Khi nào được thanh toán hoa hồng?",
-      "q2": "Cần giấy tờ gì để tham gia?",
-      "q3": "Có giới hạn số người giới thiệu không?",
-      "q4": "Tôi có thể dùng banner / logo thương hiệu không?",
-      "q5": "Theo dõi hiệu suất ở đâu?"
+      "a1": "According to the published settlement cycle (usually weekly/monthly). Details are shown on the partner page after your account is approved.",
+      "a2": "Contact information and promotional channels (website / social media) for the review team. Requirements may vary by market.",
+      "a3": "No limit on the number of eligible players you refer; commissions are calculated based on program conditions and settlement cycles.",
+      "a4": "After partner approval, you receive a media kit and suggested banner sizes — do not modify logos incorrectly or create misleading bonus claims.",
+      "a5": "The partner dashboard (after login and activation) shows clicks, registrations, and accumulated commissions — details vary by configuration phase.",
+      "q1": "When will commissions be paid?",
+      "q2": "What documents are needed to join?",
+      "q3": "Is there a limit on referrals?",
+      "q4": "Can I use brand banners / logos?",
+      "q5": "Where can I track performance?"
     },
-    "faqTitle": "Câu hỏi thường gặp",
-    "heroCaption": "Hình minh họa chương trình đối tác",
+    "faqTitle": "Frequently Asked Questions",
+    "heroCaption": "Partner program illustration",
     "highlight": "PROGRAM",
-    "introBullet1": "Không thu phí tham gia; điều kiện hoa hồng và khuyến mãi áp dụng theo từng đợt công bố trên hệ thống.",
-    "introBullet2": "Nghiêm cấm spam, lừa đảo hoặc quảng bá sai sự thật — vi phạm có thể bị khóa tài khoản đối tác.",
-    "introP": "Chia sẻ link giới thiệu, theo dõi chuyển đổi và nhận hoa hồng theo mô hình đã công bố. Bảng điều khiển giúp bạn kiểm soát hiệu suất từng ngày.",
-    "introTitle": "Giới thiệu chương trình",
-    "linkContact": "Liên hệ",
-    "linkTerms": "Điều khoản",
-    "liveCommissions": "Livecommissions",
-    "ownDomainText": "Owndomaintext",
-    "ownDomainTitle": "Owndomaintitle",
-    "pillarsTitle": "Nền tảng cho đối tác",
-    "rewardText": "Rewardtext",
-    "rewardTitle": "Rewardtitle",
-    "secondaryHeroCaption": "Hình minh họa bổ sung đối tác",
-    "showcaseLead": "Đối tác có thể giới thiệu trực tiếp các sảnh chính — mỗi sảnh có banner và trải nghiệm riêng, dễ dùng trong landing page hoặc mạng xã hội.",
-    "showcaseLive": "Live casino",
-    "showcaseLottery": "Lô đề",
+    "introBullet1": "No joining fee; commission conditions and promotions apply per announcement on the system.",
+    "introBullet2": "Spam, fraud, or false advertising is strictly prohibited — violations may result in partner account suspension.",
+    "introP": "Share your referral link, track conversions, and earn commissions based on the published model. The dashboard lets you monitor performance daily.",
+    "introTitle": "Program Overview",
+    "linkContact": "Contact",
+    "linkTerms": "Terms",
+    "liveCommissions": "Live Commissions",
+    "ownDomainText": "Use your own domain to promote and track referrals",
+    "ownDomainTitle": "Own Domain",
+    "pillarsTitle": "Partner Foundation",
+    "rewardText": "Earn competitive rewards for every player you refer",
+    "rewardTitle": "Rewards",
+    "secondaryHeroCaption": "Additional partner illustration",
+    "showcaseLead": "Partners can directly promote the main gaming halls — each hall has its own banner and experience, easy to use on landing pages or social media.",
+    "showcaseLive": "Live Casino",
+    "showcaseLottery": "Lottery",
     "showcaseSlots": "Slots",
-    "showcaseSports": "Thể thao",
-    "showcaseTitle": "Sản phẩm để chia sẻ",
-    "tableAmount": "Tableamount",
-    "tablePartner": "Tablepartner",
-    "tableTime": "Tabletime",
+    "showcaseSports": "Sports",
+    "showcaseTitle": "Products to Share",
+    "tableAmount": "Amount",
+    "tablePartner": "Partner",
+    "tableTime": "Time",
     "title": "AFFILIATE"
   },
   "agency": {
     "benefit": {
-      "networkDesc": "Theo dõi thành viên giới thiệu, doanh thu và hiệu suất từng tầng.",
-      "networkTitle": "Mạng lưới & downline",
-      "reportDesc": "Bảng điều khiển tổng hợp hoa hồng, nạp rút và hoạt động theo chu kỳ.",
-      "reportTitle": "Báo cáo minh bạch",
-      "secureDesc": "Quyền và nghĩa vụ đại lý được công bố; xử lý vi phạm nhất quán.",
-      "secureTitle": "Chính sách rõ ràng",
-      "supportDesc": "Account manager hỗ trợ onboarding, đào tạo và xử lý sự cố.",
-      "supportTitle": "Đồng hành vận hành"
+      "networkDesc": "Track referred members, revenue, and performance at each tier.",
+      "networkTitle": "Network & Downline",
+      "reportDesc": "Dashboard consolidating commissions, deposits/withdrawals, and activity by cycle.",
+      "reportTitle": "Transparent Reporting",
+      "secureDesc": "Agent rights and obligations are published; violations handled consistently.",
+      "secureTitle": "Clear Policies",
+      "supportDesc": "Account manager assists with onboarding, training, and issue resolution.",
+      "supportTitle": "Operational Support"
     },
     "benefits": {
-      "lead": "Tóm tắt các trụ cột khi hợp tác đại lý với chúng tôi — chi tiết vận hành sẽ được account manager trao đổi sau khi duyệt hồ sơ.",
-      "title": "Quyền lợi hợp tác"
+      "lead": "Summary of key pillars when partnering as an agent — operational details will be discussed by an account manager after profile approval.",
+      "title": "Partnership Benefits"
     },
-    "capitalBack": "Gốc",
+    "capitalBack": "Principal",
     "commission": {
-      "intro": "Hệ thống trả thưởng kết hợp giữa hoa hồng giới thiệu trực tiếp và chia sẻ lợi nhuận từ lãi ròng của tuyến dưới, tạo nguồn thu nhập thụ động bền vững.",
-      "title": "Cơ chế hoa hồng đa tầng"
+      "intro": "The reward system combines direct referral commissions and profit sharing from the net earnings of your downline, creating a sustainable passive income stream.",
+      "title": "Multi-Tier Commission Model"
     },
-    "confirmInvest": "Xác nhận đầu tư",
+    "confirmInvest": "Confirm Investment",
     "cta": {
-      "contact": "Liên hệ mở đại lý",
-      "help": "Trung tâm trợ giúp",
-      "terms": "Điều khoản"
+      "contact": "Contact to Open Agency",
+      "help": "Help Center",
+      "terms": "Terms"
     },
-    "cycle": "Chu kỳ",
-    "disclaimer": "Nội dung trang mang tính giới thiệu. Điều kiện hợp tác và hoa hồng áp dụng theo thông báo chính thức tại thời điểm ký kết / duyệt hồ sơ.",
+    "cycle": "Cycle",
+    "disclaimer": "Page content is for informational purposes. Cooperation conditions and commissions apply per official announcements at the time of signing / profile approval.",
     "eligible": {
-      "1": "Có traffic hoặc cộng đồng người chơi; cam kết không spam / không hứa lợi nhuận ảo.",
-      "2": "Chấp nhận quy trình duyệt, cung cấp thông tin liên hệ và kênh quảng bá thật.",
-      "3": "Đồng ý tuân thủ chính sách thương hiệu và điều khoản đại lý cập nhật trên hệ thống.",
-      "lead": "Chương trình phù hợp nếu bạn có kênh truyền thông ổn định, tuân thủ pháp lý khu vực và sẵn sàng vận hành minh bạch với người chơi.",
-      "title": "Đối tượng phù hợp"
+      "1": "Have traffic or a player community; commit to no spam / no false profit promises.",
+      "2": "Accept the review process, provide real contact information and promotional channels.",
+      "3": "Agree to comply with brand policies and agency terms updated on the system.",
+      "lead": "The program suits you if you have a stable media channel, comply with local regulations, and are ready to operate transparently with players.",
+      "title": "Who Is This For"
     },
     "faq": {
-      "title": "Câu hỏi thường gặp"
+      "title": "Frequently Asked Questions"
     },
-    "faqExtendedLead": "Chi tiết mô hình Agency, lãi qua đêm và hoa hồng đa tầng — nội dung tham khảo; điều khoản cuối cùng theo thông báo trên hệ thống.",
-    "fixed": "Cố định",
-    "heroCaption": "Banner chương trình đại lý",
-    "heroSubtitle": "Mở rộng mạng lưới, dashboard minh bạch và đồng hành cùng account manager khi vận hành đại lý chính thức.",
-    "highlight": "ĐỐI TÁC",
-    "introBullet1": "Dashboard theo dõi downline, nạp rút và hiệu suất — hỗ trợ ra quyết định vận hành.",
-    "introBullet2": "Chính sách và điều khoản công khai; vi phạm quảng bá hoặc thao túng tài khoản bị xử lý nghiêm.",
-    "introP1": "Chương trình đại lý dành cho đối tác muốn xây dựng hệ thống giới thiệu có quy mô, có quy trình duyệt hồ sơ và kênh hỗ trợ riêng — phù hợp khi bạn cần báo cáo theo chu kỳ và đối soát hoa hồng rõ ràng.",
-    "introP2": "Phần dưới trang gồm quyền lợi có minh họa, quy trình 3 bước, hình trang trí và chính sách tối thiểu. Để mở tài khoản đại lý hoặc báo giá theo vùng, hãy liên hệ qua nút ở cuối trang.",
-    "introTitle": "Giới thiệu chương trình",
-    "investHint": "Tiền trừ từ số dư ví chính. Lãi kỳ theo cấu hình gói và hệ thống.",
-    "investModalTitle": "Đầu tư gói",
+    "faqExtendedLead": "Details of the Agency model, overnight interest, and multi-tier commissions — reference content; final terms per system announcements.",
+    "fixed": "Fixed",
+    "heroCaption": "Agency program banner",
+    "heroSubtitle": "Expand your network, transparent dashboard, and dedicated account manager for official agency operations.",
+    "highlight": "PARTNER",
+    "introBullet1": "Dashboard tracking downline, deposits/withdrawals, and performance — supports operational decision-making.",
+    "introBullet2": "Policies and terms are public; promotional violations or account manipulation are strictly handled.",
+    "introP1": "The agency program is for partners who want to build a referral system at scale, with a profile review process and dedicated support channel — ideal when you need periodic reports and clear commission reconciliation.",
+    "introP2": "The lower section includes illustrated benefits, a 3-step process, decorative images, and minimum policies. To open an agency account or get regional pricing, contact us via the button at the bottom of the page.",
+    "introTitle": "Program Overview",
+    "investHint": "Amount deducted from main wallet balance. Period interest based on package configuration and system.",
+    "investModalTitle": "Invest in Package",
     "investNow": "Invest Now",
-    "investmentAmount": "Số tiền đầu tư",
+    "investmentAmount": "Investment Amount",
     "max": "Max",
     "min": "Min",
-    "minTransferHint": "Ít nhất đ100, chỉ số nguyên",
+    "minTransferHint": "At least 100, whole numbers only",
     "model": {
-      "1": "Đăng ký đại lý, duyệt hồ sơ và nhận mã giới thiệu / link riêng.",
-      "2": "Theo dõi doanh thu downline, hoa hồng và báo cáo theo chu kỳ.",
-      "3": "Hỗ trợ vận hành, đào tạo và kênh liên hệ account manager.",
-      "lead": "Luồng tổng quát: đăng ký → vận hành downline → đối soát hoa hồng. Ngay sau đây là quy trình chi tiết, hình minh họa và chính sách tối thiểu.",
-      "title": "Mô hình hợp tác"
+      "1": "Register as an agent, complete profile review, and receive your referral code / unique link.",
+      "2": "Track downline revenue, commissions, and periodic reports.",
+      "3": "Operational support, training, and account manager contact channel.",
+      "lead": "General flow: register → manage downline → reconcile commissions. Below are the detailed process, illustrations, and minimum policies.",
+      "title": "Cooperation Model"
     },
     "plans": "Partner Investment Plans",
     "plansSubtitle": "Pick the investment plan that fits you",
-    "referralReward": "Thưởng liên kết",
+    "referralReward": "Referral Reward",
     "related": {
-      "ctaAffiliate": "Đi tới trang Affiliate",
-      "p": "Nếu bạn ưu tiên mô hình giới thiệu cá nhân, không cần duyệt đại lý đầy đủ — có thể xem chương trình Affiliate (link, hoa hồng và điều kiện riêng).",
-      "title": "Chương trình liên quan"
+      "ctaAffiliate": "Go to Affiliate Page",
+      "p": "If you prefer a personal referral model without full agency approval — you can check out the Affiliate program (link, commissions, and separate conditions).",
+      "title": "Related Programs"
     },
-    "settlementCycle": "Chu kỳ giải quyết",
+    "settlementCycle": "Settlement Cycle",
     "support": {
-      "p": "Đội ngũ account manager đồng hành onboarding, đào tạo sản phẩm và xử lý sự cố kỹ thuật.",
-      "p2": "Bạn cũng có thể xem trung tâm trợ giúp cho câu hỏi chung, hoặc gửi yêu cầu mở đại lý qua form liên hệ.",
-      "title": "Hỗ trợ & liên hệ"
+      "p": "Account manager team assists with onboarding, product training, and technical issue resolution.",
+      "p2": "You can also check the help center for general questions, or submit an agency opening request via the contact form.",
+      "title": "Support & Contact"
     },
     "table": {
-      "direct": "Hoa hồng trực tiếp",
-      "indirect": "Hoa hồng gián tiếp",
-      "note": "Chi tiết % hoa hồng và điều kiện rút tiền được quy định cụ thể trong từng gói đầu tư.",
-      "rate": "Tỷ lệ hưởng",
-      "staking": "Lãi trên lãi (Staking)",
-      "stakingDesc": "Lợi nhuận từ lãi hằng ngày của toàn hệ thống",
-      "target": "Đối tượng",
-      "type": "Loại thu nhập"
+      "direct": "Direct Commission",
+      "indirect": "Indirect Commission",
+      "note": "Commission percentages and withdrawal conditions are specified in each investment package.",
+      "rate": "Earning Rate",
+      "staking": "Compound Interest (Staking)",
+      "stakingDesc": "Profit from daily interest across the entire system",
+      "target": "Target",
+      "type": "Income Type"
     },
-    "title": "ĐẠI LÝ"
+    "title": "AGENCY"
   },
   "auth": {
-    "backToLogin": "Đăng nhập",
-    "confirmPassword": "Xác nhận mật khẩu",
-    "emailPlaceholder": "Nhập email hoặc tên đăng nhập",
-    "failed": "Xác thực thất bại.",
-    "forgotHint": "Nhập tên đăng nhập hoặc SĐT đã đăng ký.",
-    "forgotNeedId": "Vui lòng nhập tên đăng nhập hoặc số điện thoại.",
-    "forgotPassword": "Quên mật khẩu",
-    "forgotSent": "Chúng tôi đã ghi nhận yêu cầu. Vui lòng kiểm tra tin nhắn / email hoặc liên hệ hỗ trợ.",
-    "forgotSubmit": "Gửi yêu cầu",
-    "forgotTitle": "Quên mật khẩu",
-    "inviteOptional": "Mã giới thiệu (không bắt buộc)",
-    "login": "Đăng nhập",
-    "loginRequired": "Vui lòng đăng nhập để truy cập sảnh game",
-    "modeTabs": "Đăng nhập / Đăng ký",
-    "passwordMismatch": "Mật khẩu xác nhận không khớp.",
-    "passwordPlaceholder": "Nhập mật khẩu",
-    "phoneHint": "Nhập số điện thoại",
-    "register": "Đăng ký",
-    "signUp": "Đăng ký",
-    "usernameHint": "Nhập tên đăng nhập"
+    "backToLogin": "Login",
+    "confirmPassword": "Confirm Password",
+    "emailPlaceholder": "Enter email or username",
+    "failed": "Authentication failed.",
+    "forgotHint": "Enter your registered username or phone number.",
+    "forgotNeedId": "Please enter your username or phone number.",
+    "forgotPassword": "Forgot Password",
+    "forgotSent": "We have received your request. Please check your message / email or contact support.",
+    "forgotSubmit": "Submit Request",
+    "forgotTitle": "Forgot Password",
+    "inviteOptional": "Referral code (optional)",
+    "login": "Login",
+    "loginRequired": "Please log in to access the gaming hall",
+    "modeTabs": "Login / Register",
+    "passwordMismatch": "Confirm password does not match.",
+    "passwordPlaceholder": "Enter password",
+    "phoneHint": "Enter phone number",
+    "register": "Register",
+    "signUp": "Sign Up",
+    "usernameHint": "Enter username"
   },
   "bank": {
-    "accountHolder": "Chủ tài khoản"
+    "accountHolder": "Account Holder"
   },
   "chat": {
-    "identityRequired": "Cần xác thực danh tính để chat",
-    "loginRequired": "Vui lòng đăng nhập để chat",
-    "online": "Trực tuyến",
-    "placeholder": "Nhập tin nhắn…",
-    "rules": "Luật chat",
-    "title": "Trò chuyện",
-    "welcome": "Chào mừng bạn đến với kênh trò chuyện! Vui lòng tôn trọng người khác."
+    "identityRequired": "Identity verification required to chat",
+    "loginRequired": "Please log in to chat",
+    "online": "Online",
+    "placeholder": "Type a message…",
+    "rules": "Chat Rules",
+    "title": "Chat",
+    "welcome": "Welcome to the chat channel! Please be respectful to others."
   },
   "common": {
-    "accountBalance": "Số dư tài khoản",
-    "action": "Thao tác",
-    "all": "Tất Cả",
-    "atGame": "tại",
-    "bet": "Tiền cược",
+    "accountBalance": "Account Balance",
+    "action": "Action",
+    "all": "All",
+    "atGame": "at",
+    "bet": "Bet Amount",
     "bonus": "Bonus",
     "cancel": "Cancel",
     "close": "Close",
     "coins": "Coins",
-    "confirm": "Xác nhận",
-    "date": "Thời gian",
+    "confirm": "Confirm",
+    "date": "Date",
     "faq": "Frequently Asked Questions",
-    "fillAll": "Vui lòng điền đầy đủ thông tin",
-    "game": "Trò chơi",
-    "hour": "giờ",
-    "invalidAmount": "Invalidamount",
-    "justWon": "vừa thắng",
+    "fillAll": "Please fill in all fields",
+    "game": "Game",
+    "hour": "hour",
+    "invalidAmount": "Invalid amount",
+    "justWon": "just won",
     "live": "Live",
-    "loading": "Đang tải…",
+    "loading": "Loading…",
     "logout": "Logout",
     "mainWallet": "Main Wallet",
     "noData": "No data found.",
     "notice": "Notice",
-    "payout": "Tiền thắng",
+    "payout": "Payout",
     "processing": "Processing...",
-    "refresh": "Làm mới",
-    "view": "Xem chi tiết",
-    "withdraw": "Rút"
+    "refresh": "Refresh",
+    "view": "View details",
+    "withdraw": "Withdraw"
   },
   "contact": {
     "channels": {
-      "p": "Ưu tiên live chat để xử lý nhanh giao dịch và tài khoản. Email và mạng xã hội (nếu có) được công bố trên banner chính thức — tránh kênh giả mạo.",
-      "pShort": "Ưu tiên live chat để xử lý nhanh. Tránh kênh giả mạo — chỉ dùng link chính thức bên dưới.",
-      "title": "Kênh hỗ trợ"
+      "p": "Prioritize live chat for quick transaction and account handling. Email and social media (if available) are published on official banners — avoid fake channels.",
+      "pShort": "Prioritize live chat for quick resolution. Avoid fake channels — only use official links below.",
+      "title": "Support Channels"
     },
-    "highlight": "CHÚNG TÔI",
+    "highlight": "US",
     "response": {
-      "p": "Chat: vài phút. Email: trong 24–48 giờ làm việc tùy độ phức tạp.",
-      "title": "Thời gian phản hồi"
+      "p": "Chat: a few minutes. Email: within 24–48 business hours depending on complexity.",
+      "title": "Response Time"
     },
-    "subtitle": "Hỗ trợ 24/7 qua live chat trên trang chủ.",
-    "title": "LIÊN HỆ"
+    "subtitle": "24/7 support via live chat on the homepage.",
+    "title": "CONTACT"
   },
   "deposit": {
     "amount": "Amount",
-    "chooseMethod": "Chọn phương thức nạp",
-    "cryptoComingSoon": "Sắp ra mắt",
-    "cryptoExchangePlaceholder": "Nội dung sàn giao dịch sẽ được cập nhật.",
-    "cryptoExchangeTitle": "Truy cập sàn giao dịch",
-    "cryptoNote1": "Quý khách vui lòng gửi đúng loại tiền vào địa chỉ ví đã chọn.",
-    "cryptoNote2": "sẽ không chịu trách nhiệm nếu bạn gửi sai loại tiền hoặc sai địa chỉ ví.",
-    "cryptoNoteTitle": "Lưu ý",
-    "cryptoPromoPackage": "Gói khuyến mãi",
-    "cryptoStepConfirm": "Xác nhận chuyển tiền",
-    "cryptoStepPick": "Chọn loại tiền ảo",
-    "ewalletNotice": "Ví điện tử đang bảo trì / chờ cấu hình cổng thanh toán. Danh sách hiển thị theo cài đặt site (nếu có).",
-    "flashpayAmountLabel": "Số tiền nạp",
-    "flashpayAmountPlaceholder": "Nhập số tiền nạp",
-    "flashpayCreateQr": "Tạo mã QR",
-    "flashpayNote1Highlight": "ngân hàng ngẫu nhiên",
-    "flashpayNote1Prefix": "Hệ thống cung cấp",
-    "flashpayNote1Suffix": "(có thể khác ngân hàng), vui lòng dựa vào ngân hàng hiển thị trên mã QR để nạp tiền.",
-    "flashpayNote2Highlight": "Mã QR",
-    "flashpayNote2Suffix": "chỉ cung cấp cho nạp tiền lần này. Vui lòng không lưu lại sử dụng cho những lần nạp tiền sau.",
-    "flashpayPromotionHint": "Đang chọn gói khuyến mãi nạp.",
-    "flashpayQrPending": "Tạo mã QR Flashpay sẽ kết nối API cổng thanh toán. Hiện chỉ demo giao diện.",
-    "guide": "Hướng dẫn",
-    "guideHint": "Xem hướng dẫn nạp ở phần FAQ bên dưới.",
-    "importantNote": "Lưu ý quan trọng",
-    "invalidAmount": "Invalidamount",
-    "maintenance": "Bảo trì",
-    "note1": "Vui lòng kiểm tra kỹ số tài khoản đích trước khi chuyển.",
-    "note2": "Nội dung chuyển khoản phải điền chính xác mã được cấp.",
-    "note3": "Hệ thống xử lý tự động trong vòng 1-3 phút.",
-    "step1": "Chọn phương thức",
-    "step2": "Nhập số tiền",
-    "step3": "Thanh toán",
-    "tpayAmountLabel": "Số tiền nạp",
-    "tpayAmountPlaceholder": "Nhập số tiền nạp",
-    "tpayCreateQr": "Tạo mã QR",
-    "tpayEquivalent": "Tương ứng",
-    "tpayNote1Highlight": "ngân hàng ngẫu nhiên",
-    "tpayNote1Prefix": "Hệ thống cung cấp",
-    "tpayNote1Suffix": "(có thể khác ngân hàng), vui lòng dựa vào ngân hàng hiển thị trên mã QR để nạp tiền.",
-    "tpayNote2Highlight": "Mã QR",
-    "tpayNote2Suffix": "chỉ cung cấp cho nạp tiền lần này. Vui lòng không lưu lại sử dụng cho những lần nạp tiền sau.",
-    "tpayPromotionHint": "Đang chọn gói khuyến mãi nạp.",
-    "tpayQrPending": "Tạo mã QR Fastpay sẽ kết nối API cổng thanh toán. Hiện chỉ demo giao diện.",
+    "chooseMethod": "Choose deposit method",
+    "cryptoComingSoon": "Coming Soon",
+    "cryptoExchangePlaceholder": "Exchange content will be updated.",
+    "cryptoExchangeTitle": "Access Exchange",
+    "cryptoNote1": "Please send the correct currency type to the selected wallet address.",
+    "cryptoNote2": "will not be responsible if you send the wrong currency or wrong wallet address.",
+    "cryptoNoteTitle": "Important Note",
+    "cryptoPromoPackage": "Promotion Package",
+    "cryptoStepConfirm": "Confirm Transfer",
+    "cryptoStepPick": "Select Cryptocurrency",
+    "ewalletNotice": "E-wallet is under maintenance / awaiting payment gateway configuration. List displayed per site settings (if available).",
+    "flashpayAmountLabel": "Deposit Amount",
+    "flashpayAmountPlaceholder": "Enter deposit amount",
+    "flashpayCreateQr": "Generate QR Code",
+    "flashpayNote1Highlight": "random bank",
+    "flashpayNote1Prefix": "The system provides a",
+    "flashpayNote1Suffix": "(may differ from your bank), please use the bank shown on the QR code to deposit.",
+    "flashpayNote2Highlight": "QR Code",
+    "flashpayNote2Suffix": "is only valid for this deposit. Please do not save it for future deposits.",
+    "flashpayPromotionHint": "Applying deposit promotion package.",
+    "flashpayQrPending": "Generating Flashpay QR will connect to the payment gateway API. Currently interface demo only.",
+    "guide": "Guide",
+    "guideHint": "See deposit guide in the FAQ section below.",
+    "importantNote": "Important Note",
+    "invalidAmount": "Invalid amount",
+    "maintenance": "Maintenance",
+    "note1": "Please carefully verify the destination account number before transferring.",
+    "note2": "The transfer note must contain the exact code provided.",
+    "note3": "The system processes automatically within 1–3 minutes.",
+    "step1": "Choose Method",
+    "step2": "Enter Amount",
+    "step3": "Payment",
+    "tpayAmountLabel": "Deposit Amount",
+    "tpayAmountPlaceholder": "Enter deposit amount",
+    "tpayCreateQr": "Generate QR Code",
+    "tpayEquivalent": "Equivalent",
+    "tpayNote1Highlight": "random bank",
+    "tpayNote1Prefix": "The system provides a",
+    "tpayNote1Suffix": "(may differ from your bank), please use the bank shown on the QR code to deposit.",
+    "tpayNote2Highlight": "QR Code",
+    "tpayNote2Suffix": "is only valid for this deposit. Please do not save it for future deposits.",
+    "tpayPromotionHint": "Applying deposit promotion package.",
+    "tpayQrPending": "Generating Fastpay QR will connect to the payment gateway API. Currently interface demo only.",
     "tpayTab": "QR Fastpay"
   },
-  "deposit_success": "Deposit success",
+  "deposit_success": "Deposit successful",
   "errors": {
     "notFound": "404",
-    "pageNotFound": "Trang không tồn tại"
+    "pageNotFound": "Page not found"
   },
   "footer": {
-    "trustBadges": "Đối tác & giấy phép"
+    "trustBadges": "Partners & Licenses"
   },
   "game": {
-    "launchError": "Có lỗi xảy ra khi khởi động sảnh game",
-    "launchFailed": "Không thể khởi động sảnh game"
+    "launchError": "An error occurred while launching the game hall",
+    "launchFailed": "Unable to launch the game hall"
   },
   "help": {
     "faq": {
-      "p": "Nạp/rút: vào mục Tài khoản. Khuyến mãi: trang Khuyến mãi. Vấn đề kỹ thuật: thử làm mới trình duyệt hoặc xóa cache.",
-      "title": "Bắt đầu"
+      "p": "Deposit/withdrawal: go to Account. Promotions: Promotions page. Technical issues: try refreshing your browser or clearing cache.",
+      "title": "Getting Started"
     },
-    "highlight": "TRỢ GIÚP",
+    "highlight": "HELP",
     "link": {
-      "about": "Giới thiệu",
-      "contact": "Liên hệ",
-      "privacy": "Bảo mật",
-      "rg": "Chơi có trách nhiệm",
-      "terms": "Điều khoản"
+      "about": "About Us",
+      "contact": "Contact",
+      "privacy": "Privacy",
+      "rg": "Responsible Gaming",
+      "terms": "Terms"
     },
     "nav": {
-      "policies": "Tài liệu"
+      "policies": "Documents"
     },
-    "subtitle": "Câu hỏi thường gặp và liên kết nhanh tới tài liệu chính sách.",
-    "title": "TRUNG TÂM"
+    "subtitle": "Frequently asked questions and quick links to policy documents.",
+    "title": "CENTER"
   },
   "history": {
-    "24h": "Chỉ hiển thị trong 24 giờ",
-    "30d": "Chỉ hiển thị trong 30 ngày",
-    "7d": "Chỉ hiển thị trong 7 ngày",
-    "allTime": "Hiển thị tất cả",
+    "24h": "Last 24 hours only",
+    "30d": "Last 30 days only",
+    "7d": "Last 7 days only",
+    "allTime": "Show all",
     "bet": {
-      "emptyLine1": "Hãy tham gia cược ngay hôm nay!",
-      "emptyTitle": "Lịch sử cá cược của bạn đang trống",
-      "tabAll": "Tất cả",
-      "tabCancel": "Bị hủy",
-      "tabDraw": "Hoà",
-      "tabLose": "Thua",
-      "tabPending": "Đang chờ",
-      "tabWin": "Thắng"
+      "emptyLine1": "Place your first bet today!",
+      "emptyTitle": "Your betting history is empty",
+      "tabAll": "All",
+      "tabCancel": "Cancelled",
+      "tabDraw": "Draw",
+      "tabLose": "Lost",
+      "tabPending": "Pending",
+      "tabWin": "Won"
     },
-    "betting": "Lịch sử cá cược",
+    "betting": "Betting History",
     "faq": "Financial FAQ",
-    "state": "Trạng thái",
-    "timeFilterLabel": "Khoảng thời gian"
+    "state": "Status",
+    "timeFilterLabel": "Time Range"
   },
   "home": {
     "challengeEnded": "Ended",
     "days": "Days",
     "endsIn": "Ends in",
-    "hotMatch": "Top kèo bóng đá",
+    "hotMatch": "Top Football Matches",
     "hours": "Hours",
     "mins": "Min",
     "secs": "Sec"
   },
   "nav": {
-    "home": "Về trang chủ"
+    "home": "Back to Home"
   },
   "privacy": {
     "contact": {
-      "p": "P"
+      "p": "If you have questions about our Privacy Policy or how we handle your data, please contact our support team."
     },
     "highlight": "POLICY",
     "intro": {
@@ -370,14 +370,14 @@
     "title": "PRIVACY"
   },
   "promo": {
-    "join": "Tham Gia",
-    "pageTitle": "Khuyến Mãi"
+    "join": "Join",
+    "pageTitle": "Promotions"
   },
   "promotion": "Promotion",
   "promotions": {
-    "title": "Promotion"
+    "title": "Promotions"
   },
-  "public-message": "Public-message",
+  "public-message": "Public Message",
   "responsible": {
     "break": {
       "p": "Use our self-exclusion tools if you feel you need to take a break from gaming for a specific period.",
@@ -390,7 +390,7 @@
     "help": {
       "contact": "Contact Support",
       "p": "If you or someone you know is struggling with gaming addiction, please reach out to professional support organizations.",
-      "title": "Need help?"
+      "title": "Need Help?"
     },
     "highlight": "GAMING",
     "limits": {
@@ -409,27 +409,27 @@
   },
   "sidebar": {
     "affiliate": "Affiliate",
-    "coin12": "Giao dịch Coin12",
+    "coin12": "Coin12 Transactions",
     "deposit": "Deposit",
     "history": "History",
     "transfer": "Transfer",
     "withdraw": "Withdraw"
   },
   "store": {
-    "adminControlled": "Admincontrolled",
-    "buyNow": "Mua ngay",
-    "debitNote": "Số tiền sẽ trừ trực tiếp từ số dư theo giá gói.",
-    "freeCoins": "Freecoins",
-    "goldCoins": "Goldcoins",
+    "adminControlled": "Admin Controlled",
+    "buyNow": "Buy Now",
+    "debitNote": "Amount will be deducted directly from your balance at the package price.",
+    "freeCoins": "Free Coins",
+    "goldCoins": "Gold Coins",
     "item": "Item",
-    "loginToBuy": "Đăng nhập để mua",
-    "packageDetails": "Packagedetails",
+    "loginToBuy": "Log in to buy",
+    "packageDetails": "Package Details",
     "price": "Price",
-    "purchaseFailed": "Không thể hoàn tất mua hàng.",
-    "purchaseSuccess": "Mua thành công. Số dư đã được cập nhật.",
+    "purchaseFailed": "Unable to complete purchase.",
+    "purchaseSuccess": "Purchase successful. Balance has been updated.",
     "sold": "Sold",
-    "subtitle": "Subtitle",
-    "title": "Title",
+    "subtitle": "Browse and purchase items",
+    "title": "Store",
     "value": "Value"
   },
   "terms": {
@@ -465,109 +465,107 @@
     "subtitle": "The legal agreement between you and our platform",
     "title": "TERMS OF"
   },
-  "vi-VN": "Vi-vn",
   "vip": {
     "contact": {
-      "p": "Chi tiết điều kiện và nâng hạng — xem mục Khuyến mãi hoặc liên hệ hỗ trợ 24/7.",
-      "title": "Liên hệ & tiếp theo"
+      "p": "For details on conditions and level upgrades — see Promotions or contact 24/7 support.",
+      "title": "Contact & Next Steps"
     },
-    "ctaHelp": "Trung tâm trợ giúp",
-    "ctaPromotions": "Xem khuyến mãi",
-    "disclaimer": "Nội dung trang mang tính giới thiệu. Điều khoản áp dụng theo thông báo chính thức tại thời điểm giao dịch.",
+    "ctaHelp": "Help Center",
+    "ctaPromotions": "View Promotions",
+    "disclaimer": "Page content is for informational purposes. Terms apply per official announcements at the time of transaction.",
     "experience": {
-      "fishingCaption": "Bắn cá — giải trí tốc độ cao",
-      "lead": "VIP được ưu tiên trải nghiệm các sản phẩm chủ lực — live casino, slots, thể thao — với hỗ trợ nhanh và ưu đãi theo bậc.",
-      "live": "Live casino",
-      "liveDesc": "Bàn chơi HD, dealer chuyên nghiệp.",
-      "lotteryCaption": "Lô đề — kết quả minh bạch",
+      "fishingCaption": "Fish Shooting — high-speed entertainment",
+      "lead": "VIP members get priority access to flagship products — live casino, slots, sports — with fast support and tier-based offers.",
+      "live": "Live Casino",
+      "liveDesc": "HD tables, professional dealers.",
+      "lotteryCaption": "Lottery — transparent results",
       "slots": "Slots",
-      "slotsDesc": "Jackpot & nhà cung cấp hot.",
-      "sports": "Thể thao",
-      "sportsDesc": "Kèo đa dạng, cập nhật realtime.",
-      "title": "Sảnh game & đặc quyền"
+      "slotsDesc": "Jackpots & top providers.",
+      "sports": "Sports",
+      "sportsDesc": "Diverse odds, real-time updates."
     },
     "faq": {
-      "a1": "Cấp được xác định theo tổng cược hợp lệ trong chu kỳ. Bạn có thể xem chi tiết trong tài khoản hoặc hỏi hỗ trợ kèm ID.",
-      "a2": "Theo lịch và điều kiện từng chương trình — thường tự động vào ví sau khi hệ thống đối soát xong.",
-      "a3": "Bảng tham chiếu có thể thay đổi theo khuyến mãi. Luôn ưu tiên nội dung công bố tại mục Khuyến mãi và điều khoản.",
-      "q1": "Làm sao biết cấp VIP hiện tại của tôi?",
-      "q2": "Hoàn trả được cộng khi nào?",
-      "q3": "Số liệu trên trang có phải cam kết cố định?",
-      "title": "Câu hỏi thường gặp"
+      "a1": "Tier is determined by total valid bets in the cycle. You can view details in your account or contact support with your ID.",
+      "a2": "According to each program's schedule and conditions — usually automatically credited to the wallet after system reconciliation.",
+      "a3": "The reference table may change based on promotions. Always prioritize content announced under Promotions and Terms.",
+      "q1": "How do I know my current VIP tier?",
+      "q2": "When is cashback credited?",
+      "q3": "Are the figures on this page a fixed commitment?",
+      "title": "Frequently Asked Questions"
     },
     "field": {
-      "cashback": "Hoàn trả",
-      "fridayBonus": "Thưởng thứ Sáu",
-      "lossReturn": "Hoàn thua tối đa",
-      "minBet": "Cược hợp lệ tối thiểu",
-      "upReward": "Thưởng thăng cấp"
+      "cashback": "Cashback",
+      "fridayBonus": "Friday Bonus",
+      "lossReturn": "Max Loss Return",
+      "minBet": "Minimum Valid Bet",
+      "upReward": "Level-up Reward"
     },
-    "heroCaption": "Không gian VIP — hình minh họa",
-    "heroSubtitle": "Tích lũy cược hợp lệ, mở khóa hoàn trả và quyền lợi dành cho thành viên trung thành.",
+    "heroCaption": "VIP space — illustration",
+    "heroSubtitle": "Accumulate valid bets, unlock cashback, and benefits reserved for loyal members.",
     "highlight": "CLUB",
     "how": {
-      "p": "Cấp VIP xác định theo tổng cược hợp lệ trong chu kỳ (thường theo tháng). Khi đạt ngưỡng, hệ thống tự ghi nhận — nếu chưa thấy cập nhật, liên hệ hỗ trợ kèm ID tài khoản.",
-      "title": "Cách thăng hạng"
+      "p": "VIP tier is determined by total valid bets in the cycle (usually monthly). Once the threshold is reached, the system records it automatically — if you don't see an update, contact support with your account ID.",
+      "title": "How to Rank Up"
     },
-    "introBullet1": "Tham gia tự động theo điều kiện tài khoản; không cần đăng ký riêng nếu đã đủ điều kiện nội bộ.",
-    "introBullet2": "Mọi tranh chấp hoặc chậm cập nhật cấp — liên hệ hỗ trợ 24/7 kèm mã giao dịch / ID.",
-    "introP1": "VIP Club ghi nhận hoạt động cược hợp lệ của bạn theo chu kỳ và phân bậc rõ ràng. Càng lên cao, bạn càng tiếp cận thêm quyền lợi tài chính và dịch vụ.",
-    "introP2": "Dưới đây là bảng tham chiếu các cấp; nếu hệ thống đang đồng bộ từ máy chủ, số liệu có thể khớp 1:1 với tài khoản của bạn.",
-    "introTitle": "Giới thiệu chương trình",
+    "introBullet1": "Automatically enrolled based on account conditions; no separate registration needed if internal criteria are met.",
+    "introBullet2": "For any disputes or delayed tier updates — contact 24/7 support with your transaction code / ID.",
+    "introP1": "VIP Club tracks your valid betting activity by cycle and ranks you clearly. The higher you go, the more financial benefits and services you access.",
+    "introP2": "Below is a reference tier table; if the system is syncing from the server, figures may match your account 1:1.",
+    "introTitle": "Program Overview",
     "perks": {
-      "1": "Hoàn trả cược và hoàn thua theo cấp — tự động cộng vào ví chính.",
-      "2": "Ưu tiên rút tiền và hỗ trợ VIP kênh riêng (account manager).",
-      "3": "Quà sinh nhật / sự kiện theo chính sách khuyến mãi đang áp dụng.",
-      "title": "Quyền lợi nổi bật"
+      "1": "Bet cashback and loss return by tier — automatically credited to main wallet.",
+      "2": "Priority withdrawals and VIP support via dedicated channel (account manager).",
+      "3": "Birthday / event gifts per current promotion policy.",
+      "title": "Key Benefits"
     },
     "pillar1": {
-      "text": "Mỗi bậc mở thêm tỷ lệ hoàn trả, thưởng thăng cấp và ưu tiên xử lý giao dịch.",
-      "title": "Đặc quyền theo cấp"
+      "text": "Each tier unlocks higher cashback rates, level-up bonuses, and priority transaction processing.",
+      "title": "Tier Privileges"
     },
     "pillar2": {
-      "text": "Ngưỡng cược và phần trăm hiển thị rõ trên bảng — cập nhật theo chính sách đang áp dụng.",
-      "title": "Minh bạch số liệu"
+      "text": "Betting thresholds and percentages are clearly displayed — updated per current policy.",
+      "title": "Transparent Data"
     },
     "pillar3": {
-      "text": "Kênh hỗ trợ VIP và account manager cho thành viên đạt bậc cao theo quy định nội bộ.",
-      "title": "Hỗ trợ ưu tiên"
+      "text": "VIP support channel and account manager for members reaching higher tiers per internal regulations.",
+      "title": "Priority Support"
     },
-    "pillarsTitle": "Vì sao tham gia",
+    "pillarsTitle": "Why Join",
     "tiers": {
-      "p": "Tham gia chương trình VIP để nhận hoàn trả cao hơn, quà tặng sinh nhật và quản lý tài khoản riêng.",
-      "p2": "So sánh nhanh các ngưỡng dưới đây; một số cột chỉ hiện từ bậc Bạc trở lên khi có dữ liệu từ hệ thống.",
-      "title": "Cấp bậc"
+      "p": "Join the VIP program for higher cashback, birthday gifts, and dedicated account management.",
+      "p2": "Quick comparison of thresholds below; some columns only appear from Silver tier upward when data is available from the system.",
+      "title": "Tiers"
     },
     "title": "VIP"
   },
   "wallet": {
-    "manage": "Quản lý quỹ"
+    "manage": "Manage Funds"
   },
   "withdrawal": {
-    "addWallet": "Thêm ví",
-    "cardNoticeReal": "Mã thẻ sẽ được gửi vào Hộp thư sau khi yêu cầu được duyệt.",
-    "cardProvider": "Loại thẻ",
-    "cryptoEquivUsdt": "Tương ứng",
-    "cryptoFeeLabel": "Phí",
-    "cryptoFeeValue": "Theo cổng thanh toán / chưa áp dụng demo",
-    "cryptoGuide1": "Vui lòng dùng địa chỉ ví USDT trên mạng TRC20.",
-    "cryptoGuide2": "Tỷ giá quy đổi áp dụng tại thời điểm rút thành công.",
-    "cryptoGuide3": "Mỗi giao dịch rút có thể mất 10–30 phút xử lý.",
-    "cryptoGuide4": "Đảm bảo địa chỉ ví chính xác, sai địa chỉ không thể hoàn lại.",
-    "cryptoGuideHint": "Xem FAQ rút tiền ở cột bên phải hoặc liên hệ CSKH.",
-    "cryptoGuideTitle": "Hướng dẫn USDT (TRC20)",
+    "addWallet": "Add Wallet",
+    "cardNoticeReal": "Card code will be sent to your Inbox after the request is approved.",
+    "cardProvider": "Card Type",
+    "cryptoEquivUsdt": "Equivalent",
+    "cryptoFeeLabel": "Fee",
+    "cryptoFeeValue": "Per payment gateway / not applied in demo",
+    "cryptoGuide1": "Please use a USDT wallet address on the TRC20 network.",
+    "cryptoGuide2": "The exchange rate applied at the time of successful withdrawal.",
+    "cryptoGuide3": "Each withdrawal transaction may take 10–30 minutes to process.",
+    "cryptoGuide4": "Ensure the wallet address is correct — incorrect addresses cannot be recovered.",
+    "cryptoGuideHint": "See withdrawal FAQ on the right column or contact customer support.",
+    "cryptoGuideTitle": "USDT (TRC20) Guide",
     "cryptoMenu": "Crypto",
-    "cryptoNeedTrc20": "Bạn cần thêm địa chỉ ví USDT-TRC20 để rút tiền.",
-    "cryptoNotesHeading": "Lưu ý",
-    "cryptoRateLabel": "Tỷ giá tham khảo hiện tại",
-    "cryptoToolbarGuide": "Hướng dẫn",
-    "cryptoWalletEmpty": "Vui lòng thêm địa chỉ ví của bạn",
-    "cryptoWithdrawPoints": "Số điểm rút",
-    "enterAmountK": "Nhập số tiền...",
-    "failed": "Rút tiền thất bại",
-    "flashpayNoticeReal": "Nhập Flashpay ID để nhận tiền ngay lập tức.",
-    "linkBankFirst": "Bạn cần liên kết thẻ ngân hàng trước khi thực hiện rút tiền.",
-    "linkNow": "Liên kết ngay",
-    "success": "Đã gửi yêu cầu rút tiền."
+    "cryptoNeedTrc20": "You need to add a USDT-TRC20 wallet address to withdraw.",
+    "cryptoNotesHeading": "Notes",
+    "cryptoRateLabel": "Current Reference Exchange Rate",
+    "cryptoToolbarGuide": "Guide",
+    "cryptoWalletEmpty": "Please add your wallet address",
+    "cryptoWithdrawPoints": "Points to Withdraw",
+    "enterAmountK": "Enter amount...",
+    "failed": "Withdrawal failed",
+    "flashpayNoticeReal": "Enter Flashpay ID to receive funds instantly.",
+    "linkBankFirst": "You need to link a bank card before making a withdrawal.",
+    "linkNow": "Link Now",
+    "success": "Withdrawal request submitted."
   }
 }

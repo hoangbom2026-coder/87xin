@@ -4,7 +4,7 @@ import { toJSON } from '@utils/model-plugins';
 import { TRANSACTION_CATEGORY, TRANSACTION_TYPE } from '@config/static';
 
 export interface ITransaction extends Document {
-    userId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
     relatedId: string;
     tnxId: string;
     amount: number;

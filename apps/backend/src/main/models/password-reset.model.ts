@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 import { toJSON } from '@utils/model-plugins';
 
 export interface IPasswordReset extends Document {
-    userId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
     token: string;
     /** Mã ngắn 6 chữ số (OTP), có thể dùng song song với token. */
     otp: string;

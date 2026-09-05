@@ -44,6 +44,7 @@ import {
   Settings,
   BarChart3,
   Shield,
+  Trophy,
 } from "lucide-react";
 import React from "react";
 import {

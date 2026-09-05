@@ -3,7 +3,7 @@ import mongoose, { Document, Schema } from 'mongoose';
 import { toJSON } from '@utils/model-plugins';
 
 export interface IGsPayWithdrawLog extends Document {
-    userId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
     merchant_ref: string;
     system_ref: string;
     amount: number;

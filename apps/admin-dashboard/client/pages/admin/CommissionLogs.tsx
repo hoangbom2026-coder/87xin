@@ -70,7 +70,7 @@ export default function CommissionLogsPage() {
               Commission & referral — toàn hệ thống (chỉ admin).
             </p>
           </div>
-          <Button variant="outline" size="sm" onClick={() => reload(page)} disabled={loading}>
+          <Button variant="outline" size="sm" onClick={() => reload(page, type)} disabled={loading}>
             <RefreshCw className="mr-2 size-4" /> Làm mới
           </Button>
         </div>

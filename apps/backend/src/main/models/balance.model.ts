@@ -3,8 +3,8 @@ import mongoose, { Document, Schema } from 'mongoose';
 import { toJSON } from '@utils/model-plugins';
 
 export interface IBalance extends Document {
-    userId: Schema.Types.ObjectId;
-    currencyId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
+    currencyId: Schema.Types.ObjectId | string;
     amount: number;
     pending: number;
     bonus: number;

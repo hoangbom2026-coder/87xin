@@ -318,6 +318,8 @@ export default function TelegramTemplatesPage() {
           <div className="grid gap-4 md:grid-cols-2">
             {events.map((ev) => {
               const tpl: TelegramTemplate = templates[ev.key] ?? {
+                key: ev.key,
+                target: ev.target ?? 'admin',
                 enabled: true,
                 content: ev.defaultContent,
               };

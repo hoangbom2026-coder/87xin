@@ -3,8 +3,8 @@ import mongoose, { Document, Schema } from 'mongoose';
 import { toJSON } from '@utils/model-plugins';
 
 export interface INowpayDepositLog extends Document {
-    userId: Schema.Types.ObjectId;
-    depositId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
+    depositId: Schema.Types.ObjectId | string;
     payment_id: string;
     payment_status: string;
     pay_address: string;

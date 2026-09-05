@@ -2,8 +2,8 @@ import mongoose, { Document, Schema } from 'mongoose';
 import { toJSON } from '@utils/model-plugins';
 
 export interface IPasswordLog extends Document {
-    userId: Schema.Types.ObjectId;
-    actorId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
+    actorId: Schema.Types.ObjectId | string;
     ip: string;
     userAgent: string;
     device: string;

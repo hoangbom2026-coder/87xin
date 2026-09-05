@@ -20,6 +20,7 @@ import {
   DataTable,
   type ColumnDef,
 } from '@game/ui';
+import { Badge } from '@game/ui/badge';
 import { Switch } from '@game/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@game/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@game/ui/select';

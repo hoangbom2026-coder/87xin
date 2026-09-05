@@ -146,7 +146,7 @@ export default function GameMenuManager() {
   const handleUpload = async (idx: number, file: File) => {
     if (!token) return;
     try {
-      const res = await uploadGameIconAsset(token, file);
+      const res = await uploadGameIconAsset(file, token);
       updateRow(idx, { icon: res.url });
       toast({ title: "Đã upload icon", description: res.url });
     } catch (e) {
@@ -157,7 +157,6 @@ export default function GameMenuManager() {
   return (
     <AdminLayout>
       <AdminPageHeader
-        icon={GamepadIcon}
         title="Quản lý Game Menu"
         description="Dải icon ngang Home + CategoryTabs — đổi URL/upload icon, label, path, bật/tắt, sắp xếp thứ tự."
       />

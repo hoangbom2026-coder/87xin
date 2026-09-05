@@ -3,7 +3,7 @@ import mongoose, { Document, Schema } from 'mongoose';
 import { toJSON } from '@utils/model-plugins';
 
 export interface INowpayWithdrawLog extends Document {
-    userId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
     address: string;
     amount: number;
     batch_withdrawal_id: string;

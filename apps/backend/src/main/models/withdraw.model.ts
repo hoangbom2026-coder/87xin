@@ -4,8 +4,8 @@ import { toJSON } from '@utils/model-plugins';
 import { WITHDRAW_STATUS_OPTION } from '@config/static';
 
 export interface IWithdraw extends Document {
-    userId: Schema.Types.ObjectId;
-    currencyId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
+    currencyId: Schema.Types.ObjectId | string;
     currency: string;
     amount: number;
     status: string;

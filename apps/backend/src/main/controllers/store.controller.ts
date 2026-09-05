@@ -12,7 +12,7 @@ export const getPackages = catchAsync(async (_req: AuthRequest, res: Response) =
 
 export const purchasePackage = catchAsync(async (req: AuthRequest, res: Response) => {
     const { packageId } = req.body;
-    const userId = req.user._id;
+    const userId = String(req.user._id);
     const result = await purchaseService.purchasePackage(userId, packageId);
     return res.send(result);
 });

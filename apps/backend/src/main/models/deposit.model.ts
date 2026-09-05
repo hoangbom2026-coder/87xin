@@ -4,9 +4,9 @@ import { toJSON } from '@utils/model-plugins';
 import { DEPOSIT_STATUS_OPTION } from '@config/static';
 
 export interface IDeposit extends Document {
-    userId: Schema.Types.ObjectId;
-    currencyId: Schema.Types.ObjectId;
-    balanceId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
+    currencyId: Schema.Types.ObjectId | string;
+    balanceId: Schema.Types.ObjectId | string;
     currency: string;
     amount: number;
     actuallyAmount: number;

@@ -10,7 +10,7 @@
     "moduleResolution": "node",
     "sourceMap": false,
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": "../..",
     "baseUrl": ".",
     "lib": ["es2022"],
     "removeComments": true,
@@ -26,6 +26,6 @@
       "@game/i18n":     ["../../libs/i18n/index.ts"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "../../libs/db/**/*.ts", "../../libs/cron/**/*.ts", "../../libs/i18n/**/*.ts"],
   "exclude": ["node_modules", "src/scripts", "dist"]
 }

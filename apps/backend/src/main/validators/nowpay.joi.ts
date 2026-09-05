@@ -8,12 +8,12 @@ const getNowpayCurrency = Joi.object({
     rowsPerPage: Joi.number().required()
 });
 
-const updateCurrency = Joi.object({
+const updateCurrencyStatus = Joi.object({
     status: Joi.boolean().optional(),
     rate_code: Joi.boolean().optional()
 });
 
-const getＷithdrawＣurrency = Joi.object({
+const getWithdrawCurrency = Joi.object({
     withdrawAmount: Joi.number().required(),
     currencyCode: Joi.string().required()
 });
@@ -26,7 +26,7 @@ const currencyId = Joi.object({
     currencyId: Joi.string().required()
 });
 
-const updateＣurrency = Joi.object({
+const updateCurrencyCommon = Joi.object({
     status: Joi.boolean().optional(),
     common: Joi.boolean().optional()
 });
@@ -40,8 +40,8 @@ export default {
     nowpayId,
     currencyId,
     getNowpayCurrency,
-    updateCurrency,
-    getＷithdrawＣurrency,
-    updateＣurrency,
+    updateCurrencyStatus,
+    updateCurrencyCommon,
+    getWithdrawCurrency,
     createPayment
 };

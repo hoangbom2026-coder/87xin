@@ -23,32 +23,16 @@ export const getRole = catchAsync(async (req: AuthRequest, res: Response) => {
 });
 
 export const createRole = catchAsync(async (req: AuthRequest, res: Response) => {
-    try {
-        const role = await roleService.createRole(req.body || {});
-        return res.status(httpStatus.CREATED).send(role);
-    } catch (e) {
-        throw new ApiError(httpStatus.BAD_REQUEST, (e as Error).message);
-    }
+    const role = await roleService.createRole(req.body || {});
+    return res.status(httpStatus.CREATED).send(role);
 });
 
 export const updateRole = catchAsync(async (req: AuthRequest, res: Response) => {
-    try {
-        const role = await roleService.updateRole((req.params as any).roleId, req.body || {});
-        return res.send(role);
-    } catch (e) {
-        const msg = (e as Error).message;
-        const status = msg.includes('không thể') ? httpStatus.FORBIDDEN : httpStatus.BAD_REQUEST;
-        throw new ApiError(status, msg);
-    }
+    const role = await roleService.updateRole((req.params as any).roleId, req.body || {});
+    return res.send(role);
 });
 
 export const deleteRole = catchAsync(async (req: AuthRequest, res: Response) => {
-    try {
-        await roleService.deleteRole((req.params as any).roleId);
-    } catch (e) {
-        const msg = (e as Error).message;
-        const status = msg.includes('không thể') ? httpStatus.FORBIDDEN : httpStatus.BAD_REQUEST;
-        throw new ApiError(status, msg);
-    }
-    return res.send({ ok: true });
+    const result = await roleService.deleteRole((req.params as any).roleId);
+    return res.send(result);
 });

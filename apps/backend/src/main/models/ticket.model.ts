@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 import { toJSON, paginate } from '@utils/model-plugins';
 
 export interface ITicket extends Document {
-    userId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
     subject: string;
     message: string;
     status: 'open' | 'answered' | 'replied' | 'closed';

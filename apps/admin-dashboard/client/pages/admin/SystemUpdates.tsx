@@ -146,7 +146,9 @@ export default function SystemUpdatesPage() {
         </CardHeader>
         <CardContent>
           {info.changelog ? (
-            <pre className="bg-muted/50 p-3 rounded text-xs overflow-auto max-h-[400px] whitespace-pre-wrap">{info.changelog}</pre>
+            <pre className="bg-muted/50 p-3 rounded text-xs overflow-auto max-h-[400px] whitespace-pre-wrap">
+              {typeof info.changelog === 'string' ? info.changelog : JSON.stringify(info.changelog, null, 2)}
+            </pre>
           ) : (
             <p className="text-sm text-muted-foreground">Chưa có file CHANGELOG.md</p>
           )}

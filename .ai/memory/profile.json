@@ -1,0 +1,36 @@
+{
+  "user": {
+    "name": "Taxi379",
+    "role": "Lead Architect & Developer",
+    "language": "vi",
+    "tone": "Direct, concise, evidence-based, no sycophancy, no emoji in code/logs"
+  },
+  "preferences": {
+    "code_style": {
+      "language": "TypeScript (strict)",
+      "patterns": "Controller -> Service -> Model",
+      "imports": "Strict @game/* path mappings from tsconfig.base.json",
+      "styling": "Tailwind CSS variables (no hardcoded hex colors in UI)"
+    },
+    "architecture_decisions": [
+      "3-tier Monorepo (apps/, libs/, configs/, infra/)",
+      "Dependency Rule: Apps -> Libs only (no cross-app imports)",
+      "Centralized types in libs/shared-types (@game/types)",
+      "Centralized system config in libs/shared-utils (@game/shared-utils)",
+      "Zero-downtime deployment via PM2 cluster reload and Docker Compose"
+    ],
+    "standing_conventions": [
+      "Never commit .env or secrets to repo",
+      "Always run typecheck and test before finishing a task",
+      "Handoff protocol: Hermes writes spec in .ai/tasks/ -> OpenHands executes"
+    ]
+  },
+  "team_ecosystem": {
+    "Hermes": "Primary Omni-Assistant & Maestro",
+    "OpenViking": "Long-term persistent context & semantic memory",
+    "OpenHands": "Code executor & test fixer",
+    "OmniRoute": "API routing expert & LLM router",
+    "BOB": "Strategic architecture, security, and cost advisor",
+    "Pentester": "Security vulnerability scanner"
+  }
+}

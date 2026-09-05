@@ -12,8 +12,8 @@ const getJwtSecret = (): string => {
     if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') {
         return 'dev-jwt-secret-key-development-only';
     }
-    // Fallback for runtime production if not explicitly passed
-    return process.env.JWT_SECRET || 'tc-gaming-jwt-secret-key-production';
+    // Production: bắt buộc phải set JWT_SECRET trong .env — fail-fast, không fallback
+    throw new Error('JWT_SECRET is required in production. Set JWT_SECRET in .env to run the server.');
 };
 
 const config = {
@@ -47,6 +47,25 @@ const config = {
         opCode: process.env.GSC_OP_CODE || 'G7N1',
         secretKey: process.env.GSC_SECRET_KEY || '',
         env: process.env.GSC_ENV || 'staging'
+    },
+    gsPay: {
+        host: process.env.GS_PAY_HOST || 'https://api.gspay.com',
+        merchantId: process.env.GS_PAY_MERCHANT_ID || '',
+        secretKey: process.env.GS_PAY_SECRET_KEY || '',
+        apiKey: process.env.GS_PAY_API_KEY || ''
+    },
+    nowpay: {
+        host: process.env.NOWPAY_HOST || 'https://api.nowpayments.io',
+        apiKey: process.env.NOWPAY_API_KEY || '',
+        ipnSecret: process.env.NOWPAY_IPN_SECRET || '',
+        email: process.env.NOWPAY_EMAIL || '',
+        password: process.env.NOWPAY_PASSWORD || ''
+    },
+    exchangeRateKey: process.env.EXCHANGE_RATE_KEY || '',
+    sendGridApiKey: process.env.SENDGRID_API_KEY || '',
+    slot: {
+        apiBaseUrl: process.env.SLOT_API_BASE_URL || '',
+        apiKey: process.env.SLOT_API_KEY || ''
     }
 };
 

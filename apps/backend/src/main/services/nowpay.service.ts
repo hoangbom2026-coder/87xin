@@ -71,7 +71,7 @@ const getNowpayCurrency = async (filter: IFilter) => {
     return { data, total };
 };
 
-const updateＣurrency = async (currencyId: string, data: { status: boolean }) => {
+const updateCurrency = async (currencyId: string, data: { status: boolean }) => {
     return await NowpayCurrencyModel.findOneAndUpdate({ _id: currencyId }, data, { new: true });
 };
 
@@ -189,7 +189,7 @@ export default {
     getCurrencyByCode,
     getCurrencyById,
     getNowpayCurrency,
-    updateＣurrency,
+    updateCurrency,
     createNowpayLog,
     getNowpayLog,
     updateNowpayLog,

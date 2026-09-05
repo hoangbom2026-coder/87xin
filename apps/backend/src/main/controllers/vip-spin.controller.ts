@@ -48,11 +48,11 @@ function weightedSpinPick(prizes: IVipSpinPrizeSlot[]): IVipSpinPrizeSlot {
 }
 
 export const getReadySpin = catchAsync(async (req: AuthRequest, res: Response) => {
-    const balance = await balanceService.getBalanceByUserId(req.user._id);
+    const balance = await balanceService.getBalanceByUserId(String(req.user._id));
     const vipSpinPrizes = await vipSpinPrizeService.getVipSpinPrizes();
     const availablePrize = getClosestPrize(vipSpinPrizes, balance.turnover);
     if (availablePrize) {
-        const lastSpin = await vipSpinRewardService.getLastSpin(req.user._id);
+        const lastSpin = await vipSpinRewardService.getLastSpin(String(req.user._id));
         if (lastSpin) {
             const now = new Date();
             const createdAt = new Date(lastSpin.createdAt);

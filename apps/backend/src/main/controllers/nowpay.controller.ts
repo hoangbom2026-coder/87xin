@@ -136,12 +136,12 @@ export const getNowpayCurrency = catchAsync(async (req: Request, res: Response) 
     res.send(currencies);
 });
 
-export const updateＣurrency = catchAsync(async (req: AuthRequest, res: Response) => {
+export const updateCurrency = catchAsync(async (req: AuthRequest, res: Response) => {
     const item = await nowpayService.getCurrencyById((req.params as any).currencyId);
     if (!item) {
         throw new ApiError(httpStatus.NOT_FOUND, 'Currency not found');
     }
-    const updated = await nowpayService.updateＣurrency((req.params as any).currencyId, req.body);
+    const updated = await nowpayService.updateCurrency((req.params as any).currencyId, req.body);
     // Sync with admin Currencies collection so it appears across the app immediately
     try {
         const code = (updated?.code || item.code || '').toUpperCase();
@@ -169,7 +169,7 @@ export const updateNowpayCurrency = catchAsync(async (req: Request, res: Respons
 
 export const createPayment = catchAsync(async (req: AuthRequest, res: Response) => {
     try {
-        const userId = req.user._id;
+        const userId = String(req.user._id);
         const currencyId = req.user.currencyId;
         const { amount, currency } = req.body;
 

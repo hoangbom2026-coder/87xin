@@ -3,8 +3,8 @@ import mongoose, { Document, Schema } from 'mongoose';
 import { toJSON } from '@utils/model-plugins';
 
 export interface IAgPayoutLog extends Document {
-    userId: Schema.Types.ObjectId;
-    withdrawId: Schema.Types.ObjectId;
+    userId: Schema.Types.ObjectId | string;
+    withdrawId: Schema.Types.ObjectId | string;
     msg: string;
     status: number;
     statusDesc: string;

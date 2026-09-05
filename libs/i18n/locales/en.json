@@ -8,5 +8,57 @@
     "faq5q": "When can I withdraw commission and principal?",
     "faq6q": "How do I manage my downline network?",
     "faq7q": "Rights and obligations of {{brand}} Agency?"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "signUp": "Sign Up",
+    "logout": "Logout",
+    "forgotPassword": "Forgot Password",
+    "emailPlaceholder": "Enter email or username",
+    "passwordPlaceholder": "Enter password",
+    "usernameHint": "Enter username",
+    "phoneHint": "Enter phone number",
+    "confirmPassword": "Confirm Password",
+    "inviteOptional": "Referral code (optional)",
+    "loginRequired": "Please log in to continue",
+    "failed": "Authentication failed.",
+    "passwordMismatch": "Confirm password does not match."
+  },
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "close": "Close",
+    "loading": "Loading…",
+    "noData": "No data found.",
+    "processing": "Processing...",
+    "notice": "Notice",
+    "refresh": "Refresh",
+    "all": "All",
+    "action": "Action",
+    "logout": "Logout",
+    "faq": "Frequently Asked Questions"
+  },
+  "errors": {
+    "notFound": "404",
+    "pageNotFound": "Page not found"
+  },
+  "nav": {
+    "home": "Back to Home"
+  },
+  "sidebar": {
+    "affiliate": "Affiliate",
+    "deposit": "Deposit",
+    "history": "History",
+    "transfer": "Transfer",
+    "withdraw": "Withdraw"
+  },
+  "chat": {
+    "title": "Chat",
+    "online": "Online",
+    "placeholder": "Type a message…",
+    "loginRequired": "Please log in to chat",
+    "identityRequired": "Identity verification required to chat",
+    "welcome": "Welcome to the chat channel! Please be respectful to others."
   }
 }

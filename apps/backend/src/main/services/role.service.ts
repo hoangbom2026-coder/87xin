@@ -1,4 +1,6 @@
+import httpStatus from 'http-status';
 import RoleModel from '@main/models/role.model';
+import ApiError from '@utils/ApiError';
 import {
     SYSTEM_ROLES,
     ALL_PERMISSION_KEY_SET,
@@ -78,7 +80,7 @@ export async function createRole(payload: {
     cloneFromId?: string;
 }) {
     const name = (payload.name || '').trim();
-    if (!name) throw new Error('Name required');
+    if (!name) throw new ApiError(httpStatus.BAD_REQUEST, 'Name required');
     let perms = sanitizePermissions(payload.permissions);
     if (payload.cloneFromId) {
         const src = await RoleModel.findById(payload.cloneFromId).lean();
@@ -99,9 +101,9 @@ export async function updateRole(
     payload: { name?: string; description?: string; permissions?: string[] }
 ) {
     const cur = await RoleModel.findById(id);
-    if (!cur) throw new Error('Role not found');
+    if (!cur) throw new ApiError(httpStatus.NOT_FOUND, 'Role not found');
     if (cur.isSystem) {
-        throw new Error('System role không thể chỉnh sửa');
+        throw new ApiError(httpStatus.FORBIDDEN, 'System role không thể chỉnh sửa');
     }
     if (payload.name !== undefined) cur.name = payload.name.trim() || cur.name;
     if (payload.description !== undefined) cur.description = payload.description;
@@ -113,7 +115,7 @@ export async function updateRole(
 export async function deleteRole(id: string) {
     const cur = await RoleModel.findById(id);
     if (!cur) return { ok: true };
-    if (cur.isSystem) throw new Error('System role không thể xóa');
+    if (cur.isSystem) throw new ApiError(httpStatus.FORBIDDEN, 'System role không thể xóa');
     await RoleModel.deleteOne({ _id: id });
     return { ok: true };
 }

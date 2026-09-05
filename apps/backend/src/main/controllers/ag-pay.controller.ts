@@ -59,7 +59,7 @@ const getWithdrawStatus = (status: number) => {
 
 export const agPayin = catchAsync(async (req: AuthRequest, res: Response) => {
     try {
-        const userId = req.user._id;
+        const userId = String(req.user._id);
         const currencyId = req.user.currencyId;
         const { amount } = req.body;
         const userCurrency = await currencyService.getCurrencyById(currencyId);

@@ -327,7 +327,7 @@ function ConfigTab() {
 
   function onPresetChange(id: VipPresetId) {
     setPreset(id);
-    setRows(applyVipPreset(id, rows));
+    setRows(applyVipPreset(rows, id));
     toast({
       title: 'Đã áp dụng preset',
       description: VIP_PRESET_LABELS[id],
