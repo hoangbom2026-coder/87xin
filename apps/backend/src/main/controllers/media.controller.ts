@@ -1,17 +1,17 @@
-import path from 'path';
 import httpStatus from 'http-status';
 import { Response } from 'express';
 import ApiError from '@utils/ApiError';
 import catchAsync from '@utils/catchAsync';
 import { AuthRequest } from '@middlewares/auth';
-import MediaAssetModel from '@main/models/media-asset.model';
 import {
     MEDIA_URL_PREFIX,
+    createAsset,
     createFolder,
     deleteAsset,
     deleteAssets,
     deleteFolder,
     detectType,
+    getAssetById,
     getImageDimensions,
     listAssets,
     listFolders,
@@ -30,21 +30,13 @@ export const getFolders = catchAsync(async (_req: AuthRequest, res: Response) =>
 export const postFolder = catchAsync(async (req: AuthRequest, res: Response) => {
     const { name, description = '' } = req.body as { name: string; description?: string };
     if (!name?.trim()) throw new ApiError(httpStatus.BAD_REQUEST, 'name required');
-    try {
-        const f = await createFolder(name.trim(), description, String(req.user._id));
-        return res.status(httpStatus.CREATED).send(f);
-    } catch (e) {
-        throw new ApiError(httpStatus.BAD_REQUEST, (e as Error).message);
-    }
+    const f = await createFolder(name.trim(), description, String(req.user!._id));
+    return res.status(httpStatus.CREATED).send(f);
 });
 
 /** DELETE /media/folders/:id */
 export const removeFolder = catchAsync(async (req: AuthRequest, res: Response) => {
-    try {
-        await deleteFolder((req.params as any).id);
-    } catch (e) {
-        throw new ApiError(httpStatus.BAD_REQUEST, (e as Error).message);
-    }
+    await deleteFolder((req.params as any).id);
     return res.send({ ok: true });
 });
 
@@ -76,7 +68,7 @@ export const uploadAssets = catchAsync(async (req: AuthRequest, res: Response) =
             width = d.width;
             height = d.height;
         }
-        const doc = await MediaAssetModel.create({
+        const doc = await createAsset({
             originalName: f.originalname,
             filename: f.filename,
             folder,
@@ -86,8 +78,8 @@ export const uploadAssets = catchAsync(async (req: AuthRequest, res: Response) =
             width,
             height,
             type,
-            uploadedBy: req.user._id as never,
-            uploadedByName: String(req.user.username ?? '')
+            uploadedBy: req.user!._id as never,
+            uploadedByName: String(req.user!.username ?? '')
         });
         created.push(doc);
     }
@@ -110,12 +102,8 @@ export const patchAssetMeta = catchAsync(async (req: AuthRequest, res: Response)
 
 /** PATCH /media/:id/move  body: { folder } */
 export const moveAssetCtrl = catchAsync(async (req: AuthRequest, res: Response) => {
-    try {
-        const a = await moveAsset((req.params as any).id, String(req.body?.folder || ''));
-        return res.send(a);
-    } catch (e) {
-        throw new ApiError(httpStatus.BAD_REQUEST, (e as Error).message);
-    }
+    const a = await moveAsset((req.params as any).id, String(req.body?.folder || ''));
+    return res.send(a);
 });
 
 /** DELETE /media/:id */
@@ -134,7 +122,7 @@ export const removeAssetsCtrl = catchAsync(async (req: AuthRequest, res: Respons
 
 /** GET /media/:id */
 export const getAsset = catchAsync(async (req: AuthRequest, res: Response) => {
-    const a = await MediaAssetModel.findById((req.params as any).id).lean();
+    const a = await getAssetById((req.params as any).id);
     if (!a) throw new ApiError(httpStatus.NOT_FOUND, 'Asset not found');
     return res.send(a);
 });

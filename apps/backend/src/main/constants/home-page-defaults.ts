@@ -42,7 +42,7 @@ const DEFAULT_HOME_PAGE: IHomePageConfig = {
             id: 'siteHeroContentBanner',
             enabled: true,
             order: 10,
-            title: 'Welcome To 9Bet',
+            title: 'Welcome To Our Platform',
             subtitle: 'Enjoy variety of casino games, fast payouts and 24/7 support.',
             image: '',
             contentHtml: '',

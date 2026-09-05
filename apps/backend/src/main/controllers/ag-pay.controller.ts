@@ -58,11 +58,10 @@ const getWithdrawStatus = (status: number) => {
 };
 
 export const agPayin = catchAsync(async (req: AuthRequest, res: Response) => {
-    try {
-        const userId = String(req.user._id);
-        const currencyId = req.user.currencyId;
+    const userId = String(req.user!._id);
+        const currencyId = req.user!.currencyId;
         const { amount } = req.body;
-        const userCurrency = await currencyService.getCurrencyById(currencyId);
+        const userCurrency = await currencyService.getCurrencyById(String(currencyId));
 
         const transactionId = new Date().valueOf().toString();
         const random = Math.floor(Math.random() * 10) + 1;
@@ -107,18 +106,12 @@ export const agPayin = catchAsync(async (req: AuthRequest, res: Response) => {
 
             await agPayService.createAgPayin({ ...data.data, userId, depositId: deposit._id });
             const pendingDeposit = await depositService.getPendingDeposit(userId);
-            res.send({ status: true, pendingDeposit });
-        } else {
-            res.send({
-                status: false,
-                message: data.msg
-            });
-        }
-    } catch (error) {
-        console.log('---agpayment create payment errors start---');
-        console.log(error);
-        console.log('---agpayment create payment errors end---');
-        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, 'Something went wrong');
+        res.send({ status: true, pendingDeposit });
+    } else {
+        res.send({
+            status: false,
+            message: data.msg
+        });
     }
 });
 

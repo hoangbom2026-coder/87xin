@@ -8,9 +8,13 @@ import { useLanguage } from '../../i18n/LanguageContext';
 import { PAGE_PROSE_BODY_CLASS, PAGE_PROSE_BODY_SM_CLASS, MARKETING_LP_SHELL_CLASS, MARKETING_SECTION_STACK_CLASS } from '../../constants/pageShell';
 import { PUBLIC_IMAGES } from '../../constants/publicAssets';
 import { POLICY_TWO_COLUMN_GRID_CLASS } from '../../constants/layoutGrids';
+import { useSite } from '../../hooks/useSite';
+import { applyBrand, getBrandName } from '../../lib/brand';
 
 const ResponsibleGaming: React.FC = () => {
   const { t } = useLanguage();
+  const { siteData } = useSite();
+  const brand = getBrandName(siteData);
 
   const warningSigns = [
     t('responsible.signs.item1', 'Spending more money on gaming than you can afford to lose.'),
@@ -30,7 +34,7 @@ const ResponsibleGaming: React.FC = () => {
         <div className={cn(MARKETING_LP_SHELL_CLASS, MARKETING_SECTION_STACK_CLASS)}>
           <ContentSection title={t('responsible.commitment.title', 'Our Commitment')}>
             <p className={PAGE_PROSE_BODY_CLASS}>
-              {t('responsible.commitment.p', 'At Cuocbong99, we are dedicated to providing a responsible gaming environment. We want our players to enjoy our games in a safe and controlled manner. Gaming should always be viewed as a form of entertainment, not a way to make money.')}
+              {applyBrand(t('responsible.commitment.p', 'At {{brand}}, we are dedicated to providing a responsible gaming environment. We want our players to enjoy our games in a safe and controlled manner. Gaming should always be viewed as a form of entertainment, not a way to make money.'), brand)}
             </p>
           </ContentSection>
 
@@ -72,7 +76,7 @@ const ResponsibleGaming: React.FC = () => {
               {t('responsible.help.p', 'If you or someone you know is struggling with gaming addiction, please reach out to professional support organizations.')}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button variant="premium" size="lg" className="italic !px-10">
+              <Button variant="primary" size="lg" className="italic !px-10">
                 {t('responsible.help.contact', 'Contact Support')}
               </Button>
               <Button variant="outline" size="lg" className="italic !px-10">

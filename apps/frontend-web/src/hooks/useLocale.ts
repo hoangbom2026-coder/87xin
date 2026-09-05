@@ -12,6 +12,8 @@ export function useLocale() {
     isVi: lang === 'vi',
     isEn: lang === 'en',
     formatCurrency: (amount: number) => `${amount.toLocaleString('vi-VN')} đ`,
+    formatBalance: (amount: number | string = 0) => `${Number(amount || 0).toLocaleString('vi-VN')} đ`,
+    formatAmount: (amount: number | string = 0) => Number(amount || 0).toLocaleString('vi-VN'),
   };
 }
 

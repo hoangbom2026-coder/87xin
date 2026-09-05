@@ -4,7 +4,7 @@
 
 export const GSC_CONFIG = {
     opCode: process.env.GSC_OP_CODE || 'G7N1',
-    secretKey: process.env.GSC_SECRET_KEY || 'krUWd6ZYgPKcUEZQN8KDxf',
+    secretKey: process.env.GSC_SECRET_KEY || '',
     baseUrl: process.env.GSC_ENV === 'staging'
         ? 'https://stagingapi.gsimw.com'
         : 'https://api.gsimw.com'

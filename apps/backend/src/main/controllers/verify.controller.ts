@@ -27,7 +27,7 @@ export const sendEmailCode = catchAsync(async (req: AuthRequest, res: Response) 
         otpCheck = await otpService.getOtpByCode(code);
     }
     await otpService.createOtp({
-        userId: String(req.user._id),
+        userId: String(req.user!._id),
         code,
         type: 'email',
         data: data.email,
@@ -63,7 +63,7 @@ export const resendEmailCode = catchAsync(async (req: AuthRequest, res: Response
         otpCheck = await otpService.getOtpByCode(code);
     }
     await otpService.createOtp({
-        userId: String(req.user._id),
+        userId: String(req.user!._id),
         code,
         type: 'email',
         data: data.email,
@@ -112,7 +112,7 @@ export const resetPassword = catchAsync(async (req: AuthRequest, res: Response) 
         otpCheck = await otpService.getOtpByCode(code);
     }
     await otpService.createOtp({
-        userId: String(req.user._id),
+        userId: String(req.user!._id),
         code,
         type: 'email',
         data: contact,

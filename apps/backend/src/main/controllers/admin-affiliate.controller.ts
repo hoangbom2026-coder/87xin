@@ -62,7 +62,7 @@ export const createRootAffiliate = catchAsync(async (req: AuthRequest, res: Resp
 
 /** One-shot auto-payout sweep (uses minThreshold from body/query or from settings). */
 export const runAffiliateAutoPayout = catchAsync(async (req: AuthRequest, res: Response) => {
-  if (!req.user || req.user.role !== 'admin') {
+  if (!req.user || req.user!.role !== 'admin') {
     throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
   }
   const raw = (req.body?.minThreshold ?? req.query?.minThreshold) as unknown;
@@ -77,7 +77,7 @@ export const runAffiliateAutoPayout = catchAsync(async (req: AuthRequest, res: R
 
 /** GET /api/admin/affiliate/reward-logs — toàn hệ thống (admin). */
 export const listAdminAffiliateRewardLogs = catchAsync(async (req: AuthRequest, res: Response) => {
-  if (!req.user || !['admin', 'owner'].includes(String(req.user.role))) {
+  if (!req.user || !['admin', 'owner'].includes(String(req.user!.role))) {
     throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
   }
   const type = req.query.type === 'referral' ? 'referral' : 'commission';
@@ -102,13 +102,13 @@ export const getAffiliateMechanismConfig = catchAsync(async (_req: Request, res:
 
 /** POST /api/admin/affiliate/mechanism — cập nhật Dynamic Config + audit log + bust cache. */
 export const updateAffiliateMechanismConfig = catchAsync(async (req: AuthRequest, res: Response) => {
-  if (!req.user || !['admin', 'owner'].includes(String(req.user.role))) {
+  if (!req.user || !['admin', 'owner'].includes(String(req.user!.role))) {
     throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
   }
   const input = (req.body?.value ?? req.body ?? {}) as Partial<IAffiliateMechanism>;
   const value = await affiliateMechanismService.updateAffiliateMechanism({
-    adminUserId: String(req.user._id ?? req.user.id ?? ''),
-    adminUsername: String(req.user.username ?? req.user.email ?? 'admin'),
+    adminUserId: String(req.user!._id ?? req.user!.id ?? ''),
+    adminUsername: String(req.user!.username ?? req.user!.email ?? 'admin'),
     input
   });
   return res.send({ success: true, message: 'Cập nhật cơ chế Affiliate thành công!', value });

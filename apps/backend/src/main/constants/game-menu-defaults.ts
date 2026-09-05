@@ -45,13 +45,13 @@ export const GAME_MENU_DEFAULTS: IGameMenuItem[] = [
 export const DEFAULT_GAME_MENU: IGameMenuItem[] = GAME_MENU_DEFAULTS;
 
 /** Normalize game menu: đảm bảo cấu trúc hợp lệ */
-export const normalizeGameMenu = (items: IGameMenuItem[]): IGameMenuItem[] => {
+export const normalizeGameMenu = (items: Partial<IGameMenuItem>[] | null | undefined): IGameMenuItem[] => {
     if (!Array.isArray(items)) return DEFAULT_GAME_MENU;
     return items.map((item, idx) => ({
         ...item,
         order: item.order ?? idx,
         enabled: item.enabled ?? true
-    }));
+    })) as IGameMenuItem[];
 };
 
 export default GAME_MENU_DEFAULTS;

@@ -4,7 +4,7 @@ import type { IVipProgramLevel } from "@/lib/vip-program-defaults";
 export type VipPresetId = "project" | "conservative" | "balanced" | "generous";
 
 export const VIP_PRESET_LABELS: Record<VipPresetId, string> = {
-  project: "Mặc định dự án 9Bet",
+  project: "Mặc định dự án",
   conservative: "Bảo thủ — hạn mức thấp, phí cao hơn",
   balanced: "Cân bằng — giữ cấu trúc, tinh chỉnh nhẹ",
   generous: "Ưu đãi — hạn mức cao, phí thấp, bật quyền sớm hơn",

@@ -14,7 +14,10 @@
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present"
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "deploy:local": "./scripts/build.sh all && ./scripts/deploy.sh",
+    "rollback": "./scripts/rollback.sh"
   },
   "devDependencies": {
     "prettier": "^3.2.5",

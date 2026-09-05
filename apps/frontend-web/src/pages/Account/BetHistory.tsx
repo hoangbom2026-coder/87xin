@@ -75,9 +75,13 @@ const BetHistory: React.FC = () => {
         if (res.data.content.startsWith('http')) {
           window.open(res.data.content, '_blank')
         } else {
-          const win = window.open('', '_blank')
-          win?.document.write(res.data.content)
-          win?.document.close()
+          // Không dùng document.write (nguy cơ XSS). Render qua sandboxed blob URL.
+          const blob = new Blob([res.data.content], { type: 'text/html' })
+          const url = URL.createObjectURL(blob)
+          const win = window.open(url, '_blank')
+          if (win) win.opener = null
+          // Release object URL sau khi trang mới tải xong
+          setTimeout(() => URL.revokeObjectURL(url), 60000)
         }
       }
     } catch (err) {
@@ -132,6 +136,7 @@ const BetHistory: React.FC = () => {
       hideBanner
       subHeader={
         <SubHeader
+          title={t('history.betting', 'Lịch sử cá cược')}
           rightContent={
             <button
               type="button"

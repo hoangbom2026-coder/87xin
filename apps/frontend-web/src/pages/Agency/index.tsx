@@ -6,6 +6,7 @@ import AgencyOverview from '../../features/agency/components/AgencyOverview'
 import { useLanguage } from '../../i18n/LanguageContext'
 import { agencyFaqEn, agencyFaqVi } from '../../i18n/agencyFaq'
 import { useSite } from '../../hooks/useSite'
+import { applyBrand, getBrandName } from '../../lib/brand'
 import {
   AGENCY_LP_SECTION_STACK_CLASS,
   MARKETING_BENEFIT_CARD_MEDIA_CLASS,
@@ -29,15 +30,14 @@ const Agency: React.FC = () => {
   const navigate = useNavigate()
   const { siteData } = useSite()
   const headingId = React.useId()
-  const siteName = (siteData?.site?.siteName || '87').trim()
+  const siteName = getBrandName(siteData)
 
   const faqExtended = React.useMemo(() => {
     const src = language === 'vi' ? agencyFaqVi : agencyFaqEn
-    const apply = (s: string) => s.replace(/\{\{brand\}\}/g, siteName)
     return ([1, 2, 3, 4, 5, 6, 7] as const).map((i) => {
       const qk = `agency.faq${i}q` as keyof typeof agencyFaqVi
       const ak = `agency.faq${i}a` as keyof typeof agencyFaqVi
-      return { q: apply(src[qk] ?? ''), a: apply(src[ak] ?? '') }
+      return { q: applyBrand(src[qk] ?? '', siteName), a: applyBrand(src[ak] ?? '', siteName) }
     })
   }, [language, siteName])
 

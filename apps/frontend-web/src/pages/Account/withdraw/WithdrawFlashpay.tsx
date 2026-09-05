@@ -68,13 +68,13 @@ const WithdrawFlashpay: React.FC = () => {
         <FormField
           label={t('bank.accountHolder', 'Chủ tài khoản')}
           value={accountName}
-          onChange={setAccountName}
+          onChange={(e: any) => setAccountName(e.target.value)}
           placeholder="NGUYEN VAN A"
         />
         <FormField
           label="Flashpay ID"
           value={flashpayId}
-          onChange={setFlashpayId}
+          onChange={(e: any) => setFlashpayId(e.target.value)}
           placeholder="FP-123456"
         />
       </div>
@@ -84,7 +84,7 @@ const WithdrawFlashpay: React.FC = () => {
           label={`${t('deposit.amount')} (VND)`}
           type="number"
           value={amount}
-          onChange={setAmount}
+          onChange={(e: any) => setAmount(e.target.value)}
           placeholder={t('withdrawal.enterAmountK', 'Nhập số tiền...')}
           icon={Coins}
         />

@@ -67,12 +67,16 @@ export async function logout(token?: string) {
 
 // ─── Settings / Business ─────────────────────────────────────────────────────
 
+export async function getSiteSettings(token?: string) {
+  return req('/setting/site');
+}
+
 export async function getBusinessSettings(token?: string) {
-  return req('/admin/settings');
+  return req('/setting/business');
 }
 
 export async function patchBusinessSettings(data: any, token?: string) {
-  return req('/admin/settings', { method: 'PATCH', body: JSON.stringify(data) });
+  return req('/setting/business', { method: 'PATCH', body: JSON.stringify(data) });
 }
 
 export async function getSystemInfoApi(token?: string) {
@@ -101,20 +105,29 @@ export async function getAdminDashboard(params?: any, extra?: any, token?: strin
 
 // ─── Bonuses ─────────────────────────────────────────────────────────────────
 
-export async function getAdminBonuses(token?: string) {
-  return req('/admin/bonuses');
+export async function listBonusesAdmin(token?: string) {
+  return req('/bonus/list');
 }
+export const getAdminBonuses = listBonusesAdmin;
 
 export async function createBonusApi(data: any, token?: string) {
-  return req('/admin/bonuses', { method: 'POST', body: JSON.stringify(data) });
+  const fd = data instanceof FormData ? data : new FormData();
+  if (!(data instanceof FormData)) {
+    Object.entries(data).forEach(([k, v]) => fd.append(k, typeof v === 'object' ? JSON.stringify(v) : String(v)));
+  }
+  return req('/bonus', { method: 'POST', body: fd });
 }
 
 export async function updateBonusApi(id: string, data: any, token?: string) {
-  return req(`/admin/bonuses/${id}`, { method: 'PATCH', body: JSON.stringify(data) });
+  const fd = data instanceof FormData ? data : new FormData();
+  if (!(data instanceof FormData)) {
+    Object.entries(data).forEach(([k, v]) => fd.append(k, typeof v === 'object' ? JSON.stringify(v) : String(v)));
+  }
+  return req(`/bonus/${id}`, { method: 'PATCH', body: fd });
 }
 
 export async function deleteBonusApi(id: string, token?: string) {
-  return req(`/admin/bonuses/${id}`, { method: 'DELETE' });
+  return req(`/bonus/${id}`, { method: 'DELETE' });
 }
 
 // ─── Currencies ──────────────────────────────────────────────────────────────

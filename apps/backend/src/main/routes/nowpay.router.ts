@@ -34,10 +34,10 @@ router
 
 router
     .route('/status/:currencyId')
-    .patch(auth, validator.params(joiSchema.currencyId), validator.body(joiSchema.updateCurrency), updateCurrency);
+    .patch(auth, validator.params(joiSchema.currencyId), validator.body(joiSchema.updateCurrencyStatus), updateCurrency);
 
 router
     .route('/:nowpayId')
-    .patch(auth, validator.params(joiSchema.nowpayId), validator.body(joiSchema.updateCurrency), updateNowpayCurrency);
+    .patch(auth, validator.params(joiSchema.nowpayId), validator.body(joiSchema.updateCurrencyCommon), updateNowpayCurrency);
 
 export default router;

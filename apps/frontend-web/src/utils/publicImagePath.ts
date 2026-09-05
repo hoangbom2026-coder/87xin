@@ -8,4 +8,8 @@ export function sanitizeLocalImagePath(path?: string | null, fallback: string = 
   return `/${path}`;
 }
 
+export function footerLicenseUrl(name: string): string {
+  return `/images/footer/${name}.png`;
+}
+
 export default sanitizeLocalImagePath;

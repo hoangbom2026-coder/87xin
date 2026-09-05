@@ -54,7 +54,7 @@ export const DEFAULT_REAGENT_ENROLLMENT: IReagentEnrollment = {
 };
 
 export const DEFAULT_REAGENT_PAGE: IReagentPage = {
-    bannerTitle: "Hợp tác đại lý 9Bet",
+    bannerTitle: "Hợp tác đại lý",
     bannerSubtitle:
         "Kiếm hoa hồng khi giới thiệu người chơi — hệ thống đa cấp, báo cáo minh bạch, hỗ trợ đối tác.",
     backgroundUrl: "/images/promotions/default.webp",

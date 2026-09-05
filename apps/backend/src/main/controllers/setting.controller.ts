@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import catchAsync from '@utils/catchAsync';
-import SettingModel from '@main/models/setting.model';
+import settingService from '@main/services/setting.service';
 import { AuthRequest } from '@middlewares/auth';
 
 /** GET /setting/site — dữ liệu mặc định public (không cần auth) */
 export const getDefaultData = catchAsync(async (_req: Request, res: Response) => {
-    const setting = await SettingModel.findOne({ name: 'setting' }).lean();
+    const setting = await settingService.getSettingByName('setting');
     return res.send({
-        siteName: setting?.siteName || 'tc-gaming',
+        siteName: setting?.siteName || 'Platform',
         logo: setting?.logo || '',
         telegram: setting?.telegram || '',
         email: setting?.email || '',
@@ -21,18 +21,14 @@ export const getDefaultData = catchAsync(async (_req: Request, res: Response) =>
 
 /** GET /setting/business — cấu hình business (admin) */
 export const getBusinessSettings = catchAsync(async (_req: AuthRequest, res: Response) => {
-    const setting = await SettingModel.findOne({ name: 'setting' }).lean();
+    const setting = await settingService.getSettingByName('setting');
     return res.send(setting || {});
 });
 
 /** PATCH /setting/business — cập nhật cấu hình business (admin) */
 export const patchBusinessSettings = catchAsync(async (req: AuthRequest, res: Response) => {
     const update = req.body;
-    const setting = await SettingModel.findOneAndUpdate(
-        { name: 'setting' },
-        { $set: update },
-        { new: true, upsert: true }
-    );
+    const setting = await settingService.upsertSettingByName('setting', update);
     return res.send(setting);
 });
 
@@ -45,7 +41,7 @@ export const uploadBannerAsset = catchAsync(async (req: AuthRequest, res: Respon
 
 /** GET /setting/telegram/templates — danh sách templates telegram (admin) */
 export const getTelegramTemplates = catchAsync(async (_req: AuthRequest, res: Response) => {
-    const setting = await SettingModel.findOne({ name: 'setting' }).lean();
+    const setting = await settingService.getSettingByName('setting');
     return res.send(setting?.telegramTemplates || []);
 });
 
@@ -57,18 +53,14 @@ export const sendTelegramTest = catchAsync(async (req: AuthRequest, res: Respons
 
 /** GET /setting/email — cấu hình email (admin) */
 export const getEmailSettings = catchAsync(async (_req: AuthRequest, res: Response) => {
-    const setting = await SettingModel.findOne({ name: 'setting' }).lean();
+    const setting = await settingService.getSettingByName('setting');
     return res.send(setting?.emailSettings || {});
 });
 
 /** PATCH /setting/email — cập nhật cấu hình email (admin) */
 export const patchEmailSettings = catchAsync(async (req: AuthRequest, res: Response) => {
     const update = req.body;
-    const setting = await SettingModel.findOneAndUpdate(
-        { name: 'setting' },
-        { $set: { emailSettings: update } },
-        { new: true, upsert: true }
-    );
+    const setting = await settingService.upsertSettingByName('setting', { emailSettings: update });
     return res.send(setting);
 });
 

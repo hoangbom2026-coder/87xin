@@ -5,7 +5,7 @@
 import express from 'express';
 
 // Auth & User
-import authRouter from '@main/routes/auth.router';
+import authRouter from '@main/modules/auth/auth.routes';
 import verifyRouter from '@main/routes/verify.router';
 import roleRouter from '@main/routes/role.router';
 import kycRouter from '@main/routes/kyc.router';

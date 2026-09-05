@@ -30,6 +30,7 @@ const ArticlePosts = lazy(() => import('@/pages/admin/ArticlePosts'));
 const AuditLogs = lazy(() => import('@/pages/admin/AuditLogs'));
 const Banners = lazy(() => import('@/pages/admin/Banners'));
 const Bonuses = lazy(() => import('@/pages/admin/Bonuses'));
+const BrandSettings = lazy(() => import('@/pages/admin/BrandSettings'));
 const BotAutomation = lazy(() => import('@/pages/admin/BotAutomation'));
 const ChurnRisk = lazy(() => import('@/pages/admin/ChurnRisk'));
 const CommissionLogs = lazy(() => import('@/pages/admin/CommissionLogs'));
@@ -144,6 +145,7 @@ export default function App() {
                 <Route path="/admin/audit-logs" element={<AuditLogs />} />
                 <Route path="/admin/banners" element={<Banners />} />
                 <Route path="/admin/bonuses" element={<Bonuses />} />
+                <Route path="/admin/brand-settings" element={<BrandSettings />} />
                 <Route path="/admin/bot-automation" element={<BotAutomation />} />
                 <Route path="/admin/churn" element={<ChurnRisk />} />
                 <Route path="/admin/commission-logs" element={<CommissionLogs />} />

@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
+import AdminLayout from "@/components/layout/AdminLayout";
+import { useState, useEffect } from "react";
 import { useToast } from "@game/ui/use-toast";
 import { Button } from "@game/ui/button";
 import { Input } from "@game/ui/input";
@@ -7,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
 import { Badge } from "@game/ui/badge";
 import { Loader2, Save } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@game/ui/tabs";
+import { getBusinessSettings, patchBusinessSettings } from "@/lib/api";
 
 interface DepositMethod {
   id: string;
@@ -21,7 +24,7 @@ interface VietnamDepositMethods {
   cards: DepositMethod[];
 }
 
-export default function AdminDepositMethods() {
+export function AdminDepositMethods() {
   const { toast } = useToast();
   const [methods, setMethods] = useState<VietnamDepositMethods>({ banks: [], ewallets: [], cards: [] });
   const [loading, setLoading] = useState(true);
@@ -33,8 +36,7 @@ export default function AdminDepositMethods() {
 
   const fetchMethods = async () => {
     try {
-      const res = await fetch("/api/setting/business");
-      const data = await res.json();
+      const data = await getBusinessSettings();
       setMethods(data?.vietnamDepositMethods || { banks: [], ewallets: [], cards: [] });
     } catch (e) {
       toast({ title: "Error", description: "Failed to load methods", variant: "destructive" });
@@ -46,12 +48,7 @@ export default function AdminDepositMethods() {
   const handleSave = async () => {
     setSaving(true);
     try {
-      const res = await fetch("/api/setting/business", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ vietnamDepositMethods: methods }),
-      });
-      if (!res.ok) throw new Error("Failed to save");
+      await patchBusinessSettings({ vietnamDepositMethods: methods });
       toast({ title: "Saved successfully" });
       fetchMethods();
     } catch (e) {
@@ -151,5 +148,15 @@ export default function AdminDepositMethods() {
         </TabsContent>
       </Tabs>
     </div>
+  );
+}
+
+export default function AdminDepositMethodsPage() {
+  return (
+    <RequireSuperAdmin>
+      <AdminLayout>
+        <AdminDepositMethods />
+      </AdminLayout>
+    </RequireSuperAdmin>
   );
 }

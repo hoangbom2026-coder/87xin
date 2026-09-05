@@ -5,7 +5,13 @@ import * as React from 'react';
 import { useLanguage } from '../../../i18n/LanguageContext';
 import { commissionTiers } from '../../../constants/affiliateData';
 
-export const AffiliateCommission: React.FC = () => {
+export interface AffiliateCommissionProps {
+  steps?: any;
+  commissionTiers?: any;
+  benefits?: any;
+}
+
+export const AffiliateCommission: React.FC<AffiliateCommissionProps> = () => {
   const { t } = useLanguage();
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">

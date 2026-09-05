@@ -34,21 +34,13 @@ export const listGames = catchAsync(async (req: AuthRequest, res: Response) => {
 });
 
 export const createGame = catchAsync(async (req: AuthRequest, res: Response) => {
-    try {
-        const created = await gameSvc.createGame(req.body || {});
-        return res.status(httpStatus.CREATED).send(created);
-    } catch (e) {
-        throw new ApiError(httpStatus.BAD_REQUEST, (e as Error).message);
-    }
+    const created = await gameSvc.createGame(req.body || {});
+    return res.status(httpStatus.CREATED).send(created);
 });
 
 export const updateGame = catchAsync(async (req: AuthRequest, res: Response) => {
-    try {
-        const r = await gameSvc.updateGame((req.params as any).id, req.body || {});
-        return res.send(r);
-    } catch (e) {
-        throw new ApiError(httpStatus.BAD_REQUEST, (e as Error).message);
-    }
+    const r = await gameSvc.updateGame((req.params as any).id, req.body || {});
+    return res.send(r);
 });
 
 export const deleteGame = catchAsync(async (req: AuthRequest, res: Response) => {

@@ -16,16 +16,16 @@ import depositService from '@main/services/deposit.service';
 /** POST /gs-pay/deposit — tạo yêu cầu nạp tiền */
 export const gsDeposit = catchAsync(async (req: AuthRequest, res: Response) => {
     const result = await gsPayService.createDepositPayment({
-        userId: String(req.user._id),
-        currency: req.user.currency,
-        currencyId: String(req.user.currencyId),
+        userId: String(req.user!._id),
+        currency: req.user!.currency,
+        currencyId: String(req.user!.currencyId),
         amount: req.body.amount,
     });
 
     const deposit = await depositService.createDeposit(result.depositData);
-    await gsPayLogService.createGsPayDeposit({ ...result.params, userId: String(req.user._id), depositId: deposit._id });
+    await gsPayLogService.createGsPayDeposit({ ...result.params, userId: String(req.user!._id), depositId: deposit._id });
 
-    const pendingDeposit = await depositService.getPendingDeposit(String(req.user._id));
+    const pendingDeposit = await depositService.getPendingDeposit(String(req.user!._id));
     return res.send({ status: true, pendingDeposit });
 });
 
@@ -114,9 +114,9 @@ export const gsDepositStatus = catchAsync(async (req: AuthRequest, res: Response
 /** POST /gs-pay/withdraw — tạo yêu cầu rút tiền */
 export const gsWithdraw = catchAsync(async (req: AuthRequest, res: Response) => {
     const { amount } = req.body;
-    const result = await gsPayService.createWithdrawRequest({ userId: String(req.user._id), amount });
+    const result = await gsPayService.createWithdrawRequest({ userId: String(req.user!._id), amount });
 
-    await gsPayLogService.createGsPayWithdraw({ userId: String(req.user._id), ...result.data });
+    await gsPayLogService.createGsPayWithdraw({ userId: String(req.user!._id), ...result.data });
     return res.send({ status: true, data: result.data });
 });
 

@@ -1,15 +1,20 @@
-# 87app — Monorepo (backend + admin + frontend1)
+# 87app — TC Gaming workspace
 
-Stack: **Node/Express + MongoDB** (backend, port `8701`) · **Vite/React** (admin port `8781`, frontend1 port `3000` dev / static khi prod) · **PM2 + Nginx**.
+Stack: **Node/Express + MongoDB** (backend, port `8701`) · **Vite/React** (admin port `8781`, frontend port `3000`) · **PM2 + Nginx**.
 
 ```
-/var/87app
-├── backend/      Express API, MongoDB, JWT, socket.io  (port 8701, prefix /api)
-├── admin/        Vite + React (port 8781, build → dist)
-├── frontend1/    Vite + React user site (port 3000, build → dist)
-├── deploy/       deploy.sh, ecosystem.*.cjs, nginx/87app.conf
-└── scripts/      Mẫu nginx phụ
+/var/app/game
+├── apps/backend/          Express API, MongoDB, JWT, socket.io
+├── apps/admin-dashboard/  Vite + React admin panel
+├── apps/frontend-web/     Vite + React user site
+├── apps/hermes-vscode-extension/  VS Code extension
+├── libs/                  Shared packages
+├── infra/                 Deploy, PM2, Nginx va systemd
+├── docs/                  Architecture, operations and AI documentation
+└── tools/hermes/          Hermes tooling
 ```
+
+Chi tiet cau truc hien tai nam trong [`docs/01-codebase/DIRECTORY_STRUCTURE.md`](docs/01-codebase/DIRECTORY_STRUCTURE.md). Mau bien moi truong dung cho local nam trong [`.env.example`](.env.example). Khong commit secret production.
 
 ## 1. Yêu cầu hệ thống
 
@@ -21,10 +26,8 @@ Stack: **Node/Express + MongoDB** (backend, port `8701`) · **Vite/React** (admi
 ## 2. Chuẩn bị `.env`
 
 ```bash
-cp backend/.env.example   backend/.env
-cp frontend1/.env.example frontend1/.env
-cp admin/.env.example     admin/.env
-cp deploy/env.example     deploy/env.local      # tuỳ chọn: DOMAIN, build flags
+cp .env.example apps/backend/.env
+# Tao env rieng cho frontend/admin neu cac app do yeu cau bien VITE_*
 ```
 
 Bắt buộc đặt `JWT_SECRET`, `DATABASE_URL`, `CORS_ORIGIN` thực tế trong `backend/.env`. Backend dùng `Joi` validate khi boot — biến thiếu sẽ fail nhanh.
@@ -33,13 +36,13 @@ Bắt buộc đặt `JWT_SECRET`, `DATABASE_URL`, `CORS_ORIGIN` thực tế tron
 
 ```bash
 # 1. backend
-cd backend && npm i && npm run dev          # http://localhost:8701
+cd apps/backend && npm i && npm run dev          # http://localhost:8701
 
 # 2. frontend1 (Vite tự proxy /api → :8701 qua VITE_API_PROXY_TARGET)
-cd ../frontend1 && npm i && npm run dev     # http://localhost:3000
+cd ../frontend-web && npm i && npm run dev     # http://localhost:3000
 
 # 3. admin (tuỳ chọn)
-cd ../admin && npm i && npm run dev         # http://localhost:8781
+cd ../admin-dashboard && npm i && npm run dev         # http://localhost:8781
 ```
 
 Lưu ý: nếu để `VITE_API_URL=/api` trong `frontend1/.env`, mọi request `/api/*` sẽ qua Vite proxy → backend (không cần CORS local).
@@ -47,9 +50,9 @@ Lưu ý: nếu để `VITE_API_URL=/api` trong `frontend1/.env`, mọi request `
 ## 4. Build production
 
 ```bash
-cd backend   && npm run build
-cd frontend1 && npm run build      # → dist/
-cd admin     && npm run build      # → dist/
+cd apps/backend        && npm run build
+cd apps/frontend-web   && npm run build      # -> dist/
+cd apps/admin-dashboard && npm run build     # -> dist/
 ```
 
 Hoặc một lệnh:
@@ -78,7 +81,7 @@ ECOSYSTEM_FILE=ecosystem.pm2-spa.cjs sudo bash /var/87app/deploy/deploy.sh
 | admin      | 8781  | `admin.tc-gaming.live`       |
 | frontend   | 80/443| `tc-gaming.live` (Nginx static `apps/frontend-web/dist`) |
 
-Frontend1 prod gọi API theo `VITE_API_URL=/api` (cùng origin, Nginx proxy `/api/` và `/socket.io` về `:8701`).
+Frontend prod gọi API theo `VITE_API_URL=/api` (cùng origin, Nginx proxy `/api/` và `/socket.io` về `:8701`).
 
 ## 6. SSL
 

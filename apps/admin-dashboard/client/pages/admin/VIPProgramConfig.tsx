@@ -102,7 +102,7 @@ export default function VIPProgramConfig() {
     setRows(mergeVipProgramLevels(null));
     setPreset("project");
     toast({
-      title: "Đã khôi phục mặc định dự án 9Bet",
+      title: "Đã khôi phục mặc định dự án",
       description: "Chưa ghi DB — bấm Lưu để áp production.",
     });
   }

@@ -25,13 +25,13 @@ adminApi.interceptors.response.use(
     success: true,
     data: response.data,
     message: 'Success'
-  }),
+  } as any),
   (error) => {
     return {
       success: false,
       data: null,
       message: error.response?.data?.message || 'Admin API Error'
-    };
+    } as any;
   }
 );
 

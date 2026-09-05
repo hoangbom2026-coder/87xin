@@ -7,7 +7,42 @@ export const PUBLIC_IMAGES = {
     responsible: '/images/icons/responsible.svg',
     terms: '/images/icons/terms.svg',
     privacy: '/images/icons/privacy.svg',
+    privacyTerms: '/images/icons/privacy-terms.svg',
     about: '/images/icons/about.svg',
     contact: '/images/icons/contact.svg',
+    document: '/images/icons/document.svg',
   },
-};
+  badges: {
+    sportBall: '/images/badges/sport-ball.svg',
+    slots: '/images/badges/slots.svg',
+    fishing: '/images/badges/fishing.svg',
+    lottery: '/images/badges/lottery.svg',
+  },
+  banners: {
+    live: '/images/banners/live.webp',
+    slots: '/images/banners/slots.webp',
+    sports: '/images/banners/sports.webp',
+    fishing: '/images/banners/fishing.webp',
+    lottery: '/images/banners/lottery.webp',
+  },
+  faq: {
+    aboutUsMobile: '/images/faq/about-us-mobile.webp',
+  },
+  marketing: {
+    agencyHero: '/images/marketing/agency-hero.webp',
+    affiliateHero: '/images/marketing/affiliate-hero.webp',
+    affiliateSecondary: '/images/marketing/affiliate-secondary.webp',
+    vipHero: '/images/marketing/vip-hero.webp',
+    vipShowcaseLive: '/images/marketing/vip-showcase-live.webp',
+    vipShowcaseSports: '/images/marketing/vip-showcase-sports.webp',
+    icons: {
+      benefit1: '/images/marketing/benefits/benefit-1.svg',
+      benefit2: '/images/marketing/benefits/benefit-2.svg',
+      benefit3: '/images/marketing/benefits/benefit-3.svg',
+      benefit4: '/images/marketing/benefits/benefit-4.svg',
+      pillar1: '/images/marketing/pillars/pillar-1.svg',
+      pillar2: '/images/marketing/pillars/pillar-2.svg',
+      pillar3: '/images/marketing/pillars/pillar-3.svg',
+    },
+  },
+} as const;

@@ -26,8 +26,8 @@ export const updateGameMenuConfig = catchAsync(async (req: AuthRequest, res: Res
         throw new ApiError(httpStatus.BAD_REQUEST, 'items[] required');
     }
     const saved = await gameMenuService.updateGameMenu({
-        adminUserId: String(req.user._id),
-        adminUsername: req.user.username,
+        adminUserId: String(req.user!._id),
+        adminUsername: req.user!.username,
         input: items
     });
     return res.send({ items: saved });

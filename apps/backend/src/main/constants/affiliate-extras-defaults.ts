@@ -10,8 +10,8 @@ export interface IAffiliateMedia {
     icons: [string, string, string, string, string, string];
     /** Email hỗ trợ hiển thị trên landing. */
     supportEmail: string;
-    /** Link "9Bet" hoặc partner cốt lõi. */
-    '9BetLink': string;
+    /** Link đối tác hoặc nền tảng cốt lõi. */
+    partnerLink: string;
 }
 
 export interface IAffiliateSlogans {
@@ -85,7 +85,7 @@ export const DEFAULT_AFFILIATE_EXTRAS: IAffiliateExtras = {
             '/images/pages/affiliate/aff-6.png'
         ],
         supportEmail: 'support@tc-gaming.live',
-        '9BetLink': 'https://tc-gaming.live'
+        partnerLink: 'https://tc-gaming.live'
     },
     slogans: {
         earningTitle: 'START EARNING TODAY',
@@ -142,13 +142,14 @@ export function mergeAffiliateExtras(raw: unknown): IAffiliateExtras {
         const merged = d.media.icons.map((def, i) => String(arr[i] ?? def));
         return merged as IAffiliateMedia['icons'];
     })();
+    const media = (r.media ?? {}) as Partial<IAffiliateMedia> & { '9BetLink'?: unknown };
 
     return {
         media: {
-            bannerImage: String(r.media?.bannerImage ?? d.media.bannerImage),
+            bannerImage: String(media.bannerImage ?? d.media.bannerImage),
             icons: icons6,
-            supportEmail: String(r.media?.supportEmail ?? d.media.supportEmail),
-            '9BetLink': String(r.media?.['9BetLink'] ?? d.media['9BetLink'])
+            supportEmail: String(media.supportEmail ?? d.media.supportEmail),
+            partnerLink: String(media.partnerLink ?? media['9BetLink'] ?? d.media.partnerLink)
         },
         slogans: {
             earningTitle: String(r.slogans?.earningTitle ?? d.slogans.earningTitle),

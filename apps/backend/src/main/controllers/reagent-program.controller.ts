@@ -18,7 +18,7 @@ export const getReagentEnrollmentRules = catchAsync(async (_req: AuthRequest, re
 });
 
 export const getReagentEnrollmentStatus = catchAsync(async (req: AuthRequest, res: Response) => {
-    const payload = await reagentEnrollmentService.getPublicEnrollmentStatus(req.user ?? null);
+    const payload = await reagentEnrollmentService.getPublicEnrollmentStatus(req.user ? { ...req.user } : null);
     return res.send(payload);
 });
 
@@ -26,6 +26,6 @@ export const postReagentJoin = catchAsync(async (req: AuthRequest, res: Response
     if (!req.user?._id) {
         throw new ApiError(httpStatus.UNAUTHORIZED, 'Please authenticate');
     }
-    const out = await reagentEnrollmentService.joinReagentProgram(String(req.user._id));
+    const out = await reagentEnrollmentService.joinReagentProgram(String(req.user!._id));
     return res.send(out);
 });

@@ -8,6 +8,7 @@ export interface IGscEnvironment {
     operatorCode: string;
     secretKey: string;
     enabled: boolean;
+    host?: string;
 }
 
 /** Default environments (seed) */

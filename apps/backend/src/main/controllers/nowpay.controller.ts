@@ -84,21 +84,14 @@ export const initCurrency = async () => {
 };
 
 export const loadCurrency = catchAsync(async (req: Request, res: Response) => {
-    try {
-        const response = await axios.get(`${config.nowpay.host}/v1/full-currencies`, {
-            headers: {
-                'x-api-key': config.nowpay.apiKey
-            }
-        });
-        const data = response.data;
-        await nowpayService.createCurrencies(data.currencies);
-        res.send(data.currencies);
-    } catch (error) {
-        console.log('---Nowpayment get currency error start---');
-        console.error((error as any).message);
-        console.log('---Nowpayment get currency error end---');
-        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, 'Something went wrong');
-    }
+    const response = await axios.get(`${config.nowpay.host}/v1/full-currencies`, {
+        headers: {
+            'x-api-key': config.nowpay.apiKey
+        }
+    });
+    const data = response.data;
+    await nowpayService.createCurrencies(data.currencies);
+    res.send(data.currencies);
 });
 
 export const loadaVailableCurrency = async () => {
@@ -123,12 +116,8 @@ export const loadaVailableCurrency = async () => {
 };
 
 export const getCurrency = catchAsync(async (req: Request, res: Response) => {
-    try {
-        const currencies = await nowpayService.getCurrencies();
-        res.send(groupBy(currencies, 'network'));
-    } catch (error) {
-        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, 'Something went wrong');
-    }
+    const currencies = await nowpayService.getCurrencies();
+    res.send(groupBy(currencies, 'network'));
 });
 
 export const getNowpayCurrency = catchAsync(async (req: Request, res: Response) => {
@@ -168,9 +157,8 @@ export const updateNowpayCurrency = catchAsync(async (req: Request, res: Respons
 });
 
 export const createPayment = catchAsync(async (req: AuthRequest, res: Response) => {
-    try {
-        const userId = String(req.user._id);
-        const currencyId = req.user.currencyId;
+    const userId = String(req.user!._id);
+        const currencyId = req.user!.currencyId;
         const { amount, currency } = req.body;
 
         const checkResponse = await axios.get(
@@ -192,7 +180,7 @@ export const createPayment = catchAsync(async (req: AuthRequest, res: Response) 
             return;
         }
 
-        const userCurrency = await currencyService.getCurrencyById(currencyId);
+        const userCurrency = await currencyService.getCurrencyById(String(currencyId));
         if (!userCurrency) {
              throw new ApiError(httpStatus.BAD_REQUEST, 'User currency not found');
         }
@@ -274,16 +262,7 @@ export const createPayment = catchAsync(async (req: AuthRequest, res: Response) 
 
         await nowpayService.createNowpayLog({ ...data, userId, depositId: deposit._id });
         const pendingDeposit = await depositService.getPendingDeposit(userId);
-        res.send({ status: true, pendingDeposit });
-    } catch (error) {
-        console.log('---nowpay create payment errors start---');
-        console.log(error);
-        console.log('---nowpay create payment errors end---');
-        if ((error as any).response && (error as any).response.data) {
-            throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, (error as any).response.data.message);
-        }
-        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, 'Something went wrong');
-    }
+    res.send({ status: true, pendingDeposit });
 });
 
 export const depositCallback = async (req: Request, res: Response) => {
@@ -506,25 +485,20 @@ export const getNowpayToAmount = async (amount: number, fromCurrency: string, to
 };
 
 export const getWithdrawableCurrency = catchAsync(async (req: Request, res: Response) => {
-    try {
-        const { withdrawAmount, currencyCode } = req.body;
-        const setting = await settingService.getSetting();
-        const rates = setting.rates;
-        if (rates[currencyCode.toUpperCase()]) {
-            const validCurrencies = await loadaVailableCurrency();
-            const rate = rates[currencyCode.toUpperCase()];
-            const usd = withdrawAmount * (1 / rate);
-            const nowpayCurrencies = validCurrencies.filter((vc) => vc.availableAmount >= usd);
-            res.send(groupBy(nowpayCurrencies, 'network'));
-            return;
-        }
-        console.log(currencyCode);
-        console.log('---currency is invalid---');
-        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, 'Something went wrong');
-    } catch (error) {
-        console.log(error);
-        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, 'Something went wrong');
+    const { withdrawAmount, currencyCode } = req.body;
+    const setting = await settingService.getSetting();
+    const rates = setting.rates;
+    if (rates[currencyCode.toUpperCase()]) {
+        const validCurrencies = await loadaVailableCurrency();
+        const rate = rates[currencyCode.toUpperCase()];
+        const usd = withdrawAmount * (1 / rate);
+        const nowpayCurrencies = validCurrencies.filter((vc) => vc.availableAmount >= usd);
+        res.send(groupBy(nowpayCurrencies, 'network'));
+        return;
     }
+    console.log(currencyCode);
+    console.log('---currency is invalid---');
+    throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, 'Something went wrong');
 });
 
 export const createPayout = async ({ amount, currency, address, withdrawId }) => {

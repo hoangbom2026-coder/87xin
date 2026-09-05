@@ -8,9 +8,13 @@ import { PRIVACY_EMAIL } from '../../constants/siteUrls';
 import { cn } from '../../lib/cn';
 import { PAGE_PROSE_BODY_CLASS, MARKETING_LP_SHELL_CLASS, MARKETING_SECTION_STACK_CLASS } from '../../constants/pageShell';
 import { PUBLIC_IMAGES } from '../../constants/publicAssets';
+import { useSite } from '../../hooks/useSite';
+import { applyBrand, getBrandName } from '../../lib/brand';
 
 const Privacy: React.FC = () => {
   const { t } = useLanguage();
+  const { siteData } = useSite();
+  const brand = getBrandName(siteData);
 
   const privacyItems = [
     {
@@ -46,7 +50,7 @@ const Privacy: React.FC = () => {
         <div className={cn(MARKETING_LP_SHELL_CLASS, MARKETING_SECTION_STACK_CLASS)}>
           <ContentSection title={t('privacy.intro.title', 'Introduction')}>
             <p className={PAGE_PROSE_BODY_CLASS}>
-              {t('privacy.intro.p', 'At Cuocbong99, we value your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, and safeguard your information when you use our website and services.')}
+              {applyBrand(t('privacy.intro.p', 'At {{brand}}, we value your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, and safeguard your information when you use our website and services.'), brand)}
             </p>
           </ContentSection>
 

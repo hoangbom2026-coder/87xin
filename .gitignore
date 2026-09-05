@@ -50,3 +50,4 @@ coverage/
 build-artifact/
 infra/backups/
 apps/backend/dist.old/
+# hermes-stack moved to /home/hermes/stack/

@@ -13,7 +13,7 @@ export const getMyInvestLogs = catchAsync(async (req: any, res: Response) => {
     filter.createdAt = { $gte: date, $lt: nextDay };
   }
   const options = pick(req.query, ["sortBy", "limit", "page"]);
-  const userId = req.user._id;
+  const userId = req.user!._id;
   const logs = await investLogService.getLogsByUserId(String(userId), filter);
   res.send({ success: true, data: logs });
 });

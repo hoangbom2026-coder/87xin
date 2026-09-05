@@ -20,7 +20,7 @@ export const useSuperLobby = () => {
       setLoading(true);
       // Detecting platform (WEB, MOBILE)
       const platform = window.innerWidth < 1024 ? 'MOBILE' : 'WEB';
-      const res = await launchSuperLobby({ platform, type });
+      const res = await launchSuperLobby({ platform, type } as any);
       if (res.success && res.data?.url) {
         window.open(res.data.url, '_blank');
       } else {

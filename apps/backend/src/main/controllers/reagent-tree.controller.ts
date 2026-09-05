@@ -1,46 +1,17 @@
 import httpStatus from "http-status";
 import { Response } from "express";
 import catchAsync from "@utils/catchAsync";
-import UserModel from "@main/models/user.model";
+import { getReagentTreeUsers } from "@main/services/reagent-tree.service";
 
 export const getReagentTree = catchAsync(async (req: any, res: Response) => {
-  const userId = String(req.user._id);
-  const { Types } = require("mongoose");
-  console.log('Fetching tree for userId:', userId);
-  
-  const users = await UserModel.aggregate([
-    { 
-      $match: { 
-        $or: [
-          { path: userId },
-          { path: new Types.ObjectId(userId) }
-        ]
-      } 
-    },
-    {
-      $lookup: {
-        from: 'balances',
-        localField: '_id',
-        foreignField: 'userId',
-        as: 'balances'
-      }
-    },
-    {
-      $project: {
-        username: 1,
-        invitorId: 1,
-        reagentEnrolled: 1,
-        role: 1,
-        createdAt: 1,
-        depositCount: 1,
-        balance: { $ifNull: [{ $arrayElemAt: ["$balances.amount", 0] }, 0] }
-      }
-    }
-  ]);
+  const userId = String(req.user!._id);
+  console.log("Fetching tree for userId:", userId);
 
-  console.log('Found users for tree:', users.length);
+  const users = await getReagentTreeUsers(userId);
 
-  const formatted = users.map(u => ({
+  console.log("Found users for tree:", users.length);
+
+  const formatted = users.map((u: any) => ({
     id: String(u._id),
     username: u.username,
     parentId: u.invitorId ? String(u.invitorId) : null,

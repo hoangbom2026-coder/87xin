@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import httpStatus from 'http-status';
+import ApiError from '@utils/ApiError';
 import SupportConversationModel, {
     type ISupportConversation,
     type SupportConversationStatus
@@ -95,7 +97,7 @@ const postMessage = async (
     attachments: ISupportMessage['attachments'] = []
 ): Promise<ISupportMessage> => {
     const conv = await SupportConversationModel.findById(conversationId);
-    if (!conv) throw new Error('CONVERSATION_NOT_FOUND');
+    if (!conv) throw new ApiError(httpStatus.NOT_FOUND, 'Conversation not found');
 
     const msg = await SupportMessageModel.create({
         conversationId,

@@ -2,7 +2,7 @@ import requests
 import json
 
 # Configuration
-OPENVIKING_BASE_URL = "http://159.223.81.157:1933/api/v1"
+OPENVIKING_BASE_URL = "http://127.0.0.1:1933/api/v1"
 
 def openviking_query(question, target_uri=None, top_k=5, score_threshold=0.4):
     """

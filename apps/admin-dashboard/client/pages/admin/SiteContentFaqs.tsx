@@ -1,3 +1,5 @@
+import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
+import AdminLayout from "@/components/layout/AdminLayout";
 import React, { useState, useEffect } from 'react';
 import { Plus, Trash2, GripVertical, Save, Loader2, ChevronDown } from 'lucide-react';
 import { Button } from '@game/ui/button';
@@ -8,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@game
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@game/ui/select';
 import { Badge } from '@game/ui/badge';
 import { useToast } from '@game/ui/use-toast';
+import { getBusinessSettings, patchBusinessSettings, getSiteSettings } from "@/lib/api";
 
 interface FaqItem {
   id: string;
@@ -39,7 +42,7 @@ const DEFAULT_FAQS: FaqItem[] = [
 
 const genId = () => Math.random().toString(36).slice(2, 9);
 
-export default function SiteContentFaqs() {
+export function SiteContentFaqs() {
   const { toast } = useToast();
   const [category, setCategory] = useState('deposit');
   const [allFaqs, setAllFaqs] = useState<Record<string, FaqItem[]>>({});
@@ -52,8 +55,7 @@ export default function SiteContentFaqs() {
     const load = async () => {
       setLoading(true);
       try {
-        const res = await fetch('/api/setting/site');
-        const json = await res.json();
+        const json = await getSiteSettings();
         const faqs = json?.site?.pageFaqs || {};
         setAllFaqs(faqs);
       } catch {
@@ -94,13 +96,7 @@ export default function SiteContentFaqs() {
     }
     setSaving(true);
     try {
-      const res = await fetch('/api/setting/business', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ pageFaqs: { ...allFaqs, [category]: faqs } }),
-      });
-      if (!res.ok) throw new Error('Save failed');
+      await patchBusinessSettings({ pageFaqs: { ...allFaqs, [category]: faqs } });
       toast({ title: 'Saved!', description: `FAQs for "${category}" updated successfully.` });
     } catch (e) {
       toast({ title: 'Error', description: 'Failed to save FAQs. Please try again.', variant: 'destructive' });
@@ -249,5 +245,15 @@ export default function SiteContentFaqs() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function SiteContentFaqsPage() {
+  return (
+    <RequireSuperAdmin>
+      <AdminLayout>
+        <SiteContentFaqs />
+      </AdminLayout>
+    </RequireSuperAdmin>
   );
 }

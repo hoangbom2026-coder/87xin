@@ -5,7 +5,11 @@ import * as React from 'react';
 import { useLanguage } from '../../../i18n/LanguageContext';
 import AgencyPlans from './AgencyPlans';
 
-export const AgencyOverview: React.FC = () => {
+export interface AgencyOverviewProps {
+  siteName?: string;
+}
+
+export const AgencyOverview: React.FC<AgencyOverviewProps> = () => {
   const { t } = useLanguage();
   const defaultPlans = [
     {

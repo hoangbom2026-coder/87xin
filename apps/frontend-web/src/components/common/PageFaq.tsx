@@ -37,8 +37,9 @@ const PageFaq: React.FC<PageFaqProps> = ({ category, title, className }) => {
     const load = async () => {
       setLoading(true)
       try {
-        const data = await getPageFaqs(category)
-        setFaqs(data && data.length > 0 ? data : localFaqs)
+        const data: any = await getPageFaqs(category)
+        const list = Array.isArray(data) ? data : (data?.data || [])
+        setFaqs(list.length > 0 ? list : localFaqs)
       } catch {
         setFaqs(localFaqs)
       } finally {

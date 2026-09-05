@@ -11,22 +11,24 @@ const createGames = async (data: any[]) => {
     return await GameModel.insertMany(data, { ordered: false }).catch((e) => e);
 };
 
-const deactivateStaleGames = async (envOperatorCode: string, activeGameCodes: string[]) => {
+const deactivateStaleGames = async (productCode: number, gameType: string, activeGameCodes: string[], envOperatorCode: string) => {
     return await GameModel.updateMany(
         {
             gscOperatorCode: envOperatorCode,
+            product_code: productCode,
+            game_type: gameType,
             gameCode: { $nin: activeGameCodes }
         },
         { $set: { status: 0 } }
     );
 };
 
-const deactivateAllGamesForPair = async (pair: { product_code: number; game_type: string }, envOperatorCode: string) => {
+const deactivateAllGamesForPair = async (productCode: number, gameType: string, envOperatorCode: string) => {
     return await GameModel.updateMany(
         {
             gscOperatorCode: envOperatorCode,
-            product_code: pair.product_code,
-            game_type: pair.game_type
+            product_code: productCode,
+            game_type: gameType
         },
         { $set: { status: 0 } }
     );

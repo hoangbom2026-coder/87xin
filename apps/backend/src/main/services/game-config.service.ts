@@ -1,4 +1,6 @@
 import GameConfigModel, { IGameConfig } from '@main/models/game-config.model';
+import httpStatus from 'http-status';
+import ApiError from '@utils/ApiError';
 import {
     GAME_CATEGORIES,
     GAME_CATEGORY_KEYS,
@@ -144,7 +146,7 @@ const sanitizeCategory = (c: unknown): GameCategoryKey => {
 };
 
 export async function createGame(payload: GamePayload) {
-    if (!payload.name) throw new Error('name required');
+    if (!payload.name) throw new ApiError(httpStatus.BAD_REQUEST, 'Name is required');
     const key =
         (typeof payload.gameKey === 'string' && payload.gameKey.trim()) ||
         (await ensureUniqueKey(payload.name));
@@ -161,7 +163,7 @@ export async function createGame(payload: GamePayload) {
 
 export async function updateGame(id: string, payload: GamePayload) {
     const cur = await GameConfigModel.findById(id);
-    if (!cur) throw new Error('Game not found');
+    if (!cur) throw new ApiError(httpStatus.NOT_FOUND, 'Game not found');
 
     if (payload.name !== undefined) cur.name = String(payload.name);
     if (payload.image !== undefined) cur.image = String(payload.image || '');

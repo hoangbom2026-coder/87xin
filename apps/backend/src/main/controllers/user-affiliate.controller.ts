@@ -4,17 +4,17 @@ import catchAsync from '@utils/catchAsync';
 import { AuthRequest } from '@middlewares/auth';
 import config from '@config/index';
 import affiliateStatsService from '@main/services/affiliate-stats.service';
-import UserModel from '@main/models/user.model';
+import userService from '@main/services/user.service';
 
 export const getAffiliateOverview = catchAsync(async (req: AuthRequest, res: Response) => {
-    const userId = String(req.user._id);
+    const userId = String(req.user!._id);
     
     // Đảm bảo stats tồn tại và được cập nhật
     await affiliateStatsService.updateInvitedCounts(userId);
     await affiliateStatsService.updateTodayExpected(); // Optional: có thể chạy theo cron ngắn hơn
     
     const stats = await affiliateStatsService.getStatsByUserId(userId);
-    const user = await UserModel.findById(userId).select('inviteCode');
+    const user = await userService.getInviteCodeByUserId(userId);
     
     const baseUrl = config.frontendUrl;
     const inviteLink = `${baseUrl}/register?r=${user?.inviteCode || ''}`;
@@ -36,7 +36,7 @@ export const getAffiliateOverview = catchAsync(async (req: AuthRequest, res: Res
 });
 
 export const claimCommission = catchAsync(async (req: AuthRequest, res: Response) => {
-    const userId = String(req.user._id);
+    const userId = String(req.user!._id);
     const amount = await affiliateStatsService.claimCommission(userId);
     
     return res.send({

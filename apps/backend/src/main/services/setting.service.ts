@@ -5,6 +5,18 @@ const getSetting = async () => {
     return await SettingModel.findOne();
 };
 
+const getSettingByName = async (name = 'setting') => {
+    return await SettingModel.findOne({ name }).lean();
+};
+
+const upsertSettingByName = async (name: string, update: Record<string, unknown>) => {
+    return await SettingModel.findOneAndUpdate(
+        { name },
+        { $set: update },
+        { new: true, upsert: true }
+    );
+};
+
 const updateSetting = async (data: Record<string, unknown>) => {
     let setting = await SettingModel.findOne();
     if (!setting) {
@@ -39,6 +51,9 @@ export const mergeAffiliateProgram = (program: any): any => {
 
 export default {
     getSetting,
+    getSettingByName,
+    upsertSettingByName,
     updateSetting,
     upsertSetting,
+    mergeAffiliateProgram,
 };

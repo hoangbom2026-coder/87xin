@@ -2,6 +2,9 @@ import { planService } from '@main/services/plan.service';
 import { Request, Response } from 'express';
 import { AuthRequest } from '@middlewares/auth';
 import adminAuditService from '@main/services/admin-audit.service';
+import ApiError from '@utils/ApiError';
+import catchAsync from '@utils/catchAsync';
+import httpStatus from 'http-status';
 
 function normalizePlanPayload(input: Record<string, unknown>) {
   const amountType = Number(input.amountType ?? 0) === 1 ? 1 : 0;
@@ -16,7 +19,7 @@ function normalizePlanPayload(input: Record<string, unknown>) {
   const capitalBack = Number(input.capitalBack ?? 0) === 1 ? 1 : 0;
   const userInvestLimit = Number(input.userInvestLimit ?? input.limit ?? 1);
   const status = String(input.status ?? 'active') === 'inactive' ? 'inactive' : 'active';
-    const features = Array.isArray(input.features)
+  const features = Array.isArray(input.features)
     ? input.features.map((x) => String(x))
     : String(input.features ?? '')
         .split(/\r?\n/)
@@ -73,146 +76,110 @@ function validatePlanPayload(data: ReturnType<typeof normalizePlanPayload>) {
 }
 
 export const planController = {
-  async getPlans(_req: Request, res: Response) {
-    try {
-      const items = await planService.getAll({
-        status: (String(_req.query.status || 'all') as 'active' | 'inactive' | 'all'),
-        keyword: String(_req.query.keyword || ''),
-        page: Number(_req.query.page || 1),
-        limit: Number(_req.query.limit || 20),
-      });
-      res.json(items);
-    } catch (err) {
-      res.status(500).json({ error: 'Failed to fetch plans' });
-    }
-  },
+  getPlans: catchAsync(async (_req: Request, res: Response) => {
+    const items = await planService.getAll({
+      status: String(_req.query.status || 'all') as 'active' | 'inactive' | 'all',
+      keyword: String(_req.query.keyword || ''),
+      page: Number(_req.query.page || 1),
+      limit: Number(_req.query.limit || 20),
+    });
+    res.json(items);
+  }),
 
-  async createPlan(req: AuthRequest, res: Response) {
-    try {
-      const payload = normalizePlanPayload((req.body || {}) as Record<string, unknown>);
-      const error = validatePlanPayload(payload);
-      if (error) {
-        res.status(400).json({ error });
-        return;
-      }
-      const doc = await planService.create(payload as never);
-      await adminAuditService.logAdminAction({
-        adminUserId: String(req.user._id),
-        adminUsername: String(req.user.username ?? ''),
-        action: 'PLAN_CREATE',
-        targetType: 'plan',
-        targetId: String(doc._id),
-        details: JSON.stringify({ name: doc.name }),
-      });
-      res.status(201).json(doc);
-    } catch (err) {
-      console.log(err);
-      res.status(500).json({ error: 'Failed to create plan' });
+  createPlan: catchAsync(async (req: AuthRequest, res: Response) => {
+    const payload = normalizePlanPayload((req.body || {}) as Record<string, unknown>);
+    const error = validatePlanPayload(payload);
+    if (error) {
+      throw new ApiError(httpStatus.BAD_REQUEST, error);
     }
-  },
+    const doc = await planService.create(payload as never);
+    await adminAuditService.logAdminAction({
+      adminUserId: String(req.user!._id),
+      adminUsername: String(req.user!.username ?? ''),
+      action: 'PLAN_CREATE',
+      targetType: 'plan',
+      targetId: String(doc._id),
+      details: JSON.stringify({ name: doc.name }),
+    });
+    res.status(httpStatus.CREATED).json(doc);
+  }),
 
-  async getPlanById(req: Request, res: Response) {
-    try {
-      const item = await planService.getById((req.params as any).id);
-      if (!item) {
-        res.status(404).json({ message: 'Plan not found' });
-        return;
-      }
-      res.json(item);
-    } catch (err) {
-      res.status(500).json({ error: 'Failed to fetch plan' });
+  getPlanById: catchAsync(async (req: Request, res: Response) => {
+    const item = await planService.getById((req.params as any).id);
+    if (!item) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Plan not found');
     }
-  },
+    res.json(item);
+  }),
 
-  async updatePlan(req: AuthRequest, res: Response) {
-    try {
-      const payload = normalizePlanPayload((req.body || {}) as Record<string, unknown>);
-      const error = validatePlanPayload(payload);
-      if (error) {
-        res.status(400).json({ error });
-        return;
-      }
-      const updated = await planService.update((req.params as any).id, payload as never);
-      if (!updated) {
-        res.status(404).json({ message: 'Plan not found' });
-        return;
-      }
-      await adminAuditService.logAdminAction({
-        adminUserId: String(req.user._id),
-        adminUsername: String(req.user.username ?? ''),
-        action: 'PLAN_UPDATE',
-        targetType: 'plan',
-        targetId: String(updated._id),
-        details: JSON.stringify({ name: updated.name }),
-      });
-      res.json(updated);
-    } catch (err) {
-      res.status(500).json({ error: 'Failed to update plan' });
+  updatePlan: catchAsync(async (req: AuthRequest, res: Response) => {
+    const payload = normalizePlanPayload((req.body || {}) as Record<string, unknown>);
+    const error = validatePlanPayload(payload);
+    if (error) {
+      throw new ApiError(httpStatus.BAD_REQUEST, error);
     }
-  },
+    const updated = await planService.update((req.params as any).id, payload as never);
+    if (!updated) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Plan not found');
+    }
+    await adminAuditService.logAdminAction({
+      adminUserId: String(req.user!._id),
+      adminUsername: String(req.user!.username ?? ''),
+      action: 'PLAN_UPDATE',
+      targetType: 'plan',
+      targetId: String(updated._id),
+      details: JSON.stringify({ name: updated.name }),
+    });
+    res.json(updated);
+  }),
 
-  async deletePlan(req: AuthRequest, res: Response) {
-    try {
-      const deleted = await planService.remove((req.params as any).id);
-      if (!deleted) {
-        res.status(404).json({ message: 'Plan not found' });
-        return;
-      }
-      await adminAuditService.logAdminAction({
-        adminUserId: String(req.user._id),
-        adminUsername: String(req.user.username ?? ''),
-        action: 'PLAN_DELETE',
-        targetType: 'plan',
-        targetId: String(deleted._id),
-        details: JSON.stringify({ name: deleted.name }),
-      });
-      res.json({ message: 'Plan deleted' });
-    } catch (err) {
-      res.status(500).json({ error: 'Failed to delete plan' });
+  deletePlan: catchAsync(async (req: AuthRequest, res: Response) => {
+    const deleted = await planService.remove((req.params as any).id);
+    if (!deleted) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Plan not found');
     }
-  },
+    await adminAuditService.logAdminAction({
+      adminUserId: String(req.user!._id),
+      adminUsername: String(req.user!.username ?? ''),
+      action: 'PLAN_DELETE',
+      targetType: 'plan',
+      targetId: String(deleted._id),
+      details: JSON.stringify({ name: deleted.name }),
+    });
+    res.json({ message: 'Plan deleted' });
+  }),
 
-  async changeStatus(req: AuthRequest, res: Response) {
-    try {
-      const updated = await planService.update((req.params as any).id, {
-        status: req.body?.status === 'active' ? 'active' : 'inactive',
-      });
-      if (!updated) {
-        res.status(404).json({ message: 'Plan not found' });
-        return;
-      }
-      await adminAuditService.logAdminAction({
-        adminUserId: String(req.user._id),
-        adminUsername: String(req.user.username ?? ''),
-        action: 'PLAN_STATUS_CHANGE',
-        targetType: 'plan',
-        targetId: String(updated._id),
-        details: JSON.stringify({ status: updated.status }),
-      });
-      res.json(updated);
-    } catch (err) {
-      res.status(500).json({ error: 'Failed to change status' });
+  changeStatus: catchAsync(async (req: AuthRequest, res: Response) => {
+    const updated = await planService.update((req.params as any).id, {
+      status: req.body?.status === 'active' ? 'active' : 'inactive',
+    });
+    if (!updated) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Plan not found');
     }
-  },
+    await adminAuditService.logAdminAction({
+      adminUserId: String(req.user!._id),
+      adminUsername: String(req.user!.username ?? ''),
+      action: 'PLAN_STATUS_CHANGE',
+      targetType: 'plan',
+      targetId: String(updated._id),
+      details: JSON.stringify({ status: updated.status }),
+    });
+    res.json(updated);
+  }),
 
-  async duplicatePlan(req: AuthRequest, res: Response) {
-    try {
-      const duplicated = await planService.duplicate((req.params as any).id);
-      if (!duplicated) {
-        res.status(404).json({ message: 'Plan not found' });
-        return;
-      }
-      await adminAuditService.logAdminAction({
-        adminUserId: String(req.user._id),
-        adminUsername: String(req.user.username ?? ''),
-        action: 'PLAN_DUPLICATE',
-        targetType: 'plan',
-        targetId: String(duplicated._id),
-        details: JSON.stringify({ name: duplicated.name }),
-      });
-      res.status(201).json(duplicated);
-    } catch (err) {
-      res.status(500).json({ error: 'Failed to duplicate plan' });
+  duplicatePlan: catchAsync(async (req: AuthRequest, res: Response) => {
+    const duplicated = await planService.duplicate((req.params as any).id);
+    if (!duplicated) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Plan not found');
     }
-  },
+    await adminAuditService.logAdminAction({
+      adminUserId: String(req.user!._id),
+      adminUsername: String(req.user!.username ?? ''),
+      action: 'PLAN_DUPLICATE',
+      targetType: 'plan',
+      targetId: String(duplicated._id),
+      details: JSON.stringify({ name: duplicated.name }),
+    });
+    res.status(httpStatus.CREATED).json(duplicated);
+  }),
 };

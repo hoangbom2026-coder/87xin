@@ -21,7 +21,7 @@ interface Message {
 }
 
 const PublicChat: React.FC = () => {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const { isChatOpen, closeChat } = useChat()
   const { socket, connected } = useSocket()
   const { user } = useSelector((state: RootState) => state.auth)
@@ -97,7 +97,7 @@ const PublicChat: React.FC = () => {
         content: inputValue.trim(),
         username: user.username,
         avatar: user.avatar,
-        level: user.level || 1,
+        level: (user as any).level || 1,
         timestamp: Date.now()
       }
       socket.emit('public-message', payload)
@@ -124,7 +124,7 @@ const PublicChat: React.FC = () => {
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           <span className="text-sm font-black tracking-tight uppercase">{t('chat.title', 'Trò chuyện')}</span>
-          <span className="text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-white/50 font-bold ml-1 uppercase">{language}</span>
+          <span className="text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-white/50 font-bold ml-1 uppercase">{lang}</span>
         </div>
         <div className="flex items-center gap-1">
           <button className="p-2 text-white/40 hover:text-white transition-colors">

@@ -5,7 +5,7 @@ interface ImportMetaEnv {
   readonly VITE_ADMIN_URL: string
   readonly VITE_SITE_NAME: string
   readonly VITE_LOGO_URL: string
-  /** Origin site deploy, ví dụ https://cuocbong99.live */
+  /** Origin site deploy, ví dụ https://example.com */
   readonly VITE_PUBLIC_SITE_URL?: string
   readonly VITE_SUPPORT_EMAIL?: string
   readonly VITE_PRIVACY_EMAIL?: string

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import httpStatus from 'http-status';
+import ApiError from '@utils/ApiError';
 import { groupBy } from 'lodash';
 import ProviderModel from '@main/models/provider.model';
 import casinoService from '@main/services/casino.service';
@@ -65,7 +67,10 @@ async function syncProvidersFromEnv(env: IGscEnvironment, offset = 0, size = PRO
     const groupData = groupBy(rawRows, (item) => `${item.product_code}|${item.game_type}`);
     for (const key of Object.keys(groupData)) {
         const first = groupData[key][0] as ProviderRow;
-        const currency = groupData[key].map((g) => (g as ProviderRow).currency).filter(Boolean);
+        const currency = groupData[key]
+    .map((g) => (g as ProviderRow).currency)
+    .filter(Boolean)
+    .flat() as string[];
         const entryType = Number((first as { entry_type?: number }).entry_type ?? 1);
         data.push({
             ...first,
@@ -197,7 +202,7 @@ export async function syncAllGscCatalogFromRemote(): Promise<{ synced: string[] 
 
 export async function syncGscCatalogByEnvId(envId: string): Promise<{ synced: string[] }> {
     const env = await getGscEnvironmentById(envId);
-    if (!env?.enabled) throw new Error('GSC_ENV_NOT_FOUND');
+    if (!env?.enabled) throw new ApiError(httpStatus.NOT_FOUND, 'GSC environment not found');
     await syncGscEnvironmentCatalog(env);
     return { synced: [env.id] };
 }

@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import moment from 'moment';
+import httpStatus from 'http-status';
+import ApiError from '@utils/ApiError';
 import AffiliateStatsModel from '@main/models/affiliate-stats.model';
 import TransactionModel from '@main/models/transaction.model';
 import UserModel from '@main/models/user.model';
@@ -234,12 +236,12 @@ const updateInvitedCounts = async (userId: string) => {
 const claimCommission = async (userId: string) => {
     const stats = await AffiliateStatsModel.findOne({ userId });
     if (!stats || stats.unclaimedBalance <= 0) {
-        throw new Error('No commission to claim');
+        throw new ApiError(httpStatus.BAD_REQUEST, 'No commission to claim');
     }
 
     const amount = stats.unclaimedBalance;
     const user = await UserModel.findById(userId);
-    if (!user) throw new Error('User not found');
+    if (!user) throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
 
     const isReplicaSet = mongoose.connection.readyState === 1 && (mongoose.connection as any).db.databaseName && await mongoose.connection.db.admin().command({ isMaster: 1 }).then(r => !!r.setName).catch(() => false);
 

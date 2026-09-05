@@ -263,8 +263,8 @@ function GeneralTab(props: {
         <CardContent className="grid gap-4 md:grid-cols-2">
           <div className="space-y-2"><Label>Email hỗ trợ hiển thị landing</Label>
             <Input value={cfg.media.supportEmail} onChange={(e) => setCfg((c) => c && ({ ...c, media: { ...c.media, supportEmail: e.target.value } }))} /></div>
-          <div className="space-y-2"><Label>Link đối tác (9Bet / Provider)</Label>
-            <Input value={cfg.media['9BetLink']} onChange={(e) => setCfg((c) => c && ({ ...c, media: { ...c.media, '9BetLink': e.target.value } }))} /></div>
+          <div className="space-y-2"><Label>Link đối tác / Provider</Label>
+            <Input value={cfg.media.partnerLink} onChange={(e) => setCfg((c) => c && ({ ...c, media: { ...c.media, partnerLink: e.target.value } }))} /></div>
         </CardContent>
       </Card>
 

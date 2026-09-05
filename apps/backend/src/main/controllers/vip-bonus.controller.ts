@@ -13,16 +13,16 @@ import vipLevelUpBonusService from '@main/services/vip-level-up-bonus.service';
 
 export const claimLevelUpBonus = catchAsync(async (req: AuthRequest, res: Response) => {
     const user = req.user;
-    const reward = await vipLevelUpBonusService.getAvailableBonus(user._id);
+    const reward = await vipLevelUpBonusService.getAvailableBonus(String(user._id));
     if (!reward || reward.claimed === true) {
         throw new ApiError(httpStatus.BAD_REQUEST, 'You do not have available bonus');
     }
     await vipLevelUpBonusService.patchUpdate({ _id: reward._id }, { claimed: true });
-    const currency = await currencyService.getCurrencyById(user.currencyId);
-    const balance = await balanceService.getBalanceByUserId(user._id);
-    const updatedBalance = await balanceService.depositBalance(user._id, reward.amount);
+    const currency = await currencyService.getCurrencyById(String(user.currencyId));
+    const balance = await balanceService.getBalanceByUserId(String(user._id));
+    const updatedBalance = await balanceService.depositBalance(String(user._id), reward.amount);
     await transactionService.createTransaction({
-        userId: user._id,
+        userId: String(user._id),
         relatedId: String(reward._id),
         tnxId: new Date().valueOf().toString(),
         amount: Number(reward.amount.toFixed(2)),

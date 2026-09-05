@@ -48,11 +48,11 @@ function weightedSpinPick(prizes: IVipSpinPrizeSlot[]): IVipSpinPrizeSlot {
 }
 
 export const getReadySpin = catchAsync(async (req: AuthRequest, res: Response) => {
-    const balance = await balanceService.getBalanceByUserId(String(req.user._id));
+    const balance = await balanceService.getBalanceByUserId(String(req.user!._id));
     const vipSpinPrizes = await vipSpinPrizeService.getVipSpinPrizes();
     const availablePrize = getClosestPrize(vipSpinPrizes, balance.turnover);
     if (availablePrize) {
-        const lastSpin = await vipSpinRewardService.getLastSpin(String(req.user._id));
+        const lastSpin = await vipSpinRewardService.getLastSpin(String(req.user!._id));
         if (lastSpin) {
             const now = new Date();
             const createdAt = new Date(lastSpin.createdAt);
@@ -96,8 +96,8 @@ export const getReadySpin = catchAsync(async (req: AuthRequest, res: Response) =
 
 export const playSpin = catchAsync(async (req: AuthRequest, res: Response) => {
     const user = req.user;
-    const balance = await balanceService.getBalanceByUserId(user._id);
-    const currency = await currencyService.getCurrencyById(user.currencyId);
+    const balance = await balanceService.getBalanceByUserId(String(user._id));
+    const currency = await currencyService.getCurrencyById(String(user.currencyId));
     const vipSpinPrizes = await vipSpinPrizeService.getVipSpinPrizes();
     const availablePrize = getClosestPrize(vipSpinPrizes, balance.turnover);
     if (availablePrize) {
@@ -107,7 +107,7 @@ export const playSpin = catchAsync(async (req: AuthRequest, res: Response) => {
         const pool = eligibleSpinSlots(availablePrize.prizes, { turnover, vipXp, depositCount });
         const prize = weightedSpinPick(pool);
         const reward = await vipSpinRewardService.createVipSpinReward({
-            userId: user._id,
+            userId: String(user._id),
             amount: prize.amount,
             currency: currency.name
         });
@@ -128,11 +128,11 @@ export const collect = catchAsync(async (req: AuthRequest, res: Response) => {
         throw new ApiError(httpStatus.BAD_REQUEST, 'Prize not found');
     }
     await vipSpinRewardService.patchUpdate({ _id: rewardId }, { claimed: true });
-    const currency = await currencyService.getCurrencyById(user.currencyId);
-    const balance = await balanceService.getBalanceByUserId(user._id);
-    const updatedBalance = await balanceService.depositBalance(user._id, reward.amount);
+    const currency = await currencyService.getCurrencyById(String(user.currencyId));
+    const balance = await balanceService.getBalanceByUserId(String(user._id));
+    const updatedBalance = await balanceService.depositBalance(String(user._id), reward.amount);
     await transactionService.createTransaction({
-        userId: user._id,
+        userId: String(user._id),
         relatedId: String(reward._id),
         tnxId: new Date().valueOf().toString(),
         amount: Number(reward.amount.toFixed(2)),

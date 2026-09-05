@@ -343,7 +343,7 @@
     },
     "highlight": "POLICY",
     "intro": {
-      "p": "At Cuocbong99, we value your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, and safeguard your information when you use our website and services.",
+      "p": "At {{brand}}, we value your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, and safeguard your information when you use our website and services.",
       "title": "Introduction"
     },
     "item1": {
@@ -384,7 +384,7 @@
       "title": "Take a Break"
     },
     "commitment": {
-      "p": "At Cuocbong99, we are dedicated to providing a responsible gaming environment. We want our players to enjoy our games in a safe and controlled manner. Gaming should always be viewed as a form of entertainment, not a way to make money.",
+      "p": "At {{brand}}, we are dedicated to providing a responsible gaming environment. We want our players to enjoy our games in a safe and controlled manner. Gaming should always be viewed as a form of entertainment, not a way to make money.",
       "title": "Our Commitment"
     },
     "help": {
@@ -435,7 +435,7 @@
   "terms": {
     "highlight": "SERVICE",
     "intro": {
-      "p": "By accessing or using Cuocbong99, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you may not use our platform.",
+      "p": "By accessing or using {{brand}}, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you may not use our platform.",
       "title": "Agreement to Terms"
     },
     "item1": {
@@ -455,7 +455,7 @@
       "title": "4. Deposits and Withdrawals"
     },
     "item5": {
-      "p": "Cuocbong99 shall not be liable for any direct, indirect, or incidental damages resulting from the use or inability to use our services, including but not limited to financial losses.",
+      "p": "{{brand}} shall not be liable for any direct, indirect, or incidental damages resulting from the use or inability to use our services, including but not limited to financial losses.",
       "title": "5. Limitation of Liability"
     },
     "mod": {

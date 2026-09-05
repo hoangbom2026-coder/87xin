@@ -297,10 +297,10 @@ const Affiliate: React.FC = () => {
               <tbody>
                 {recentRows.map((row) => (
                   <tr
-                    key={`${row.player}-${row.time}`}
+                    key={`${(row as any).player || row.user}-${row.time}`}
                     className="border-b border-fin-line/60 last:border-0 hover:bg-white/[0.03]"
                   >
-                    <td className="px-4 py-3 font-bold text-white">{row.player}</td>
+                    <td className="px-4 py-3 font-bold text-white">{(row as any).player || row.user}</td>
                     <td className="px-4 py-3 font-black text-primary">{row.amount}</td>
                     <td className="px-4 py-3 text-right text-text-muted">{row.time}</td>
                   </tr>

@@ -1,5 +1,5 @@
 /**
- * Màu / token theme mặc định dự án 9Bet — lưu ghi đè tại `settings.uiTheme` + admin Themes.
+ * Màu / token theme mặc định của nền tảng — lưu ghi đè tại `settings.uiTheme` + admin Themes.
  * Không phụ thuộc bản mẫu từ repo khác; chỉnh tại Trung tâm điều khiển.
  */
 export const DEFAULT_WEB_MAIN: Record<string, string> = {

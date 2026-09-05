@@ -11,7 +11,7 @@ import userService from '@main/services/user.service';
 import transactionService from '@main/services/transaction.service';
 
 export const getAgencyOverview = catchAsync(async (req: AuthRequest, res: Response) => {
-    const data = await agencyService.getDashboard(String(req.user._id));
+    const data = await agencyService.getDashboard(String(req.user!._id));
     res.json(data);
 });
 
@@ -34,12 +34,12 @@ export const getAgencyPlanPreview = catchAsync(async (req: AuthRequest, res: Res
 
 export const postAgencyInvest = catchAsync(async (req: AuthRequest, res: Response) => {
     const { planId, amount } = req.body as { planId: string; amount: number };
-    const log = await agencyService.subscribe(String(req.user._id), planId, Number(amount));
+    const log = await agencyService.subscribe(String(req.user!._id), planId, Number(amount));
     res.status(201).json(log);
 });
 
 export const getAgencyInvestments = catchAsync(async (req: AuthRequest, res: Response) => {
-    const logs = await investLogService.getLogsByUserId(String(req.user._id));
+    const logs = await investLogService.getLogsByUserId(String(req.user!._id));
     res.json({ items: logs });
 });
 

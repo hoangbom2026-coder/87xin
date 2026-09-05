@@ -97,7 +97,7 @@ export const DEFAULT_REAGENT_ENROLLMENT: IReagentEnrollment = {
 };
 
 export const DEFAULT_REAGENT_PAGE: IReagentPage = {
-    bannerTitle: 'Hợp tác đại lý 9Bet',
+    bannerTitle: 'Hợp tác đại lý',
     bannerSubtitle:
         'Kiếm hoa hồng khi giới thiệu người chơi — hệ thống đa cấp, báo cáo minh bạch, hỗ trợ đối tác.',
     backgroundUrl: '/images/promotions/default.webp',
@@ -109,7 +109,7 @@ export const DEFAULT_REAGENT_PAGE: IReagentPage = {
         { value: '2.5Tr', label: 'Phí tham gia — nhận quyền đại lý vĩnh viễn' },
         { value: '∞', label: 'Không giới hạn tầng nhận thưởng mạng lưới' }
     ],
-    programTitle: 'Chính sách đại lý 9Bet',
+    programTitle: 'Chính sách đại lý',
     programHeaders: {
         level: 'Tầng mạng lưới',
         players: 'Mô tả nguồn thu',

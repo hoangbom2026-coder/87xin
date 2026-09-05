@@ -20,6 +20,10 @@ const getUserById = async (id: string) => {
     return await UserModel.findById(id);
 };
 
+const getInviteCodeByUserId = async (userId: string) => {
+    return await UserModel.findById(userId).select('inviteCode');
+};
+
 const getUserByinvitorId = async (invitorId: string) => {
     return await UserModel.find({ invitorId });
 };
@@ -196,6 +200,7 @@ export default {
     phoneTaken,
     getUserNumberId,
     getUserById,
+    getInviteCodeByUserId,
     getUserByinvitorId,
     getUserByUsername,
     getUserByEmail,

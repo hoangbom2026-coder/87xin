@@ -7,9 +7,15 @@ on:
     paths:
       - 'apps/**'
       - 'libs/**'
-      - 'infra/ecosystem.production.cjs'
+      - 'infra/**'
       - 'package.json'
       - 'package-lock.json'
+  workflow_dispatch:
+    inputs:
+      no_backup:
+        description: 'Skip remote backup'
+        type: boolean
+        default: false
 
 concurrency:
   group: deploy-production
@@ -47,12 +53,14 @@ jobs:
           mkdir -p build-artifact/apps/frontend-web
           mkdir -p build-artifact/apps/admin-dashboard
           mkdir -p build-artifact/infra
+          mkdir -p build-artifact/scripts
 
           cp -r apps/backend/dist build-artifact/apps/backend/
           cp apps/backend/package.json build-artifact/apps/backend/
           cp -r apps/frontend-web/dist build-artifact/apps/frontend-web/
           cp -r apps/admin-dashboard/dist build-artifact/apps/admin-dashboard/
           cp infra/ecosystem.production.cjs build-artifact/infra/
+          cp scripts/rollback.sh build-artifact/scripts/
           cp package.json build-artifact/
           cp package-lock.json build-artifact/
 
@@ -69,7 +77,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       VPS_HOST: ${{ secrets.VPS_HOST }}
-      VPS_USER: ${{ secrets.VPS_USER || 'hermes' }}
+      VPS_USER: ${{ secrets.VPS_USER || 'root' }}
       VPS_PORT: ${{ secrets.VPS_PORT || '22' }}
       DEPLOY_PATH: /var/app/game
     steps:
@@ -88,6 +96,23 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -p $VPS_PORT -H $VPS_HOST >> ~/.ssh/known_hosts
 
+      - name: Create remote backup
+        if: ${{ !inputs.no_backup }}
+        run: |
+          BACKUP_TAG="backup-$(date +%Y%m%d-%H%M%S)"
+          ssh -p $VPS_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST <<EOF
+            set -e
+            BACKUP_DIR="$DEPLOY_PATH/infra/backups/$BACKUP_TAG"
+            mkdir -p "\$BACKUP_DIR"
+            cp -r "$DEPLOY_PATH/apps/backend/dist" "\$BACKUP_DIR/backend-dist" 2>/dev/null || true
+            cp -r "$DEPLOY_PATH/apps/frontend-web/dist" "\$BACKUP_DIR/frontend-dist" 2>/dev/null || true
+            cp -r "$DEPLOY_PATH/apps/admin-dashboard/dist" "\$BACKUP_DIR/admin-dist" 2>/dev/null || true
+            cp "$DEPLOY_PATH/infra/ecosystem.production.cjs" "\$BACKUP_DIR/" 2>/dev/null || true
+            cd "$DEPLOY_PATH/infra/backups"
+            ls -dt backup-* 2>/dev/null | tail -n +6 | xargs rm -rf 2>/dev/null || true
+            echo "Backup created: \$BACKUP_DIR"
+          EOF
+
       - name: Rsync build artifacts to VPS
         run: |
           rsync -avz -e "ssh -p $VPS_PORT -o StrictHostKeyChecking=no" \
@@ -105,10 +130,20 @@ jobs:
           rsync -avz -e "ssh -p $VPS_PORT -o StrictHostKeyChecking=no" \
             ./infra/ecosystem.production.cjs $VPS_USER@$VPS_HOST:$DEPLOY_PATH/infra/ecosystem.production.cjs
 
+          rsync -avz -e "ssh -p $VPS_PORT -o StrictHostKeyChecking=no" \
+            ./scripts/rollback.sh $VPS_USER@$VPS_HOST:$DEPLOY_PATH/scripts/rollback.sh
+
+          rsync -avz -e "ssh -p $VPS_PORT -o StrictHostKeyChecking=no" \
+            ./package.json ./package-lock.json $VPS_USER@$VPS_HOST:$DEPLOY_PATH/
+
       - name: Reload PM2 processes & Zero-downtime healthcheck
         run: |
           ssh -p $VPS_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "bash -s" << 'EOF'
             set -e
+            cd $DEPLOY_PATH
+
+            echo "==> Installing root deps (if changed)..."
+            npm ci --omit=dev 2>/dev/null || npm install --omit=dev 2>/dev/null || true
 
             echo "==> Reloading PM2 backend API (tc-api)..."
             pm2 reload tc-api --update-env || pm2 start /var/app/game/infra/ecosystem.production.cjs --only tc-api
@@ -116,9 +151,12 @@ jobs:
             echo "==> Reloading PM2 admin dashboard preview (tc-admin)..."
             pm2 reload tc-admin --update-env || pm2 start /var/app/game/infra/ecosystem.production.cjs --only tc-admin
 
+            pm2 save 2>/dev/null || true
+
             echo "==> Verifying API healthcheck..."
             for i in 1 2 3; do
               if curl -sf http://127.0.0.1:8701/health; then
+                echo ""
                 echo " Health check passed on attempt $i"
                 exit 0
               fi
@@ -127,5 +165,6 @@ jobs:
             done
 
             echo " Health check failed after 3 attempts"
+            echo " Rollback: ssh $VPS_USER@$VPS_HOST 'cd $DEPLOY_PATH && ./scripts/rollback.sh'"
             exit 1
           EOF

@@ -4,7 +4,7 @@ import PageLayout from '../../components/ui/PageLayout'
 import BannerHeader from '../../components/ui/BannerHeader'
 import Button from '../../components/ui/Button'
 import PromoTemplatePage, { PromoCardItem, PromoFilter } from '../Promotions/PromoTemplatePage'
-import { PromoDetailModal } from '../../components/promo'
+import PromoDetailModal from '../../components/promo/PromoDetailModal'
 import { getStorePackages, purchaseStorePackage, StorePackage } from '../../services/siteService'
 import { getProfile } from '../../services/authService'
 import { setUser } from '../../features/auth/authSlice'
@@ -144,9 +144,10 @@ const Store: React.FC = () => {
     let alive = true
 
     getStorePackages()
-      .then((packages) => {
+      .then((res: any) => {
         if (!alive) return
-        applyPackages(packages)
+        const list = Array.isArray(res) ? res : (res?.data || [])
+        applyPackages(Array.isArray(list) ? list : [])
       })
       .catch((error) => console.error('Failed to load store packages', error))
 
@@ -171,8 +172,9 @@ const Store: React.FC = () => {
       if (prof.success && prof.data) dispatch(setUser(prof.data))
       setSelected(null)
       try {
-        const packages = await getStorePackages()
-        applyPackages(packages)
+        const res: any = await getStorePackages()
+        const list = Array.isArray(res) ? res : (res?.data || [])
+        applyPackages(Array.isArray(list) ? list : [])
       } catch (e) {
         console.error(e)
       }
@@ -206,8 +208,8 @@ const Store: React.FC = () => {
   })()
 
   return (
-    <PageLayout variant="banner">
-      <BannerHeader src="/images/banners/slots/slots.webp" alt={t('store.title')} eager />
+    <PageLayout>
+      <BannerHeader title={t('store.title')} subtitle={t('store.subtitle')} />
       <PromoTemplatePage
         hideIntro
         title={t('store.title')}

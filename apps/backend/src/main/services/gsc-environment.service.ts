@@ -1,4 +1,6 @@
 import crypto from 'crypto';
+import httpStatus from 'http-status';
+import ApiError from '@utils/ApiError';
 import { GSC_CONFIG } from '@main/constants/gsc-integration';
 
 export interface IGscEnvironment {
@@ -33,7 +35,7 @@ export const getEnabledGscEnvironments = async (): Promise<IGscEnvironment[]> =>
 /** Lấy environment theo id */
 export const getGscEnvironmentById = async (envId: string): Promise<IGscEnvironment> => {
     const env = GSC_ENVIRONMENTS.find((e) => e.id === envId);
-    if (!env) throw new Error(`GSC environment not found: ${envId}`);
+    if (!env) throw new ApiError(httpStatus.NOT_FOUND, `GSC environment not found: ${envId}`);
     return env;
 };
 

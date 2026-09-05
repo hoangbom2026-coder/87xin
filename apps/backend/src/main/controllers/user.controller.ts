@@ -98,7 +98,7 @@ export const updatePassword = catchAsync(async (req: AuthRequest, res: Response)
     }
     await passwordLogService.createPasswordLog({
         userId: userId,
-        actorId: String(req.user._id),
+        actorId: String(req.user!._id),
         ip: userIp,
         userAgent,
         device: result.device.type || 'desktop',
@@ -115,14 +115,14 @@ export const updatePassword = catchAsync(async (req: AuthRequest, res: Response)
 
 export const updateAdminPassword = catchAsync(async (req: AuthRequest, res: Response) => {
     const { oldPassword, newPassword, adminCode } = req.body;
-    if (!(await req.user.isPasswordMatch(oldPassword))) {
+    if (!(await req.user!.isPasswordMatch(oldPassword))) {
         throw new ApiError(httpStatus.BAD_REQUEST, 'Current password is incorrect');
     }
 
     if (adminCode !== config.adminCode) {
         throw new ApiError(httpStatus.BAD_REQUEST, 'Admin code is wrong');
     }
-    await userService.updatePassword(String(req.user._id), newPassword);
+    await userService.updatePassword(String(req.user!._id), newPassword);
 
     const userIp = getIpAddress(req);
 
@@ -141,8 +141,8 @@ export const updateAdminPassword = catchAsync(async (req: AuthRequest, res: Resp
         country.name = data.country;
     }
     await passwordLogService.createPasswordLog({
-        userId: String(req.user._id),
-        actorId: String(req.user._id),
+        userId: String(req.user!._id),
+        actorId: String(req.user!._id),
         ip: userIp,
         userAgent,
         device: result.device.type || 'desktop',
@@ -152,7 +152,7 @@ export const updateAdminPassword = catchAsync(async (req: AuthRequest, res: Resp
     });
 
     // Invalidate all sessions for this admin after password change
-    await sessionService.deleteSessionByUserId(String(req.user._id));
+    await sessionService.deleteSessionByUserId(String(req.user!._id));
 
     return res.status(httpStatus.NO_CONTENT).send();
 });

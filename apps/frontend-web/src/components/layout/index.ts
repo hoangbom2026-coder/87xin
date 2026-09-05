@@ -1,4 +1,5 @@
-export { default as MainLayout } from './MainLayout'
-export { default as Header } from './Header'
-export { default as Footer } from './Footer'
-export { default as BottomNav } from './BottomNav'
+export { default as AccountLayout } from './AccountLayout';
+export { default as AccountFinancialShell } from './AccountFinancialShell';
+export { default as PolicyDocumentLayout } from './PolicyDocumentLayout';
+export { default as MobileAppShell } from './MobileAppShell';
+export { default as FinancialPageTemplate } from './FinancialPageTemplate';

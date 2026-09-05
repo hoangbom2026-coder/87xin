@@ -85,6 +85,7 @@ export const ADMIN_SIDEBAR: AdminSidebarSection[] = [
       { to: '/admin/roles', icon: Shield, label: 'Roles' },
       { to: '/admin/audit-logs', icon: ClipboardList, label: 'Audit Logs' },
       { to: '/admin/preferences', icon: Settings, label: 'Preferences' },
+      { to: '/admin/brand-settings', icon: Palette, label: 'Brand Settings' },
     ],
   },
   {

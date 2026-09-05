@@ -20,14 +20,35 @@ app.use(helmet());
 app.use(compression());
 
 const allowAll = config.corsOrigin.length === 0 || config.corsOrigin.includes('*');
+const isDev = config.env === 'development' || config.env === 'test';
+
 const corsOptions = {
-    origin: allowAll
-        ? true
-        : (origin: string | undefined, cb: (err: Error | null, allow?: boolean) => void) => {
-              if (!origin) return cb(null, true);
-              if (config.corsOrigin.includes(origin)) return cb(null, true);
-              return cb(new Error(`CORS blocked for origin: ${origin}`));
-          },
+    origin: (origin: string | undefined, cb: (err: Error | null, allow?: boolean) => void) => {
+        // Cho phép non-browser requests (Postman, mobile native apps, curl, server-to-server)
+        if (!origin) return cb(null, true);
+        
+        // Development mode: cho phép tất cả localhost origins
+        if (isDev && (origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:'))) {
+            return cb(null, true);
+        }
+
+        // Whitelist check
+        if (!allowAll && config.corsOrigin.includes(origin)) {
+            return cb(null, true);
+        }
+
+        // Nếu allowAll = true nhưng credentials = true, không trả origin: true trong prod mà chỉ cho phép origin khớp
+        if (allowAll) {
+            if (isDev) return cb(null, true);
+            // Trong production với allowAll ('*'), match với FRONTEND_URL hoặc BACKEND_URL
+            const allowedDefaults = [config.frontendUrl, config.backendUrl].filter(Boolean);
+            if (allowedDefaults.some(u => origin.startsWith(u))) {
+                return cb(null, true);
+            }
+        }
+
+        return cb(new Error(`CORS blocked for origin: ${origin}`));
+    },
     credentials: true
 };
 app.use(cors(corsOptions));
@@ -129,7 +150,23 @@ const server = http.createServer(app);
 const io = new SocketServer(server, {
     path: '/socket.io',
     cors: {
-        origin: allowAll ? true : config.corsOrigin,
+        origin: (origin: string | undefined, cb: (err: Error | null, allow?: boolean) => void) => {
+            if (!origin) return cb(null, true);
+            if (isDev && (origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:'))) {
+                return cb(null, true);
+            }
+            if (!allowAll && config.corsOrigin.includes(origin)) {
+                return cb(null, true);
+            }
+            if (allowAll) {
+                if (isDev) return cb(null, true);
+                const allowedDefaults = [config.frontendUrl, config.backendUrl].filter(Boolean);
+                if (allowedDefaults.some(u => origin.startsWith(u))) {
+                    return cb(null, true);
+                }
+            }
+            return cb(new Error(`Socket.IO CORS blocked for origin: ${origin}`));
+        },
         methods: ['GET', 'POST'],
         credentials: true
     },

@@ -185,7 +185,7 @@ const CryptoDepositPanel: React.FC = () => {
           <ul className="crypto-form__note-text">
             <li>{t('deposit.cryptoNote1', 'Quý khách vui lòng gửi đúng loại tiền vào địa chỉ ví đã chọn.')}</li>
             <li>
-              <span className="crypto-form__note-text--highlight">9BET</span>{' '}
+              <span className="crypto-form__note-text--highlight">Nền tảng</span>{' '}
               {t(
                 'deposit.cryptoNote2',
                 'sẽ không chịu trách nhiệm nếu bạn gửi sai loại tiền hoặc sai địa chỉ ví.',

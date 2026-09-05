@@ -7,6 +7,8 @@ import { cn } from '../../lib/cn';
 
 export interface PageLayoutProps {
   children: React.ReactNode;
+  title?: React.ReactNode;
+  variant?: string;
   mainClassName?: string;
   containerClassName?: string;
 }

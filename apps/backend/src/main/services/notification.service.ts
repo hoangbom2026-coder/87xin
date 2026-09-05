@@ -5,7 +5,12 @@ const createNotification = async (data: {
     type?: string;
     title?: string;
     message?: string;
+    content?: string;
     read?: boolean;
+    link?: string;
+    category?: string;
+    recipientOnlyUserId?: string;
+    [key: string]: any;
 }) => {
     return await NotificationModel.create({ read: false, ...data });
 };
@@ -22,6 +27,7 @@ const markAsRead = async (userId: string, notificationId?: string) => {
 
 export default {
     createNotification,
+    createNotifcation: createNotification,
     getNotificationsByUserId,
     markAsRead,
 };

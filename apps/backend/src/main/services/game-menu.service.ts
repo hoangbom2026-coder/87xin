@@ -1,7 +1,7 @@
 import SettingModel from '@main/models/setting.model';
 import {
     DEFAULT_GAME_MENU,
-    IGameMenuItem,
+    type IGameMenuItem,
     normalizeGameMenu
 } from '@main/constants/game-menu-defaults';
 import { logAdminAction } from '@main/services/admin-audit.service';

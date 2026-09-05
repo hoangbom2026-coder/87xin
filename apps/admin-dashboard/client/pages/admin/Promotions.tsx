@@ -16,10 +16,16 @@ import {
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@game/ui/select";
 import React from "react";
 import { toast } from "@game/ui/use-toast";
-
-const BASE = (import.meta as any).env?.VITE_BACKEND_URL || "/api";
 import { getAdminToken } from "@/lib/adminAuth";
+import {
+  listBonusesAdmin,
+  createBonusApi,
+  updateBonusApi,
+  deleteBonusApi,
+} from "@/lib/api";
+
 const token = () => getAdminToken() || "";
+const BASE = (import.meta as any).env?.VITE_BACKEND_URL || "/api";
 
 type Bonus = {
   _id: string;
@@ -66,9 +72,7 @@ export function PromotionsPanel() {
   async function load() {
     setLoading(true);
     try {
-      const res = await fetch(`${BASE}/bonus/list`, { headers: { Authorization: `Bearer ${token()}` } });
-      if (!res.ok) throw new Error("Failed to load bonuses");
-      const data = await res.json();
+      const data = await listBonusesAdmin(token());
       setRows(data || []);
       toast({ title: "Bonuses loaded" });
     } catch (e: any) {
@@ -105,8 +109,7 @@ export function PromotionsPanel() {
     if (row.particularData) form.set("particularData", typeof row.particularData === "string" ? row.particularData : JSON.stringify(row.particularData));
 
     try {
-      const res = await fetch(`${BASE}/bonus/${row._id}`, { method: "PATCH", headers: { Authorization: `Bearer ${token()}` }, body: form });
-      if (!res.ok) throw new Error("Update failed");
+      await updateBonusApi(row._id, form, token());
       toast({ title: "Saved" });
       await load();
     } catch (e: any) {
@@ -116,8 +119,7 @@ export function PromotionsPanel() {
 
   async function deleteRow(id: string) {
     try {
-      const res = await fetch(`${BASE}/bonus/${id}`, { method: "DELETE", headers: { Authorization: `Bearer ${token()}` } });
-      if (!res.ok) throw new Error("Delete failed");
+      await deleteBonusApi(id, token());
       toast({ title: "Deleted" });
       await load();
     } catch (e: any) {
@@ -145,8 +147,7 @@ export function PromotionsPanel() {
     if (createData.particularData) form.set("particularData", createData.particularData);
 
     try {
-      const res = await fetch(`${BASE}/bonus`, { method: "POST", headers: { Authorization: `Bearer ${token()}` }, body: form });
-      if (!res.ok) throw new Error("Create failed");
+      await createBonusApi(form, token());
       toast({ title: "Bonus created" });
       setCreateData({
         name: "",

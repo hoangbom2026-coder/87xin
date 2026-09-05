@@ -7,6 +7,7 @@ export interface AccountLayoutProps {
   subHeader?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
+  shellClassName?: string;
 }
 
 export const AccountLayout: React.FC<AccountLayoutProps> = ({

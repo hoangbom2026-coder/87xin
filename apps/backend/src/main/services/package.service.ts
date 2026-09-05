@@ -1,4 +1,5 @@
 import { IPackage, PackageModel } from '@main/models/packages.model';
+import PackageCategoryModel, { IPackageCategory } from '@main/models/package-category.model';
 
 export const packageService = {
     async getAll(filter?: { page?: number; limit?: number }): Promise<{
@@ -32,5 +33,13 @@ export const packageService = {
 
     async remove(id: string): Promise<IPackage | null> {
         return PackageModel.findByIdAndDelete(id);
+    },
+
+    async listCategories(): Promise<IPackageCategory[]> {
+        return PackageCategoryModel.find().sort({ order: 1, createdAt: -1 });
+    },
+
+    async createCategory(data: Partial<IPackageCategory>): Promise<IPackageCategory> {
+        return PackageCategoryModel.create(data);
     }
 };

@@ -1,0 +1,30 @@
+[Unit]
+Description=TC-Gaming AI Stack (Hermes + OmniRoute + OpenViking)
+Documentation=https://github.com/your-org/tc-gaming-monorepo
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/hermes/stack
+
+# Khởi động
+ExecStart=/usr/bin/docker compose up -d --remove-orphans
+
+# Dừng gracefully
+ExecStop=/usr/bin/docker compose down
+
+# Restart nếu fail (nhưng không restart quá nhiều)
+Restart=on-failure
+RestartSec=30s
+StartLimitIntervalSec=300
+StartLimitBurst=3
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=tc-hermes-stack
+
+[Install]
+WantedBy=multi-user.target

@@ -1,4 +1,6 @@
 import nodemailer, { Transporter } from 'nodemailer';
+import httpStatus from 'http-status';
+import ApiError from '@utils/ApiError';
 import settingService from './setting.service';
 import { EMAIL_EVENTS, EMAIL_EVENT_MAP, renderEmailTemplate } from '@main/constants/email-templates';
 
@@ -72,9 +74,9 @@ async function sendEvent(eventKey: string, to: string, vars: Record<string, stri
 /** Gửi raw email (dùng cho test). */
 async function sendRaw(to: string, subject: string, html: string) {
     const cfg = await getConfig();
-    if (!cfg || !cfg.enabled) throw new Error('Email service disabled');
+    if (!cfg || !cfg.enabled) throw new ApiError(httpStatus.SERVICE_UNAVAILABLE, 'Email service disabled');
     const transporter = await getTransporter();
-    if (!transporter) throw new Error('Cannot create SMTP transporter (check config)');
+    if (!transporter) throw new ApiError(httpStatus.SERVICE_UNAVAILABLE, 'Cannot create SMTP transporter (check config)');
     const info = await transporter.sendMail({
         from: cfg.from || cfg.smtpUser,
         to,

@@ -10,12 +10,12 @@ import userService from '@main/services/user.service';
 import preferenceService from '@main/services/preference.service';
 
 export const getPreference = catchAsync(async (req: AuthRequest, res: Response) => {
-    const preference = await preferenceService.getPreference(String(req.user._id), String(req.user.currencyId));
+    const preference = await preferenceService.getPreference(String(req.user!._id), String(req.user!.currencyId));
     return res.send(preference);
 });
 
 export const updatePreference = catchAsync(async (req: AuthRequest, res: Response) => {
-    const preference = await preferenceService.updatePerference(String(req.user._id), req.body);
+    const preference = await preferenceService.updatePerference(String(req.user!._id), req.body);
     return res.send(preference);
 });
 

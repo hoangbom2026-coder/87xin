@@ -34,3 +34,47 @@ jobs:
 
       - name: Typecheck Admin Dashboard
         run: npm run typecheck --workspace=apps/admin-dashboard
+
+  lint:
+    name: Lint Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint Backend
+        run: npm run lint --workspace=apps/backend
+
+      - name: Lint Admin Dashboard
+        run: npm run lint --workspace=apps/admin-dashboard
+
+  test:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test Backend
+        run: npm run test --workspace=apps/backend
+
+      - name: Test Admin Dashboard
+        run: npm run test --workspace=apps/admin-dashboard

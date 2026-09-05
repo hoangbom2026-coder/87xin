@@ -1,4 +1,4 @@
-/** Ngữ cảnh nghiệp vụ & kỹ thuật chung cho admin 9Bet (casino + sport book + ví + affiliate). */
+/** Ngữ cảnh nghiệp vụ & kỹ thuật chung cho admin nền tảng iGaming. */
 export const PROJECT_SCOPE_VI =
   "Nền tảng iGaming: casino (GS/AG), thể thao (sport book), ví đa tiền tệ, nạp/rút (NowPayments & luồng liên quan), gói mua coin (Packages), VIP, affiliate/referral; bootstrap `GET /setting/site` + điều khiển thông báo/bảo trì từ admin.";
 

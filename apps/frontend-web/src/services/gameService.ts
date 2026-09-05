@@ -11,3 +11,7 @@ export const getWagerList = async (params?: any): Promise<ApiResponse<any>> => {
 export const getGameHistory = async (params?: any): Promise<ApiResponse<any>> => {
   return await api.post<any, ApiResponse<any>>('/transactions/list', params || {});
 };
+
+export const launchSuperLobby = async (provider?: string): Promise<ApiResponse<any>> => {
+  return await api.post<any, ApiResponse<any>>('/game/launch-lobby', { provider });
+};

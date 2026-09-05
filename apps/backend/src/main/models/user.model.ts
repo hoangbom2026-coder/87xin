@@ -1,9 +1,8 @@
-import mongoose, { Document, Model, Schema } from 'mongoose';
+import mongoose, { Document, Model, Types, Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { toJSON } from '@utils/model-plugins';
 
-export interface IUser extends Document {
-    _id: Schema.Types.ObjectId;
+export interface IUser extends Document<Types.ObjectId> {
     username: string;
     email: string;
     phone: string;

@@ -3,6 +3,7 @@ import vi from './locales/vi.json'
 import en from './locales/en.json'
 
 export type Lang = 'vi' | 'en'
+export type AppLanguage = Lang
 
 const LOCALES: Record<Lang, Record<string, unknown>> = { vi, en }
 
@@ -21,6 +22,7 @@ function getNestedValue(obj: Record<string, unknown>, path: string): string | un
 
 export type LanguageContextValue = {
   lang: Lang
+  language: Lang
   setLang: (lang: Lang) => void
   t: (key: string, fallback?: string) => string
 }
@@ -55,7 +57,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, [lang])
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
+    <LanguageContext.Provider value={{ lang, language: lang, setLang, t }}>
       {children}
     </LanguageContext.Provider>
   )

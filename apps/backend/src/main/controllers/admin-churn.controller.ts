@@ -91,7 +91,7 @@ export const postChurnOffer = catchAsync(async (req: AuthRequest, res: Response)
     }
 
     await adminAuditService.logAdminAction({
-        adminUserId: String(req.user._id),
+        adminUserId: String(req.user!._id),
         adminUsername: String((req.user as { username?: string }).username ?? ''),
         action: 'CHURN_OFFER',
         targetType: 'user',

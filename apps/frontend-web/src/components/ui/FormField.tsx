@@ -4,11 +4,13 @@
 import * as React from 'react';
 import { cn } from '../../lib/cn';
 
-export interface FormFieldProps {
+export interface FormFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactNode;
   error?: string | null;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
+  as?: any;
+  icon?: any;
 }
 
 export const FormField: React.FC<FormFieldProps> = ({

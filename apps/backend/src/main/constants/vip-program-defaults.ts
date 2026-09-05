@@ -1,5 +1,5 @@
 /**
- * Cấu hình quyền lợi VIP (cấp 0–8) — chuẩn dự án 9Bet.
+ * Cấu hình quyền lợi VIP (cấp 0–8) — chuẩn nền tảng.
  * Nguồn sự thật: Mongo `settings.vipProgramLevels` + merge khi patch / GET site.
  * Giá trị mặc định: tiến bậc hợp lý cho vận hành (có thể chỉnh toàn bộ qua admin).
  */

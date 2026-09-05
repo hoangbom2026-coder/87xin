@@ -34,7 +34,7 @@ const COLOR_PRESETS = [
 type FieldDef = {
   key: keyof VipTier;
   label: string;
-  icon?: React.ComponentType<{ className?: string; size?: number }>;
+  icon?: React.ComponentType<any>;
   /** Hiển thị % suffix */
   pct?: boolean;
   /** Format VND */
@@ -146,7 +146,7 @@ export default function VipTiersManagerAdmin() {
     value: VipTier[K],
   ) => {
     setTiers((prev) =>
-      prev.map((t) => (t.level === level ? { ...t, [key]: value } : t)),
+      prev.map((t) => (t.level === level ? { ...t, [key]: value } as VipTier : t)),
     );
   };
 
@@ -154,7 +154,7 @@ export default function VipTiersManagerAdmin() {
     setSaving(true);
     try {
       const token = getAdminToken() || "";
-      const res = await updateVipTiersConfig(token, tiers);
+      const res = await updateVipTiersConfig(tiers, token);
       setTiers(res.value);
       setOriginal(JSON.parse(JSON.stringify(res.value)));
       toast({

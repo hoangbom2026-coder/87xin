@@ -10,6 +10,8 @@ dotenv.config({ path: path.join(__dirname, '../../.env') });
 const getJwtSecret = (): string => {
     if (process.env.JWT_SECRET) return process.env.JWT_SECRET;
     if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
+        console.warn('[config] Using DEVELOPMENT JWT secret. Do NOT run in production without JWT_SECRET.');
         return 'dev-jwt-secret-key-development-only';
     }
     // Production: bắt buộc phải set JWT_SECRET trong .env — fail-fast, không fallback
@@ -63,9 +65,12 @@ const config = {
     },
     exchangeRateKey: process.env.EXCHANGE_RATE_KEY || '',
     sendGridApiKey: process.env.SENDGRID_API_KEY || '',
+    fromEmail: process.env.FROM_EMAIL || 'no-reply@tc-gaming.live',
+    adminCode: process.env.ADMIN_CODE || '',
     slot: {
-        apiBaseUrl: process.env.SLOT_API_BASE_URL || '',
-        apiKey: process.env.SLOT_API_KEY || ''
+        host: process.env.SLOT_API_BASE_URL || '',
+        apiKey: process.env.SLOT_API_KEY || '',
+        apiBaseUrl: process.env.SLOT_API_BASE_URL || ''
     }
 };
 

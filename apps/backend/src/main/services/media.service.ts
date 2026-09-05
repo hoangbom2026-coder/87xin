@@ -1,4 +1,6 @@
 import path from 'path';
+import httpStatus from 'http-status';
+import ApiError from '@utils/ApiError';
 import fs from 'fs/promises';
 import { existsSync } from 'fs';
 import { imageSize } from 'image-size';
@@ -63,6 +65,16 @@ interface IListFilter {
     page?: number;
     limit?: number;
 }
+export async function getAssetById(id: string) {
+    const a = await MediaAssetModel.findById(id).lean();
+    if (!a) return null;
+    return a;
+}
+
+export async function createAsset(data: Record<string, unknown>) {
+    return await MediaAssetModel.create(data);
+}
+
 export async function listAssets(filter: IListFilter) {
     const cond: Record<string, unknown> = {};
     if (filter.folder !== undefined) cond.folder = slugifyFolder(filter.folder);
@@ -114,18 +126,18 @@ export async function listFolders() {
 
 export async function createFolder(name: string, description: string, createdBy?: string) {
     const slug = slugifyFolder(name);
-    if (!slug) throw new Error('Folder name không hợp lệ');
+    if (!slug) throw new ApiError(httpStatus.BAD_REQUEST, 'Folder name không hợp lệ');
     const exist = await MediaFolderModel.findOne({ slug });
-    if (exist) throw new Error('Folder đã tồn tại');
+    if (exist) throw new ApiError(httpStatus.CONFLICT, 'Folder đã tồn tại');
     await fs.mkdir(path.join(MEDIA_ROOT, slug), { recursive: true });
     return await MediaFolderModel.create({ name, slug, description, createdBy: createdBy as never });
 }
 
 export async function deleteFolder(id: string) {
     const f = await MediaFolderModel.findById(id);
-    if (!f) throw new Error('Folder not found');
+    if (!f) throw new ApiError(httpStatus.NOT_FOUND, 'Folder not found');
     const inUse = await MediaAssetModel.countDocuments({ folder: f.slug });
-    if (inUse > 0) throw new Error(`Folder còn ${inUse} tệp, không thể xóa`);
+    if (inUse > 0) throw new ApiError(httpStatus.CONFLICT, `Folder còn ${inUse} tệp, không thể xóa`);
     await MediaFolderModel.deleteOne({ _id: id });
     try {
         await fs.rmdir(path.join(MEDIA_ROOT, f.slug));
@@ -137,12 +149,12 @@ export async function deleteFolder(id: string) {
 
 export async function moveAsset(assetId: string, targetFolderSlug: string) {
     const asset = await MediaAssetModel.findById(assetId);
-    if (!asset) throw new Error('Asset not found');
+    if (!asset) throw new ApiError(httpStatus.NOT_FOUND, 'Asset not found');
     const targetSlug = slugifyFolder(targetFolderSlug);
     if (asset.folder === targetSlug) return asset;
     if (targetSlug) {
         const exist = await MediaFolderModel.findOne({ slug: targetSlug });
-        if (!exist) throw new Error('Target folder not found');
+        if (!exist) throw new ApiError(httpStatus.NOT_FOUND, 'Target folder not found');
     }
     const oldRel = asset.url.replace(MEDIA_URL_PREFIX, '').replace(/^\/+/, '');
     const oldPath = path.join(MEDIA_ROOT, oldRel);

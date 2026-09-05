@@ -5,6 +5,7 @@ import ContentSection from '../../components/ui/ContentSection'
 import { StableImg } from '../../components/ui/StableImg'
 import { useLanguage } from '../../i18n/LanguageContext'
 import { useSite } from '../../hooks/useSite'
+import { applyBrand, getBrandName } from '../../lib/brand'
 import { PUBLIC_IMAGES } from '../../constants/publicAssets'
 import { cn } from '../../lib/cn'
 import {
@@ -14,14 +15,10 @@ import {
   MARKETING_SECTION_STACK_CLASS,
 } from '../../constants/pageShell'
 
-function applyBrand(s: string, brand: string) {
-  return s.replace(/\{\{brand\}\}/g, brand)
-}
-
 const AboutUs: React.FC = () => {
   const { t } = useLanguage()
   const { siteData } = useSite()
-  const brand = (siteData?.site?.siteName || '9BET').trim()
+  const brand = getBrandName(siteData)
 
   const tb = React.useCallback(
     (key: string, fallback: string) => applyBrand(t(key, fallback), brand),

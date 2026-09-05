@@ -7,9 +7,14 @@ import { useLanguage } from '../../i18n/LanguageContext';
 import { cn } from '../../lib/cn';
 import { PAGE_PROSE_BODY_CLASS, MARKETING_LP_SHELL_CLASS, MARKETING_SECTION_STACK_CLASS } from '../../constants/pageShell';
 import { PUBLIC_IMAGES } from '../../constants/publicAssets';
+import { useSite } from '../../hooks/useSite';
+import { applyBrand, getBrandName } from '../../lib/brand';
 
 const Terms: React.FC = () => {
   const { t } = useLanguage();
+  const { siteData } = useSite();
+  const brand = getBrandName(siteData);
+  const brandText = (key: string, fallback: string) => applyBrand(t(key, fallback), brand);
 
   const termsItems = [
     {
@@ -30,7 +35,7 @@ const Terms: React.FC = () => {
     },
     {
       title: t('terms.item5.title', '5. Limitation of Liability'),
-      content: t('terms.item5.p', 'Cuocbong99 shall not be liable for any direct, indirect, or incidental damages resulting from the use or inability to use our services, including but not limited to financial losses.')
+      content: brandText('terms.item5.p', '{{brand}} shall not be liable for any direct, indirect, or incidental damages resulting from the use or inability to use our services, including but not limited to financial losses.')
     }
   ];
 
@@ -45,7 +50,7 @@ const Terms: React.FC = () => {
         <div className={cn(MARKETING_LP_SHELL_CLASS, MARKETING_SECTION_STACK_CLASS)}>
           <ContentSection title={t('terms.intro.title', 'Agreement to Terms')}>
             <p className={PAGE_PROSE_BODY_CLASS}>
-              {t('terms.intro.p', 'By accessing or using Cuocbong99, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you may not use our platform.')}
+              {brandText('terms.intro.p', 'By accessing or using {{brand}}, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you may not use our platform.')}
             </p>
           </ContentSection>
 

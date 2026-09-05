@@ -1,9 +1,2 @@
-export { default as Promotions } from './Promotions'
-export { default as GameList } from './GameList'
-export { default as CategoryMenu } from './CategoryMenu'
-export { default as Providers } from './Providers'
-export { default as GameTabs } from './GameTabs'
-export { default as GameSlider } from './GameSlider'
-export { default as Hero } from './Hero'
-export { default as HomePromoBanner } from './HomePromoBanner'
-export { default as DailyChallenge } from './DailyChallenge'
+export { default as GameList } from './GameList';
+export { default as HomePromoBanner } from './HomePromoBanner';

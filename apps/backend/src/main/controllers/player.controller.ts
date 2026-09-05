@@ -25,17 +25,17 @@ export const updateUsername = catchAsync(async (req: AuthRequest, res: Response)
     const updateData = req.body;
 
     if (updateData.username) {
-        if (await userService.usernameTaken(updateData.username, String(req.user._id))) {
+        if (await userService.usernameTaken(updateData.username, String(req.user!._id))) {
             throw new ApiError(httpStatus.BAD_REQUEST, 'Username already taken');
         }
     }
-    const updatedUser = await userService.patchUpdate({ _id: String(req.user._id) }, updateData);
+    const updatedUser = await userService.patchUpdate({ _id: String(req.user!._id) }, updateData);
     return res.send(updatedUser);
 });
 
 export const updateCurrency = catchAsync(async (req: AuthRequest, res: Response) => {
     const updateData = req.body;
-    const updatedUser = await userService.patchUpdate({ _id: String(req.user._id) }, updateData);
+    const updatedUser = await userService.patchUpdate({ _id: String(req.user!._id) }, updateData);
     return res.send(updatedUser);
 });
 
@@ -43,16 +43,16 @@ export const updateAvatar = catchAsync(async (req: AuthRequest, res: Response) =
     if (!req.file) {
         throw new ApiError(httpStatus.BAD_REQUEST, 'Avatar upload is incorrect');
     }
-    const updatedUser = await userService.patchUpdate({ _id: String(req.user._id) }, { avatar: req.file.filename });
+    const updatedUser = await userService.patchUpdate({ _id: String(req.user!._id) }, { avatar: req.file.filename });
     return res.send(updatedUser);
 });
 
 export const updatePassword = catchAsync(async (req: AuthRequest, res: Response) => {
     const { oldPassword, newPassword } = req.body;
-    if (!(await req.user.isPasswordMatch(oldPassword))) {
+    if (!(await req.user!.isPasswordMatch(oldPassword))) {
         throw new ApiError(httpStatus.BAD_REQUEST, 'Current password is incorrect');
     }
-    await userService.updatePassword(String(req.user._id), newPassword);
+    await userService.updatePassword(String(req.user!._id), newPassword);
 
     const userIp = getIpAddress(req);
 
@@ -71,8 +71,8 @@ export const updatePassword = catchAsync(async (req: AuthRequest, res: Response)
         country.name = data.country;
     }
     await passwordLogService.createPasswordLog({
-        userId: String(req.user._id),
-        actorId: String(req.user._id),
+        userId: String(req.user!._id),
+        actorId: String(req.user!._id),
         ip: userIp,
         userAgent,
         device: result.device.type || 'desktop',
@@ -85,17 +85,17 @@ export const updatePassword = catchAsync(async (req: AuthRequest, res: Response)
 });
 
 export const getPlayerBalance = catchAsync(async (req: AuthRequest, res: Response) => {
-    const balance = await balanceService.getBalanceByUser(String(req.user._id));
+    const balance = await balanceService.getBalanceByUser(String(req.user!._id));
     return res.send(balance);
 });
 
 export const getKyc = catchAsync(async (req: AuthRequest, res: Response) => {
-    const kyc = await kycService.getKycByUser(String(req.user._id));
+    const kyc = await kycService.getKycByUser(String(req.user!._id));
     return res.send(kyc);
 });
 
 export const createKyc = catchAsync(async (req: AuthRequest, res: Response) => {
-    const oldkyc = await kycService.getKycByUser(String(req.user._id));
+    const oldkyc = await kycService.getKycByUser(String(req.user!._id));
     if (oldkyc) {
         throw new ApiError(httpStatus.BAD_REQUEST, 'Your KYC already exists');
     }
@@ -112,7 +112,7 @@ export const createKyc = catchAsync(async (req: AuthRequest, res: Response) => {
     const { type, countryCode, country } = req.body;
 
     const kyc = await kycService.createKYC({
-        userId: String(req.user._id),
+        userId: String(req.user!._id),
         frontImg,
         backImg,
         type,
@@ -123,33 +123,33 @@ export const createKyc = catchAsync(async (req: AuthRequest, res: Response) => {
             });
 
             // Notify admin via Telegram
-            telegramService.notifyNewKyc(String(req.user.username)).catch(() => undefined);
+            telegramService.notifyNewKyc(String(req.user!.username)).catch(() => undefined);
 
             return res.send(kyc);
             });
 export const getPlayerTransactions = catchAsync(async (req: AuthRequest, res: Response) => {
-    const transactions = await transactionService.getPlayerTransaction(String(req.user._id), req.body);
+    const transactions = await transactionService.getPlayerTransaction(String(req.user!._id), req.body);
     return res.send(transactions);
 });
 
 export const getPlayerDeposit = catchAsync(async (req: AuthRequest, res: Response) => {
-    const withdraws = await depositService.getPlayerDeposit({ ...req.body, userId: String(req.user._id) });
+    const withdraws = await depositService.getPlayerDeposit({ ...req.body, userId: String(req.user!._id) });
     return res.send(withdraws);
 });
 
 export const getPlayerWithdraw = catchAsync(async (req: AuthRequest, res: Response) => {
-    const withdraws = await withdrawService.getPlayerWithdraw({ ...req.body, userId: String(req.user._id) });
+    const withdraws = await withdrawService.getPlayerWithdraw({ ...req.body, userId: String(req.user!._id) });
     return res.send(withdraws);
 });
 
 export const getPlayerBonus = catchAsync(async (req: AuthRequest, res: Response) => {
-    const bonuses = await playerBonusService.getPlayerBonus({ ...req.body, userId: String(req.user._id) });
+    const bonuses = await playerBonusService.getPlayerBonus({ ...req.body, userId: String(req.user!._id) });
     return res.send(bonuses);
 });
 
 export const claimBonus = catchAsync(async (req: AuthRequest, res: Response) => {
     const bonusId = (req.params as any).bonusId;
-    const userId = String(req.user._id);
+    const userId = String(req.user!._id);
     const uid = String(userId);
 
     const bonus = await playerBonusService.getPlayerActiveBonus(bonusId, userId);
@@ -157,7 +157,7 @@ export const claimBonus = catchAsync(async (req: AuthRequest, res: Response) => 
         throw new ApiError(httpStatus.BAD_REQUEST, 'Bonus not found or not claimable');
     }
 
-    const currency = await currencyService.getCurrencyById(req.user.currencyId);
+    const currency = await currencyService.getCurrencyById(String(req.user!.currencyId));
     const prevBal = await balanceService.getBalanceByUserId(uid);
     const beforeAmount = Number(prevBal?.amount ?? 0);
     const credited = Number(Number(bonus.amount).toFixed(2));
@@ -189,6 +189,6 @@ export const claimBonus = catchAsync(async (req: AuthRequest, res: Response) => 
 });
 
 export const getPlayerGame = catchAsync(async (req: AuthRequest, res: Response) => {
-    const games = await transactionService.getPlayerGames(String(req.user._id));
+    const games = await transactionService.getPlayerGames(String(req.user!._id));
     return res.send(games);
 });

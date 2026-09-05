@@ -25,8 +25,8 @@ const DepositEwallet: React.FC = () => {
   const [list, setList] = useState<EwalletItem[]>(EWALLETS as EwalletItem[])
 
   useEffect(() => {
-    getSiteSettings().then((res) => {
-      const site = res.site as any
+    getSiteSettings().then((res: any) => {
+      const site = res?.data?.site || res?.site
       const arr = site?.vietnamDeposit?.methods?.ewallets
       if (Array.isArray(arr) && arr.length) setList(arr)
     })
