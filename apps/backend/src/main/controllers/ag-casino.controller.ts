@@ -139,7 +139,7 @@ export const agLaunchGame = catchAsync(async (req: AuthRequest, res: Response) =
             balance: balance.amount,
             subMerchantCode: '',
             terminalType: isMobile ? 'PHONE' : 'PC',
-            returnUrl: 'https://shivaspins.com/casino/SLOT'
+            returnUrl: `${config.frontendUrl}/live-casino`
         };
 
         const spliceResult = config.agCasino.merchantCode + timestamp + nonce + contentProcessingType;
@@ -184,7 +184,7 @@ export const verifySession = async (req: Request, res: Response): Promise<void> 
                 data: {
                     balance: '0.00',
                     nickName: user.username,
-                    avatarUrl: `https://shivaspins.com/${user.avatar}`
+                    avatarUrl: `${config.frontendUrl}/${user.avatar || 'images/avatar-default.png'}`
                 }
             });
             return;
@@ -199,7 +199,7 @@ export const verifySession = async (req: Request, res: Response): Promise<void> 
                 data: {
                     balance: balance.amount.toFixed(2),
                     nickName: user.username,
-                    avatarUrl: `https://shivaspins.com/${user.avatar}`
+                    avatarUrl: `${config.frontendUrl}/${user.avatar || 'images/avatar-default.png'}`
                 }
             });
         } else {
@@ -209,7 +209,7 @@ export const verifySession = async (req: Request, res: Response): Promise<void> 
                 data: {
                     balance: '0.00',
                     nickName: user.username,
-                    avatarUrl: `https://shivaspins.com/${user.avatar}`
+                    avatarUrl: `${config.frontendUrl}/${user.avatar || 'images/avatar-default.png'}`
                 }
             });
         }

@@ -1,14 +1,33 @@
-import RequireSuperAdmin from "@/components/auth/RequireSuperAdmin";
-import AdminLayout from "@/components/layout/AdminLayout";
-import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import AdminRelatedLinks from "@/components/admin/AdminRelatedLinks";
-import { Button } from "@game/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@game/ui/card";
-import { Input } from "@game/ui/input";
-import { Label } from "@game/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@game/ui/select";
-import { toast } from "@game/ui/use-toast";
-import { useEffect, useMemo, useState } from "react";
+/**
+ * VIP Levels management page.
+ * Manages VIP levels and required XP per Tier with standardized DataTable and AdminLayout.
+ */
+import * as React from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { Save, Trash2, Plus, RefreshCw } from 'lucide-react';
+
+import RequireSuperAdmin from '@/components/auth/RequireSuperAdmin';
+import AdminLayout from '@/components/layout/AdminLayout';
+import AdminPageHeader from '@/components/admin/AdminPageHeader';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Button,
+  Input,
+  Label,
+  DataTable,
+  type ColumnDef,
+} from '@game/ui';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@game/ui/select';
+import { toast } from '@game/ui/use-toast';
 import {
   getVipTiersList,
   getVipLevelsByParent,
@@ -17,24 +36,26 @@ import {
   deleteVipLevelApi,
   VipTiers,
   VipLevel,
-} from "@/lib/api";
-import { getAdminToken } from "@/lib/adminAuth";
+} from '@/lib/api';
+import { getAdminToken } from '@/lib/adminAuth';
 
 export default function VIPLevels() {
   const [tiers, setTiers] = useState<VipTiers[]>([]);
   const [levels, setLevels] = useState<VipLevel[]>([]);
-  const [selectedTier, setSelectedTier] = useState<string>("");
+  const [selectedTier, setSelectedTier] = useState<string>('');
   const [loading, setLoading] = useState(false);
-  const token = useMemo(() => getAdminToken() || "", []);
+  const token = useMemo(() => getAdminToken() || '', []);
 
   async function loadTiers() {
     setLoading(true);
     try {
       const data = await getVipTiersList(token);
-      setTiers(data || []);
-      if (!selectedTier && data?.length) setSelectedTier(String(data[0]._id));
+      setTiers((data as any) || []);
+      if (!selectedTier && (data as any)?.length) {
+        setSelectedTier(String((data as any)[0]._id));
+      }
     } catch (e: any) {
-      toast({ title: "Tải bậc VIP thất bại", description: e?.message, variant: "destructive" });
+      toast({ title: 'Tải bậc VIP thất bại', description: e?.message, variant: 'destructive' });
     } finally {
       setLoading(false);
     }
@@ -45,144 +66,183 @@ export default function VIPLevels() {
     setLoading(true);
     try {
       const data = await getVipLevelsByParent(tierId, token);
-      setLevels(data || []);
+      setLevels((data as any) || []);
     } catch (e: any) {
-      toast({ title: "Tải cấp VIP thất bại", description: e?.message, variant: "destructive" });
+      toast({ title: 'Tải cấp VIP thất bại', description: e?.message, variant: 'destructive' });
     } finally {
       setLoading(false);
     }
   }
 
-  useEffect(() => { loadTiers(); }, []);
-  useEffect(() => { if (selectedTier) loadLevels(selectedTier); }, [selectedTier]);
+  useEffect(() => {
+    loadTiers();
+  }, []);
+
+  useEffect(() => {
+    if (selectedTier) loadLevels(selectedTier);
+  }, [selectedTier]);
 
   async function onCreate(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const parentId = String(fd.get("parentId") || selectedTier);
-    const levelName = String(fd.get("levelName") || "");
-    const xp = Number(fd.get("xp") || 0);
-    if (!parentId) { toast({ title: "Vui lòng chọn bậc VIP", variant: "destructive" }); return; }
+    const form = new FormData(e.currentTarget);
+    const parentId = String(form.get('parentId') || selectedTier || '');
+    const levelName = String(form.get('levelName') || '');
+    const xp = Number(form.get('xp') || 0);
+
+    if (!parentId) {
+      toast({ title: 'Chưa chọn bậc VIP', variant: 'destructive' });
+      return;
+    }
     try {
       await createVipLevelApi({ parentId, levelName, xp }, token);
-      toast({ title: "Đã tạo cấp VIP" });
-      (e.currentTarget as HTMLFormElement).reset();
+      toast({ title: 'Đã thêm cấp VIP mới' });
+      (e.target as HTMLFormElement).reset();
       await loadLevels(parentId);
     } catch (e: any) {
-      toast({ title: "Tạo thất bại", description: e?.message, variant: "destructive" });
+      toast({ title: 'Tạo cấp thất bại', description: e?.message, variant: 'destructive' });
     }
   }
 
   async function onSave(l: VipLevel) {
     try {
       await updateVipLevelApi(l._id, { levelName: l.levelName, xp: l.xp }, token);
-      toast({ title: "Đã cập nhật cấp VIP" });
+      toast({ title: 'Đã cập nhật cấp VIP' });
       await loadLevels(l.parentId);
     } catch (e: any) {
-      toast({ title: "Cập nhật thất bại", description: e?.message, variant: "destructive" });
+      toast({ title: 'Cập nhật thất bại', description: e?.message, variant: 'destructive' });
     }
   }
 
   async function onDelete(l: VipLevel) {
-    if (!confirm("Xoá cấp này?")) return;
+    if (!confirm('Xoá cấp này?')) return;
     try {
       await deleteVipLevelApi(l._id, token);
-      toast({ title: "Đã xoá cấp VIP" });
+      toast({ title: 'Đã xoá cấp VIP' });
       await loadLevels(l.parentId);
     } catch (e: any) {
-      toast({ title: "Xoá thất bại", description: e?.message, variant: "destructive" });
+      toast({ title: 'Xoá thất bại', description: e?.message, variant: 'destructive' });
     }
   }
+
+  const columns: ColumnDef<VipLevel>[] = [
+    {
+      accessorKey: 'levelName',
+      header: 'Tên cấp độ',
+      cell: ({ row }) => (
+        <Input
+          className="w-48 bg-background"
+          value={row.original.levelName}
+          onChange={(e) =>
+            setLevels((prev) =>
+              prev.map((x) =>
+                x._id === row.original._id ? { ...x, levelName: e.target.value } : x
+              )
+            )
+          }
+        />
+      ),
+    },
+    {
+      accessorKey: 'xp',
+      header: 'Điểm XP yêu cầu',
+      cell: ({ row }) => (
+        <Input
+          type="number"
+          className="w-36 bg-background font-mono"
+          value={row.original.xp}
+          onChange={(e) =>
+            setLevels((prev) =>
+              prev.map((x) =>
+                x._id === row.original._id ? { ...x, xp: Number(e.target.value || 0) } : x
+              )
+            )
+          }
+        />
+      ),
+    },
+    {
+      id: 'actions',
+      header: 'Thao tác',
+      cell: ({ row }) => (
+        <div className="flex items-center gap-2">
+          <Button size="sm" variant="outline" onClick={() => onSave(row.original)}>
+            <Save className="h-4 w-4 mr-1" /> Lưu
+          </Button>
+          <Button size="sm" variant="destructive" onClick={() => onDelete(row.original)}>
+            <Trash2 className="h-4 w-4" />
+          </Button>
+        </div>
+      ),
+    },
+  ];
 
   return (
     <RequireSuperAdmin>
       <AdminLayout>
         <div className="space-y-6">
-        <AdminPageHeader
-          title="Cấp VIP (theo bậc trong collection)"
-          description={
-            "Quản lý tên cấp và XP theo từng bậc VIP (Mongo). Khác với trang Chương trình VIP: " +
-            "ở đó cấu hình đặc quyền vận hành (hạn mức rút, phí, referral, vòng quay) theo cấp 0–8 cho trang công khai."
-          }
-          actions={
-            <Button
-              variant="outline"
-              onClick={() => {
-                loadTiers();
-                if (selectedTier) loadLevels(selectedTier);
-              }}
-              disabled={loading}
-            >
-              {loading ? "Đang tải..." : "Làm mới"}
-            </Button>
-          }
-        />
+          <AdminPageHeader
+            title="Cấp VIP (Theo Bậc)"
+            description="Quản lý tên cấp và điểm XP tích lũy tương ứng theo từng bậc VIP."
+            actions={
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  loadTiers();
+                  if (selectedTier) loadLevels(selectedTier);
+                }}
+                disabled={loading}
+              >
+                <RefreshCw className="h-4 w-4 mr-1" /> Làm mới
+              </Button>
+            }
+          />
 
-        <Card>
-          <CardHeader><CardTitle className="text-base">Tạo cấp</CardTitle></CardHeader>
-          <CardContent>
-            <form onSubmit={onCreate} className="flex flex-wrap items-end gap-3 w-full">
-              <div className="w-full sm:min-w-[220px]">
-                <Label>Bậc</Label>
-                <Select value={selectedTier} onValueChange={(v)=>setSelectedTier(v)}>
-                  <SelectTrigger className="h-9 w-full"><SelectValue placeholder="Chọn bậc" /></SelectTrigger>
-                  <SelectContent>
-                    {tiers.map((t)=> (
-                      <SelectItem key={t._id} value={t._id}>{t.tiersName}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <input type="hidden" name="parentId" value={selectedTier} />
-              </div>
-              <div className="w-full sm:w-auto">
-                <Label>Tên</Label>
-                <Input name="levelName" required className="w-full" />
-              </div>
-              <div className="w-full sm:w-auto">
-                <Label>XP</Label>
-                <Input name="xp" type="number" step="1" required className="w-full" />
-              </div>
-              <Button type="submit" className="w-full sm:w-auto">Thêm</Button>
-            </form>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader><CardTitle className="text-base">Danh sách cấp</CardTitle></CardHeader>
-          <CardContent className="grid gap-3">
-            {levels.map((l) => (
-              <div key={l._id} className="flex flex-wrap items-center gap-3">
-                <Input className="w-full sm:w-56" value={l.levelName} onChange={(e)=>setLevels((p)=>p.map((x)=>x._id===l._id?{...x, levelName:e.target.value}:x))} />
-                <Input type="number" className="w-full sm:w-32" value={l.xp} onChange={(e)=>setLevels((p)=>p.map((x)=>x._id===l._id?{...x, xp:Number(e.target.value||0)}:x))} />
-                <div className="ml-0 sm:ml-auto flex flex-wrap gap-2 w-full sm:w-auto justify-between sm:justify-end">
-                  <Button onClick={()=>onSave(l)}>Lưu</Button>
-                  <Button variant="destructive" onClick={()=>onDelete(l)}>Xoá</Button>
+          <Card className="bg-card border-border">
+            <CardHeader>
+              <CardTitle className="text-base">Thêm cấp độ mới</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={onCreate} className="flex flex-wrap items-end gap-3 w-full">
+                <div className="w-full sm:min-w-[220px]">
+                  <Label>Bậc VIP</Label>
+                  <Select value={selectedTier} onValueChange={(v) => setSelectedTier(v)}>
+                    <SelectTrigger className="h-9 w-full bg-background">
+                      <SelectValue placeholder="Chọn bậc..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {tiers.map((t) => (
+                        <SelectItem key={t._id} value={t._id}>
+                          {t.tiersName}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <input type="hidden" name="parentId" value={selectedTier} />
                 </div>
-              </div>
-            ))}
-            {levels.length===0 && (
-              <div className="py-6 text-sm text-muted-foreground">Không có cấp nào</div>
-            )}
-          </CardContent>
-        </Card>
+                <div className="w-full sm:w-auto">
+                  <Label>Tên cấp độ</Label>
+                  <Input name="levelName" required placeholder="VD: Cấp 1" className="w-full bg-background" />
+                </div>
+                <div className="w-full sm:w-auto">
+                  <Label>Điểm XP</Label>
+                  <Input name="xp" type="number" step="1" required defaultValue={1000} className="w-full bg-background" />
+                </div>
+                <Button type="submit" className="w-full sm:w-auto bg-primary text-primary-foreground">
+                  <Plus className="h-4 w-4 mr-1" /> Thêm Cấp
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
 
-        <AdminRelatedLinks
-          links={[
-            {
-              to: "/vip-program",
-              label: "Chương trình VIP (0–8, đặc quyền site)",
-              hint: "Cấu hình hiển thị công khai & vận hành",
-            },
-            {
-              to: "/setting/site",
-              label: "Cài đặt site (bootstrap)",
-            },
-            {
-              to: "/admin/theme",
-              label: "Theme màu web & admin",
-            },
-          ]}
-        />
+          <Card className="bg-card border-border">
+            <CardHeader>
+              <CardTitle className="text-base">Danh sách cấp độ</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <DataTable columns={columns} data={levels} />
+            </CardContent>
+          </Card>
         </div>
       </AdminLayout>
     </RequireSuperAdmin>

@@ -10,6 +10,7 @@ import {
   Coins,
   Wallet,
   Calendar,
+  type LucideIcon,
 } from "lucide-react";
 
 import AdminLayout from "@/components/layout/AdminLayout";
@@ -34,7 +35,7 @@ const COLOR_PRESETS = [
 type FieldDef = {
   key: keyof VipTier;
   label: string;
-  icon?: React.ComponentType<{ className?: string; size?: number }>;
+  icon?: LucideIcon;
   /** Hiển thị % suffix */
   pct?: boolean;
   /** Format VND */
@@ -154,7 +155,7 @@ export default function VipTiersManagerAdmin() {
     setSaving(true);
     try {
       const token = getAdminToken() || "";
-      const res = await updateVipTiersConfig(token, tiers);
+      const res = await updateVipTiersConfig(tiers, token);
       setTiers(res.value);
       setOriginal(JSON.parse(JSON.stringify(res.value)));
       toast({

@@ -65,7 +65,7 @@ export async function logout(token?: string) {
   return req('/auth/logout', { method: 'POST' });
 }
 
-export async function getBusinessSettings() {
+export async function getBusinessSettings(token?: string) {
   return req('/admin/settings');
 }
 
@@ -119,6 +119,115 @@ export async function getAdminCurrencies() {
 export async function replaceUser(id: string, data: any) {
   return req(`/admin/users/${id}`, { method: 'PUT', body: JSON.stringify(data) });
 }
+
+// VIP API
+export async function getVipTiersList(token?: string) {
+  return req('/vip-tiers');
+}
+
+export async function createVipTiersApi(data: any, token?: string) {
+  return req('/vip-tiers', { method: 'POST', body: data instanceof FormData ? data : JSON.stringify(data) });
+}
+
+export async function updateVipTiersApi(id: string, data: any, token?: string) {
+  return req(`/vip-tiers/${id}`, { method: 'PUT', body: JSON.stringify(data) });
+}
+
+export async function deleteVipTiersApi(id: string, token?: string) {
+  return req(`/vip-tiers/${id}`, { method: 'DELETE' });
+}
+
+export async function getVipLevelsByParent(parentId: string, token?: string) {
+  return req(`/vip-level/parent/${parentId}`);
+}
+
+export async function createVipLevelApi(data: any, token?: string) {
+  return req('/vip-level', { method: 'POST', body: JSON.stringify(data) });
+}
+
+export async function updateVipLevelApi(id: string, data: any, token?: string) {
+  return req(`/vip-level/${id}`, { method: 'PUT', body: JSON.stringify(data) });
+}
+
+export async function deleteVipLevelApi(id: string, token?: string) {
+  return req(`/vip-level/${id}`, { method: 'DELETE' });
+}
+
+export async function listVipSpinPrizes(token?: string) {
+  return req('/vip-spin-prize');
+}
+
+export async function createVipSpinPrize(data: any, token?: string) {
+  return req('/vip-spin-prize', { method: 'POST', body: JSON.stringify(data) });
+}
+
+export async function updateVipSpinPrize(id: string, data: any, token?: string) {
+  return req(`/vip-spin-prize/${id}`, { method: 'PUT', body: JSON.stringify(data) });
+}
+
+export async function deleteVipSpinPrize(id: string, token?: string) {
+  return req(`/vip-spin-prize/${id}`, { method: 'DELETE' });
+}
+
+export async function getVipTiersConfig(token?: string) {
+  return req('/vip-tiers-config');
+}
+
+export async function updateVipTiersConfig(data: any, token?: string) {
+  return req('/vip-tiers-config', { method: 'POST', body: JSON.stringify(data) });
+}
+
+export async function getVipStatsApi(token?: string) {
+  return req('/admin/vip/stats');
+}
+
+export async function listVipUsersApi(params?: any, token?: string) {
+  return req('/admin/vip/users', { method: 'POST', body: JSON.stringify(params || {}) });
+}
+
+export type VipStats = {
+  totalVipUsers?: number;
+  totalVipXp?: number;
+  activeTiers?: number;
+  totalCashbackPaid?: number;
+};
+
+export type VipUserRow = {
+  _id: string;
+  username: string;
+  vipLevel: number;
+  vipXp: number;
+  balance?: number;
+  createdAt?: string;
+};
+
+export type VipTiers = {
+  _id: string;
+  tiersName: string;
+  order: number;
+};
+
+export type VipLevel = {
+  _id: string;
+  parentId: string;
+  levelName: string;
+  xp: number;
+};
+
+export type VipTier = {
+  _id?: string;
+  name?: string;
+  level?: number;
+  minValidBet?: number;
+  upReward?: number;
+  cashbackRate?: number;
+  lossReturnRate?: number;
+  lossReturnMax?: number;
+  fridayBonusRate?: number;
+  fridayBonusMax?: number;
+  withdrawLimit?: number;
+  colorCode?: string;
+};
 
 // Fallback dynamic exports for any remaining named imports
 export const api = new Proxy(

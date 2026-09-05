@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { useNavigate } from 'react-router-dom';
-import { toast } from '@/components/ui/use-toast';
+import { toast } from '@game/ui/use-toast';
 
 /** Chuẩn vận hành ca dài: 30 phút không tương tác → đăng xuất. */
 const SESSION_TIMEOUT = 30 * 60 * 1000;

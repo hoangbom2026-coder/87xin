@@ -1,0 +1,10 @@
+{
+  "name": "@game/shared-utils",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./config": "./src/config.ts"
+  }
+}

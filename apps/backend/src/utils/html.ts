@@ -51,7 +51,7 @@ export const EmailCodeHTML = ({ code }: { code: string }) => {
       style="background: #000; color: #fff; display: flex; padding: 16px 20px;">
       <div
         style="width: 100%; display: flex;">
-        <img src="https://shivaspins.com/logo.png" style="height: 50px;" alt="Logo">
+        <span style="font-size: 20px; font-weight: 900; color: #f59e0b; letter-spacing: 1px;">TC GAMING</span>
         <span
           style="margin-left: auto; margin-top: auto; margin-bottom: auto; background: #222; color: #fff; border: none; border-radius: 4px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer;">
           Stay Secure</span>
@@ -59,7 +59,7 @@ export const EmailCodeHTML = ({ code }: { code: string }) => {
     </div>
     <div class="content">
       <p>Hi, there</p>
-      <p>Welcome to <b style="color: #000 !important">SHIVASPINS.COM</b>!</p>
+      <p>Welcome to <b style="color: #000 !important">TC-GAMING.LIVE</b>!</p>
       <h2 style="text-align: center; margin-top: 0; color: #1abc5b; font-size: 22px;">Verify your email address of your account!</h2>
       <p style="margin: 18px 0 8px 0;">Enter this code:</p>
       <div
@@ -68,7 +68,7 @@ export const EmailCodeHTML = ({ code }: { code: string }) => {
       <p>If you did not create an account, you can safely ignore this email.</p>
     </div>
     <div class="footer" style="font-size: 13px; color: #888; text-align: center; padding: 16px 10px 10px 10px;">
-      &copy; 2025 SHIVASPINS.COM. All rights reserved.
+      &copy; 2026 TC-GAMING.LIVE. All rights reserved.
     </div>
   </div>
 </body>

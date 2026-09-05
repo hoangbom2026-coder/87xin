@@ -5,6 +5,7 @@
   "workspaces": [
     "apps/*",
     "libs/shared-types",
+    "libs/shared-utils",
     "libs/ui",
     "libs/db",
     "libs/cron",

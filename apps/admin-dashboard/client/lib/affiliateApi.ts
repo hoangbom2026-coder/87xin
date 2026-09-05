@@ -2,7 +2,7 @@ const envBase = typeof import.meta !== "undefined" ? (import.meta as any).env?.V
 const lsBase = typeof window !== "undefined" && typeof localStorage !== "undefined" ? localStorage.getItem("__API_BASE") : null;
 const winBase = (typeof window !== "undefined" && (window as any).__API_BASE) || undefined;
 const originApi = typeof window !== "undefined" ? `${window.location.origin}/api` : undefined;
-const API_BASE = (lsBase && lsBase.trim()) || winBase || (envBase && envBase.trim() && envBase.trim() !== "/api" ? envBase.trim() : "http://localhost:5000/api");
+const API_BASE = (lsBase && lsBase.trim()) || winBase || (envBase && envBase.trim() ? envBase.trim() : "/api");
 
 function join(base: string, p: string) {
   const b = base.endsWith("/") ? base.slice(0, -1) : base;
@@ -37,7 +37,7 @@ async function request<T>(path: string, init?: RequestInit, token?: string): Pro
     return body; // best effort
   }
 
-  const candidates = Array.from(new Set([API_BASE, originApi, "/api", "http://localhost:5000/api"].filter(Boolean) as string[]));
+  const candidates = Array.from(new Set([API_BASE, originApi, "/api"].filter(Boolean) as string[]));
   for (let i = 0; i < candidates.length; i++) {
     try {
       const attemptInit: RequestInit = { cache: "no-store", ...init, headers: { "Cache-Control": "no-cache", ...headers }, mode: "cors" };

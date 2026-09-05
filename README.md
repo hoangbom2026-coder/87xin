@@ -74,9 +74,9 @@ ECOSYSTEM_FILE=ecosystem.pm2-spa.cjs sudo bash /var/87app/deploy/deploy.sh
 
 | Service    | Port  | Domain (mặc định)            |
 |------------|-------|-------------------------------|
-| backend    | 8701  | `api.cuocbong99.live`         |
-| admin      | 8781  | `admin.cuocbong99.live`       |
-| frontend1  | 80    | `cuocbong99.live` (Nginx static `frontend1/dist`) |
+| backend    | 8701  | `https://tc-gaming.live/api`      |
+| admin      | 8781  | `admin.tc-gaming.live`       |
+| frontend   | 80/443| `tc-gaming.live` (Nginx static `apps/frontend-web/dist`) |
 
 Frontend1 prod gọi API theo `VITE_API_URL=/api` (cùng origin, Nginx proxy `/api/` và `/socket.io` về `:8701`).
 
@@ -85,13 +85,13 @@ Frontend1 prod gọi API theo `VITE_API_URL=/api` (cùng origin, Nginx proxy `/a
 ```bash
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx \
-  -d cuocbong99.live -d www.cuocbong99.live \
-  -d admin.cuocbong99.live -d api.cuocbong99.live
+  -d tc-gaming.live -d www.tc-gaming.live \
+  -d admin.tc-gaming.live
 ```
 
 ## 7. Healthcheck
 
-- `GET https://api.cuocbong99.live/health` → `{ status: "ok" }`
+- `GET https://tc-gaming.live/api/health` → `{ status: "ok" }`
 - `pm2 status`
 - `pm2 logs 87app-api --lines 200`
 

@@ -1,87 +1,63 @@
-# Triển khai VPS (Ubuntu)
+# Triển khai VPS (Ubuntu) — TC-Gaming Monorepo
 
 > Chi tiết stack & dev xem `README.md`. File này tập trung vào checklist VPS.
 
 ## 1. Chuẩn bị
 
-- VPS Ubuntu 22.04+ (Node 20+, MongoDB, Redis, PM2, Nginx).
-- DNS: `A` apex → IP; `A` `admin.*`; `A` `api.*`. Mặc định: `cuocbong99.live`, `admin.cuocbong99.live`, `api.cuocbong99.live`.
-- Repo nằm tại `/var/87app` (sửa biến `ROOT` trong `deploy/*.cjs` nếu khác).
+- VPS Ubuntu 24.04+ (Node 22+, MongoDB, Redis, PM2, Nginx).
+- DNS: `A` apex → IP; `A` `admin.*`. Mặc định: `tc-gaming.live`, `admin.tc-gaming.live`.
+- Repo nằm tại `/var/app/game`.
 
 ## 2. Biến môi trường
 
 ```bash
-cp backend/.env.example   backend/.env
-cp frontend1/.env.example frontend1/.env
-cp admin/.env.example     admin/.env
-cp deploy/env.example     deploy/env.local      # tuỳ chọn
+cp apps/backend/.env.example   apps/backend/.env
+cp apps/frontend-web/.env.example apps/frontend-web/.env.production
+cp apps/admin-dashboard/.env.example apps/admin-dashboard/.env.production
 ```
 
-Bắt buộc trong `backend/.env`:
+Bắt buộc trong `apps/backend/.env`:
 
 - `JWT_SECRET` — chuỗi ngẫu nhiên dài, không dùng giá trị mẫu.
 - `DATABASE_URL` — chuỗi kết nối MongoDB.
-- `CORS_ORIGIN` — danh sách origin chính (phẩy ngăn cách), ví dụ `https://cuocbong99.live,https://admin.cuocbong99.live`. Bỏ trống / `*` để cho phép tất cả (KHÔNG khuyến nghị production).
-- `FRONTEND_URL`, `BACKEND_URL`.
+- `CORS_ORIGIN` — danh sách origin chính, ví dụ `https://tc-gaming.live,https://admin.tc-gaming.live`.
+- `FRONTEND_URL`=https://tc-gaming.live
+- `BACKEND_URL`=http://127.0.0.1:8701
 
-`frontend1/.env` production thường chỉ cần:
+`apps/frontend-web/.env.production`:
 
 ```
 VITE_API_URL=/api
-VITE_ADMIN_URL=https://admin.cuocbong99.live/api
+VITE_PUBLIC_SITE_URL=https://tc-gaming.live
+VITE_SITE_NAME=TC Gaming
+VITE_SUPPORT_EMAIL=support@tc-gaming.live
+VITE_TELEGRAM_SUPPORT_URL=https://t.me/tcgaming_support
 ```
 
-(Cùng origin với Nginx, không cần CORS.)
+`apps/admin-dashboard/.env.production`:
+
+```
+VITE_API_URL=/api
+VITE_ADMIN_ALLOWED_HOSTS=admin.tc-gaming.live,localhost,127.0.0.1
+ADMIN_PREVIEW_PORT=8781
+```
 
 ## 3. Build & PM2 & Nginx
 
 ```bash
-chmod +x deploy/deploy.sh
-sudo bash /var/87app/deploy/deploy.sh
+bash /var/app/game/infra/scripts/deploy.sh
 ```
 
-Hai chế độ:
-
-| Chế độ | Ecosystem | Nginx | FE | Admin | API |
-|--------|-----------|-------|----|-------|-----|
-| **Mặc định** (khuyên dùng) | `ecosystem.config.cjs` | `deploy/nginx/87app.conf` | Nginx serve `frontend1/dist` | PM2 `vite preview` :8781 | PM2 cluster :8701 |
-| Full PM2 SPA | `ecosystem.pm2-spa.cjs` | `deploy/nginx/87app-pm2.conf` | PM2 `serve` :8780 | PM2 `vite preview` :8781 | PM2 :8701 |
-
-Chế độ full PM2 (Nginx proxy :8780/:8781):
+## 4. HTTPS (Let's Encrypt)
 
 ```bash
-ECOSYSTEM_FILE=ecosystem.pm2-spa.cjs NGINX_CONF_FILE=nginx/87app-pm2.conf sudo bash /var/87app/deploy/deploy.sh
-```
-
-PM2 ecosystem alias production (`ecosystem.prod.js` = cùng `ecosystem.config.cjs`).
-
-Chi tiết domain `cuocbong99.live`: `deploy/README-cuocbong99.md`.
-
-## 4. SSL
-
-```bash
-sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx \
-  -d cuocbong99.live -d www.cuocbong99.live \
-  -d admin.cuocbong99.live -d www.admin.cuocbong99.live \
-  -d api.cuocbong99.live
+  -d tc-gaming.live -d www.tc-gaming.live \
+  -d admin.tc-gaming.live
 ```
 
-## 5. Healthcheck & log
+## 5. Healthcheck
 
-- `GET https://api.cuocbong99.live/health` → `{"status":"ok"}`
-- `pm2 status` / `pm2 logs 87app-api --lines 200`
-- Nginx: `/var/log/nginx/87app-*.log`
-
-## 6. Cập nhật mã nguồn
-
-```bash
-cd /var/87app && git pull
-sudo bash deploy/deploy.sh         # tự rebuild + reload
-```
-
-Build chỉ một phần (skip flags):
-
-```bash
-SKIP_BACKEND=1 SKIP_ADMIN=1 sudo bash deploy/deploy.sh   # chỉ FE
-```
+- `GET https://tc-gaming.live/api/health` → `{"status":"ok"}`
+- `pm2 status`
+- `bash /var/app/game/infra/scripts/monitor.sh`

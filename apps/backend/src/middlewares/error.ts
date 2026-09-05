@@ -30,7 +30,11 @@ const errorHandler = (err: any, req: Request, res: Response, next: NextFunction)
     res.locals.errorMessage = err.message;
 
     const response = {
-        code: statusCode,
+        success: false,
+        error: {
+            code: statusCode,
+            message
+        },
         message,
         ...(config.env === 'development' && { stack: err.stack })
     };
